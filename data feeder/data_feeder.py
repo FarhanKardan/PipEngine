@@ -41,5 +41,6 @@ if __name__ == "__main__":
         print(f"Columns: {list(df.columns)}")
         print(f"Sample data:")
         print(df.head())
+        df.to_csv("klines.csv")
     else:
         print("Failed to fetch data")

@@ -22,12 +22,23 @@ def williams_fractal_trailing_stops(df, left_range=2, right_range=2, buffer_perc
     is_williams_low = is_williams_fractal(high, low, left_range, right_range, "low")
     
     # Suppress fractals if the previous bar was a fractal
-    is_williams_high = is_williams_high & ~is_williams_high.shift(1)
-    is_williams_low = is_williams_low & ~is_williams_low.shift(1)
+    is_williams_high = is_williams_high & (~is_williams_high.shift(1).fillna(True))
+    is_williams_low = is_williams_low & (~is_williams_low.shift(1).fillna(True))
     
     # Get fractal prices
-    williams_high_price = np.where(is_williams_high, high.shift(right_range), np.nan)
-    williams_low_price = np.where(is_williams_low, low.shift(right_range), np.nan)
+    williams_high_price = pd.Series(index=df.index, dtype=float)
+    williams_low_price = pd.Series(index=df.index, dtype=float)
+    
+    for i in range(len(df)):
+        if is_williams_high.iloc[i]:
+            williams_high_price.iloc[i] = high.shift(right_range).iloc[i]
+        else:
+            williams_high_price.iloc[i] = np.nan
+            
+        if is_williams_low.iloc[i]:
+            williams_low_price.iloc[i] = low.shift(right_range).iloc[i]
+        else:
+            williams_low_price.iloc[i] = np.nan
     
     # Add buffer
     williams_high_price_buffered = williams_high_price * (1 + (buffer_percent / 100))
@@ -40,15 +51,15 @@ def williams_fractal_trailing_stops(df, left_range=2, right_range=2, buffer_perc
     # Persist and reset trailing stops
     for i in range(len(df)):
         if i == 0:
-            williams_long_stop_price.iloc[i] = williams_low_price_buffered.iloc[i] if not np.isnan(williams_low_price_buffered.iloc[i]) else np.nan
-            williams_short_stop_price.iloc[i] = williams_high_price_buffered.iloc[i] if not np.isnan(williams_high_price_buffered.iloc[i]) else np.nan
+            williams_long_stop_price.iloc[i] = williams_low_price_buffered.iloc[i] if not pd.isna(williams_low_price_buffered.iloc[i]) else np.nan
+            williams_short_stop_price.iloc[i] = williams_high_price_buffered.iloc[i] if not pd.isna(williams_high_price_buffered.iloc[i]) else np.nan
         else:
-            if not np.isnan(williams_low_price_buffered.iloc[i]):
+            if not pd.isna(williams_low_price_buffered.iloc[i]):
                 williams_long_stop_price.iloc[i] = williams_low_price_buffered.iloc[i]
             else:
                 williams_long_stop_price.iloc[i] = williams_long_stop_price.iloc[i-1]
             
-            if not np.isnan(williams_high_price_buffered.iloc[i]):
+            if not pd.isna(williams_high_price_buffered.iloc[i]):
                 williams_short_stop_price.iloc[i] = williams_high_price_buffered.iloc[i]
             else:
                 williams_short_stop_price.iloc[i] = williams_short_stop_price.iloc[i-1]
