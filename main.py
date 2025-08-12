@@ -16,6 +16,8 @@ from indicators.enhanced_zero_lag_macd import enhanced_zero_lag_macd
 from indicators.williams_fractal_trailing_stops import williams_fractal_trailing_stops
 
 # Import data feeder
+import sys
+sys.path.append('data feeder')
 from data_feeder import DataFeeder
 
 def plot_chart(df, result_df):
