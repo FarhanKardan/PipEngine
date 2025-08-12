@@ -1,7 +1,7 @@
 from .ema import calculate_ema
 from .dema import calculate_dema
 from .impulse_macd import impulse_macd_lb, calc_smma, calc_zlema
-from .atr import calculate_atr, calculate_true_range, ma_function
+from .atr import calculate_atr, calculate_true_range
 from .enhanced_zero_lag_macd import enhanced_zero_lag_macd
 from .williams_fractal_trailing_stops import williams_fractal_trailing_stops
 
@@ -13,7 +13,6 @@ __all__ = [
     'calc_zlema',
     'calculate_atr',
     'calculate_true_range',
-    'ma_function',
     'enhanced_zero_lag_macd',
     'williams_fractal_trailing_stops'
 ]

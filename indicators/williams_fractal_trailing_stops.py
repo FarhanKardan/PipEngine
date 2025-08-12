@@ -2,23 +2,18 @@ import pandas as pd
 import numpy as np
 
 def williams_fractal_trailing_stops(df, left_range=2, right_range=2, buffer_percent=0, flip_on="Close"):
-    """
-    Calculate Williams Fractal Trailing Stops
-    """
+    """Calculate Williams Fractal Trailing Stops"""
     high = df['high']
     low = df['low']
     close = df['close']
     
     # Check if current bar confirms a Williams High or Low
     def is_williams_fractal(high_data, low_data, left_range, right_range, fractal_type):
+        window_size = left_range + right_range + 1
         if fractal_type == "high":
-            # Check if high[right_range] is the highest in the range
-            window_size = left_range + right_range + 1
             highest_in_range = high_data.rolling(window=window_size, min_periods=window_size).max()
             return high_data.shift(right_range) >= highest_in_range.shift(right_range)
         else:  # low
-            # Check if low[right_range] is the lowest in the range
-            window_size = left_range + right_range + 1
             lowest_in_range = low_data.rolling(window=window_size, min_periods=window_size).min()
             return low_data.shift(right_range) <= lowest_in_range.shift(right_range)
     

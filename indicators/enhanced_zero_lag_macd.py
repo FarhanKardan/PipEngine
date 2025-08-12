@@ -3,9 +3,7 @@ import numpy as np
 
 def enhanced_zero_lag_macd(df, fast_length=12, slow_length=26, signal_length=9, 
                            macd_ema_length=9, use_ema=True, use_old_algo=False):
-    """
-    Calculate Enhanced Zero Lag MACD
-    """
+    """Calculate Enhanced Zero Lag MACD"""
     source = df['close']
     
     # Fast line (Zero Lag)
