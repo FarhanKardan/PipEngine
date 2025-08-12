@@ -18,19 +18,3 @@ def calculate_dema(data, period=9):
     
     return dema
 
-if __name__ == "__main__":
-    dates = pd.date_range('2025-01-01', periods=100, freq='h')
-    sample_data = pd.Series(np.random.randn(100).cumsum() + 100, index=dates)
-    
-    print("Sample Data:")
-    print(sample_data.head())
-    print("\n" + "="*50)
-    
-    dema_9 = calculate_dema(sample_data, 9)
-    print(f"DEMA(9):")
-    print(dema_9.head(25))
-    print("\n" + "="*50)
-    
-    dema_21 = calculate_dema(sample_data, 21)
-    print(f"DEMA(21):")
-    print(dema_21.head(25))
