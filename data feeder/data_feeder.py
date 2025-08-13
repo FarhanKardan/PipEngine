@@ -34,7 +34,8 @@ class DataFeeder:
 
 if __name__ == "__main__":
     feeder = DataFeeder()
-    df = feeder.fetch_xauusd()
+    # Use 5-minute timeframe
+    df = feeder.fetch_xauusd(interval=Interval.in_5_minute)
     
     if df is not None:
         print(f"Data: {df.shape[0]} bars, {df.shape[1]} columns")
@@ -42,5 +43,6 @@ if __name__ == "__main__":
         print(f"Sample data:")
         print(df.head())
         df.to_csv("klines.csv")
+        print("✅ Data saved to klines.csv")
     else:
         print("Failed to fetch data")
