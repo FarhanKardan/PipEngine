@@ -1,11 +1,20 @@
 import pandas as pd
 import numpy as np
 import mplfinance as mpf
+import sys
+import os
 
 # To silence FutureWarning about downcasting on fillna, ffill, bfill
 pd.set_option('future.no_silent_downcasting', True)
 
 from datetime import datetime, timedelta
+
+# Add the project root to the path to import indicators
+sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
+
+# Import existing indicators
+from indicators.ema import calculate_ema
+from indicators.williams_fractal_trailing_stops import williams_fractal_trailing_stops
 
 def load_and_prepare_data(path, symbol=None):
     df = pd.read_csv(path, parse_dates=['datetime'])
@@ -19,33 +28,11 @@ def load_and_prepare_data(path, symbol=None):
 
     return df
 
-# Add EMA
+# Add EMA using existing indicator
 def add_ema(df, period=200, price_col='close'):
     ema_col = f'ema_{period}'
-    df[ema_col] = df[price_col].ewm(span=period, adjust=False).mean()
+    df[ema_col] = calculate_ema(df[price_col], period)
     return df, ema_col
-
-# Simplified Williams Fractal Trailing Stops function
-def williams_fractal_trailing_stops(df, left_range=9, right_range=9, buffer_percent=0.5, flip_on="Close"):
-    n = len(df)
-    df_out = pd.DataFrame(index=df.index)
-
-    # Calculate the fractal highs: high is the max in window centered on current index with left_range and right_range
-    is_williams_high = (df['high'] == df['high'].rolling(window=left_range + right_range + 1, center=True).max())
-
-    # Calculate fractal lows: low is the min in the same window
-    is_williams_low = (df['low'] == df['low'].rolling(window=left_range + right_range + 1, center=True).min())
-
-    # Long and short stop plots (you can keep them as you had or customize)
-    df_out['williams_long_stop_plot'] = df['close'].rolling(window=5, min_periods=1).min() * (1 - buffer_percent / 100)
-    df_out['williams_short_stop_plot'] = df['close'].rolling(window=5, min_periods=1).max() * (1 + buffer_percent / 100)
-
-    df_out['is_williams_high'] = is_williams_high
-    df_out['is_williams_low'] = is_williams_low
-    df_out['williams_high_price'] = df['high'].where(is_williams_high)
-    df_out['williams_low_price'] = df['low'].where(is_williams_low)
-
-    return df_out
 
 def main():
     # === Main ===

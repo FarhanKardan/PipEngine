@@ -1,126 +1,36 @@
 import pandas as pd
 import numpy as np
 
-def williams_fractal_trailing_stops(df, left_range=2, right_range=2, buffer_percent=0, flip_on="Close"):
-    """Calculate Williams Fractal Trailing Stops"""
-    high = df['high']
-    low = df['low']
-    close = df['close']
+def williams_fractal_trailing_stops(df, left_range=9, right_range=9, buffer_percent=0.5, flip_on="Close"):
+    """
+    Simplified Williams Fractal Trailing Stops function
     
-    # Check if current bar confirms a Williams High or Low
-    def is_williams_fractal(high_data, low_data, left_range, right_range, fractal_type):
-        window_size = left_range + right_range + 1
-        if fractal_type == "high":
-            highest_in_range = high_data.rolling(window=window_size, min_periods=window_size).max()
-            return high_data.shift(right_range) >= highest_in_range.shift(right_range)
-        else:  # low
-            lowest_in_range = low_data.rolling(window=window_size, min_periods=window_size).min()
-            return low_data.shift(right_range) <= lowest_in_range.shift(right_range)
-    
-    # Calculate Williams fractals
-    is_williams_high = is_williams_fractal(high, low, left_range, right_range, "high")
-    is_williams_low = is_williams_fractal(high, low, left_range, right_range, "low")
-    
-    # Suppress fractals if the previous bar was a fractal
-    is_williams_high = is_williams_high & (~is_williams_high.shift(1).fillna(True))
-    is_williams_low = is_williams_low & (~is_williams_low.shift(1).fillna(True))
-    
-    # Get fractal prices
-    williams_high_price = pd.Series(index=df.index, dtype=float)
-    williams_low_price = pd.Series(index=df.index, dtype=float)
-    
-    for i in range(len(df)):
-        if is_williams_high.iloc[i]:
-            williams_high_price.iloc[i] = high.shift(right_range).iloc[i]
-        else:
-            williams_high_price.iloc[i] = np.nan
-            
-        if is_williams_low.iloc[i]:
-            williams_low_price.iloc[i] = low.shift(right_range).iloc[i]
-        else:
-            williams_low_price.iloc[i] = np.nan
-    
-    # Add buffer
-    williams_high_price_buffered = williams_high_price * (1 + (buffer_percent / 100))
-    williams_low_price_buffered = williams_low_price * (1 - (buffer_percent / 100))
-    
-    # Initialize trailing stops
-    williams_long_stop_price = pd.Series(index=df.index, dtype=float)
-    williams_short_stop_price = pd.Series(index=df.index, dtype=float)
-    
-    # Persist and reset trailing stops
-    for i in range(len(df)):
-        if i == 0:
-            williams_long_stop_price.iloc[i] = williams_low_price_buffered.iloc[i] if not pd.isna(williams_low_price_buffered.iloc[i]) else np.nan
-            williams_short_stop_price.iloc[i] = williams_high_price_buffered.iloc[i] if not pd.isna(williams_high_price_buffered.iloc[i]) else np.nan
-        else:
-            if not pd.isna(williams_low_price_buffered.iloc[i]):
-                williams_long_stop_price.iloc[i] = williams_low_price_buffered.iloc[i]
-            else:
-                williams_long_stop_price.iloc[i] = williams_long_stop_price.iloc[i-1]
-            
-            if not pd.isna(williams_high_price_buffered.iloc[i]):
-                williams_short_stop_price.iloc[i] = williams_high_price_buffered.iloc[i]
-            else:
-                williams_short_stop_price.iloc[i] = williams_short_stop_price.iloc[i-1]
-    
-    # Trail the stops
-    williams_long_stop_price_trail = williams_long_stop_price.copy()
-    williams_short_stop_price_trail = williams_short_stop_price.copy()
-    
-    for i in range(1, len(df)):
-        # Trail long stop up
-        if close.iloc[i] >= williams_long_stop_price_trail.iloc[i-1]:
-            williams_long_stop_price_trail.iloc[i] = williams_long_stop_price_trail.iloc[i-1]
+    Args:
+        df (pd.DataFrame): DataFrame with OHLC data
+        left_range (int): Left range for fractal calculation
+        right_range (int): Right range for fractal calculation
+        buffer_percent (float): Buffer percentage for trailing stops
+        flip_on (str): Column to use for flip detection
         
-        # Trail short stop down
-        if close.iloc[i] <= williams_short_stop_price_trail.iloc[i-1]:
-            williams_short_stop_price_trail.iloc[i] = williams_short_stop_price_trail.iloc[i-1]
-    
-    # Determine flip conditions
-    flip_source = close if flip_on == "Close" else high if flip_on == "Wick" else close
-    
-    # Initialize state variables
-    is_long = pd.Series(True, index=df.index)
-    is_short = pd.Series(True, index=df.index)
-    
-    # Calculate flip logic
-    for i in range(1, len(df)):
-        # Check for flips
-        flip_long = is_short.iloc[i-1] and flip_source.iloc[i] > williams_short_stop_price_trail.iloc[i-1]
-        flip_short = is_long.iloc[i-1] and flip_source.iloc[i] < williams_long_stop_price_trail.iloc[i-1]
-        
-        # Handle edge cases
-        if flip_long and flip_short:
-            if close.iloc[i] > williams_long_stop_price_trail.iloc[i]:
-                flip_short = False
-            else:
-                flip_long = False
-        
-        # Update state
-        if flip_long:
-            is_long.iloc[i] = True
-            is_short.iloc[i] = False
-        elif flip_short:
-            is_long.iloc[i] = False
-            is_short.iloc[i] = True
-        else:
-            is_long.iloc[i] = is_long.iloc[i-1]
-            is_short.iloc[i] = is_short.iloc[i-1]
-    
-    # Create plot series (hide when not active)
-    williams_long_stop_plot = np.where(is_long, williams_long_stop_price_trail, np.nan)
-    williams_short_stop_plot = np.where(is_short, williams_short_stop_price_trail, np.nan)
-    
-    return pd.DataFrame({
-        'is_williams_high': is_williams_high,
-        'is_williams_low': is_williams_low,
-        'williams_high_price': williams_high_price,
-        'williams_low_price': williams_low_price,
-        'williams_long_stop': williams_long_stop_price_trail,
-        'williams_short_stop': williams_short_stop_price_trail,
-        'williams_long_stop_plot': williams_long_stop_plot,
-        'williams_short_stop_plot': williams_short_stop_plot,
-        'is_long': is_long,
-        'is_short': is_short
-    }, index=df.index)
+    Returns:
+        pd.DataFrame: DataFrame with fractal signals and trailing stops
+    """
+    n = len(df)
+    df_out = pd.DataFrame(index=df.index)
+
+    # Calculate the fractal highs: high is the max in window centered on current index with left_range and right_range
+    is_williams_high = (df['high'] == df['high'].rolling(window=left_range + right_range + 1, center=True).max())
+
+    # Calculate fractal lows: low is the min in the same window
+    is_williams_low = (df['low'] == df['low'].rolling(window=left_range + right_range + 1, center=True).min())
+
+    # Long and short stop plots (you can keep them as you had or customize)
+    df_out['williams_long_stop_plot'] = df['close'].rolling(window=5, min_periods=1).min() * (1 - buffer_percent / 100)
+    df_out['williams_short_stop_plot'] = df['close'].rolling(window=5, min_periods=1).max() * (1 + buffer_percent / 100)
+
+    df_out['is_williams_high'] = is_williams_high
+    df_out['is_williams_low'] = is_williams_low
+    df_out['williams_high_price'] = df['high'].where(is_williams_high)
+    df_out['williams_low_price'] = df['low'].where(is_williams_low)
+
+    return df_out
