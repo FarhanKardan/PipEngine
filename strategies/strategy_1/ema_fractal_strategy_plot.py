@@ -16,14 +16,44 @@ sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 from indicators.ema import calculate_ema
 from indicators.williams_fractal_trailing_stops import williams_fractal_trailing_stops
 
-def load_and_prepare_data(path, symbol=None):
-    """Load and prepare data from CSV file"""
+def load_and_prepare_data(path, symbol=None, start_date=None, end_date=None, max_rows=100):
+    """
+    Load and prepare data from CSV file with optional time range filtering
+    
+    Args:
+        path (str): Path to CSV file
+        symbol (str, optional): Symbol to filter by
+        start_date (str, optional): Start date in 'YYYY-MM-DD' format
+        end_date (str, optional): End date in 'YYYY-MM-DD' format
+        max_rows (int, optional): Maximum number of rows to return (default: 100)
+    """
     df = pd.read_csv(path, parse_dates=['datetime'])
+    
+    # Filter by symbol if provided
     if symbol:
         df = df[df['symbol'] == symbol].copy()
+    
+    # Set datetime as index
     df.set_index('datetime', inplace=True)
     df.columns = df.columns.str.lower()
-    return df.iloc[-100:]  # last 100 rows
+    
+    # Filter by date range if provided
+    if start_date:
+        start_dt = pd.to_datetime(start_date)
+        df = df[df.index >= start_dt]
+    
+    if end_date:
+        end_dt = pd.to_datetime(end_date)
+        df = df[df.index <= end_dt]
+    
+    # Sort by datetime to ensure proper order
+    df = df.sort_index()
+    
+    # Return last max_rows rows if specified, otherwise return all filtered data
+    if max_rows and len(df) > max_rows:
+        return df.iloc[-max_rows:]
+    else:
+        return df
 
 def add_ema(df, period=200, price_col='close'):
     """Add EMA to dataframe using existing indicator"""
@@ -218,14 +248,30 @@ def main():
     """Main function to run the strategy"""
     csv_path = "klines.csv"
     symbol = "OANDA:XAUUSD"
+    
+    # Time range parameters - customize these as needed
+    start_date = None  # "2024-01-01"  # Start date in YYYY-MM-DD format
+    end_date = None    # "2024-12-31"  # End date in YYYY-MM-DD format
+    max_rows = 100     # Maximum number of rows to analyze
 
     try:
-        # Load and prepare data
-        df = load_and_prepare_data(csv_path, symbol=symbol)
+        # Load and prepare data with time range filtering
+        print(f"Loading data for {symbol}")
+        if start_date:
+            print(f"From: {start_date}")
+        if end_date:
+            print(f"To: {end_date}")
+        print(f"Max rows: {max_rows}")
+        
+        df = load_and_prepare_data(csv_path, symbol=symbol, 
+                                 start_date=start_date, end_date=end_date, max_rows=max_rows)
         
         if df is None or df.empty:
             print("No data loaded")
             return
+
+        print(f"Data loaded: {df.shape[0]} rows, {df.shape[1]} columns")
+        print(f"Date range: {df.index.min()} to {df.index.max()}")
 
         # Add EMA
         df, ema_col = add_ema(df, period=200, price_col='close')
@@ -255,6 +301,8 @@ def main():
         print(f"File not found: {csv_path}")
     except Exception as e:
         print(f"Error: {e}")
+        import traceback
+        traceback.print_exc()
 
 if __name__ == "__main__":
     main()
