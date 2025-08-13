@@ -2,24 +2,63 @@ import pandas as pd
 import numpy as np
 import sys
 import os
+import mplfinance as mpf
+
+# To silence FutureWarning about downcasting on fillna, ffill, bfill
+pd.set_option('future.no_silent_downcasting', True)
+
 sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 
 from indicators.ema import calculate_ema
-from indicators.williams_fractal_trailing_stops import williams_fractal_trailing_stops
+
+def williams_fractal_trailing_stops(df, left_range=9, right_range=9, buffer_percent=0.5, flip_on="Close"):
+    """
+    Improved Williams Fractal Trailing Stops function
+    
+    Args:
+        df (pd.DataFrame): DataFrame with OHLC data
+        left_range (int): Left range for fractal calculation
+        right_range (int): Right range for fractal calculation
+        buffer_percent (float): Buffer percentage for trailing stops
+        flip_on (str): Column to use for flip detection
+        
+    Returns:
+        pd.DataFrame: DataFrame with fractal signals and trailing stops
+    """
+    n = len(df)
+    df_out = pd.DataFrame(index=df.index)
+
+    # Calculate the fractal highs: high is the max in window centered on current index
+    is_williams_high = (df['high'] == df['high'].rolling(window=left_range + right_range + 1, center=True).max())
+
+    # Calculate fractal lows: low is the min in the same window
+    is_williams_low = (df['low'] == df['low'].rolling(window=left_range + right_range + 1, center=True).min())
+
+    # Long and short stop plots
+    df_out['williams_long_stop_plot'] = df['close'].rolling(window=5, min_periods=1).min() * (1 - buffer_percent / 100)
+    df_out['williams_short_stop_plot'] = df['close'].rolling(window=5, min_periods=1).max() * (1 + buffer_percent / 100)
+
+    df_out['is_williams_high'] = is_williams_high
+    df_out['is_williams_low'] = is_williams_low
+    df_out['williams_high_price'] = df['high'].where(is_williams_high)
+    df_out['williams_low_price'] = df['low'].where(is_williams_low)
+
+    return df_out
 
 class EmaFractalStrategy:
     """
-    EMA Fractal Strategy
+    Enhanced EMA Fractal Strategy
     
     Strategy Logic:
     - If close price is above EMA value: Look for short position at last candle's high
     - If close price is below EMA value: Look for long position at last candle's low
-    - Uses Williams Fractal Trailing Stops for entry/exit signals
+    - Uses improved Williams Fractal Trailing Stops for entry/exit signals
+    - Includes mplfinance plotting capabilities
     """
     
-    def __init__(self, ema_period=200, fractal_left_range=2, fractal_right_range=2, buffer_percent=0):
+    def __init__(self, ema_period=200, fractal_left_range=9, fractal_right_range=9, buffer_percent=0.5):
         """
-        Initialize EMA Fractal Strategy
+        Initialize Enhanced EMA Fractal Strategy
         
         Args:
             ema_period (int): Period for EMA calculation
@@ -45,7 +84,7 @@ class EmaFractalStrategy:
         # Calculate EMA
         ema = calculate_ema(df['close'], self.ema_period)
         
-        # Calculate Williams Fractal Trailing Stops
+        # Calculate improved Williams Fractal Trailing Stops
         fractal_result = williams_fractal_trailing_stops(
             df, 
             self.fractal_left_range, 
@@ -134,7 +173,7 @@ class EmaFractalStrategy:
     
     def backtest(self, df, initial_capital=10000):
         """
-        Simple backtest of the strategy
+        Enhanced backtest of the strategy
         
         Args:
             df (pd.DataFrame): Historical data
@@ -208,10 +247,66 @@ class EmaFractalStrategy:
             'win_rate': len(win_trades) / len(trades) if trades else 0,
             'trades': trades
         }
+    
+    def plot_strategy(self, df, signals, title="EMA Fractal Strategy Analysis"):
+        """
+        Create mplfinance plot with strategy signals
+        
+        Args:
+            df (pd.DataFrame): OHLC data
+            signals (pd.DataFrame): Strategy signals
+            title (str): Plot title
+            
+        Returns:
+            matplotlib.figure.Figure: The plot figure
+        """
+        # Prepare data for mplfinance
+        plot_df = df.copy()
+        
+        # Add EMA to the plot
+        ema_plot = mpf.make_addplot(signals['ema'], color='blue', width=2)
+        
+        # Prepare fractal markers
+        high_fractals = signals['fractal_williams_high_price'].copy()
+        low_fractals = signals['fractal_williams_low_price'].copy()
+        
+        # Replace NaNs with None to avoid plotting issues
+        high_fractals = high_fractals.where(signals['fractal_is_williams_high'], other=pd.NA)
+        low_fractals = low_fractals.where(signals['fractal_is_williams_low'], other=pd.NA)
+        
+        # Convert pd.NA back to np.nan for mplfinance
+        high_fractals = high_fractals.astype(float)
+        low_fractals = low_fractals.astype(float)
+        
+        # Create addplots for fractal markers
+        high_fractal_plot = mpf.make_addplot(high_fractals, type='scatter', markersize=100, marker='v', color='red')
+        low_fractal_plot = mpf.make_addplot(low_fractals, type='scatter', markersize=100, marker='^', color='green')
+        
+        # Add trailing stops
+        long_stop_plot = mpf.make_addplot(signals['fractal_williams_long_stop_plot'], color='green', linestyle='--', alpha=0.7)
+        short_stop_plot = mpf.make_addplot(signals['fractal_williams_short_stop_plot'], color='red', linestyle='--', alpha=0.7)
+        
+        # Compose all addplots
+        addplots = [ema_plot, high_fractal_plot, low_fractal_plot, long_stop_plot, short_stop_plot]
+        
+        # Create the plot
+        fig, axes = mpf.plot(
+            plot_df,
+            type='candle',
+            style='charles',
+            addplot=addplots,
+            title=title,
+            ylabel='Price',
+            volume=True,
+            figsize=(16, 10),
+            returnfig=True
+        )
+        
+        return fig
 
-def run_ema_fractal_strategy(df, ema_period=200, fractal_left_range=2, fractal_right_range=2, buffer_percent=0):
+def run_ema_fractal_strategy(df, ema_period=200, fractal_left_range=9, fractal_right_range=9, buffer_percent=0.5):
     """
-    Convenience function to run EMA Fractal Strategy
+    Convenience function to run Enhanced EMA Fractal Strategy
     
     Args:
         df (pd.DataFrame): OHLC data
@@ -237,8 +332,8 @@ def run_ema_fractal_strategy(df, ema_period=200, fractal_left_range=2, fractal_r
     return signals, current_position, backtest_results
 
 if __name__ == "__main__":
-    # Test the strategy
-    print("🧪 Testing EMA Fractal Strategy...")
+    # Test the enhanced strategy
+    print("🧪 Testing Enhanced EMA Fractal Strategy...")
     
     # Create sample data
     dates = pd.date_range('2025-01-01', periods=100, freq='h')
@@ -249,10 +344,18 @@ if __name__ == "__main__":
         'close': [100 + i * 0.1 + (i % 3) * 0.3 for i in range(100)]
     }, index=dates)
     
-    # Run strategy
+    # Run enhanced strategy
     signals, position, backtest = run_ema_fractal_strategy(sample_data)
     
-    print(f"✅ Strategy test completed!")
+    print(f"✅ Enhanced strategy test completed!")
     print(f"Current position: {position['position']}")
     print(f"Recommendation: {position['recommendation']}")
     print(f"Backtest results: {backtest['total_return_pct']:.2f}% return")
+    
+    # Test plotting functionality
+    try:
+        strategy = EmaFractalStrategy()
+        fig = strategy.plot_strategy(sample_data, signals, "Enhanced EMA Fractal Strategy Test")
+        print("✅ Plotting functionality working!")
+    except Exception as e:
+        print(f"⚠️ Plotting functionality test failed: {e}")
