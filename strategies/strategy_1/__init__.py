@@ -3,7 +3,7 @@ Strategy 1: EMA + Williams Fractal Analysis
 """
 
 from .ema_fractal_plot import main, load_and_prepare_data, add_ema
-from .ema_fractal_strategy import calculate_strategy_positions, create_plot
+from .ema_fractal_strategy_plot import calculate_strategy_positions, create_plot
 
 __all__ = [
     'main', 
