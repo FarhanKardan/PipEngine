@@ -59,9 +59,9 @@ def load_and_prepare_data(path, symbol=None, start_date=None, end_date=None, max
     # Sort by datetime to ensure proper order
     df = df.sort_index()
     
-    # Return last max_rows rows if specified, otherwise return all filtered data
+    # Return first max_rows rows if specified, otherwise return all filtered data
     if max_rows and len(df) > max_rows:
-        return df.iloc[-max_rows:]
+        return df.iloc[:max_rows]  # Changed from df.iloc[-max_rows:] to df.iloc[:max_rows]
     else:
         return df
 
