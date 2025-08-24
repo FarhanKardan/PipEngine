@@ -62,128 +62,87 @@ def add_ema(df, period=200, price_col='close'):
     return df, ema_col
 
 def calculate_strategy_positions(df, ema_col='ema_200'):
-    """Calculate strategy positions based on EMA and Williams Fractal logic"""
-    long_positions = []
-    short_positions = []
-    
-    # Long position tracking
-    long_position_open = False
-    long_target_price = None
-    long_pending_entry = False
-    
-    # Short position tracking
-    short_position_open = False
-    short_target_price = None
-    short_pending_entry = False
+    """Calculate strategy positions based on EMA and Williams Fractal breakout logic"""
+    positions = []
+    open_positions = 0      # number of active positions
+    entry_signal = False    # flag for entering at the *next* candle
+    reference_high = None
+    reference_low = None
+    entry_candles = []      # store entry points
 
     for i in range(len(df)):
         open_i  = df['open'].iloc[i]
         close_i = df['close'].iloc[i]
+        high_i  = df['high'].iloc[i]
+        low_i   = df['low'].iloc[i]
         ema_i   = df[ema_col].iloc[i]
         ema200_i = df['ema_200'].iloc[i]
 
-        current_long_pos = 0
-        current_short_pos = 0
+        current_pos = open_positions  # default = current open count
 
-        # === LONG POSITION LOGIC ===
-        # Invalidate target price if a low fractal appears
-        if 'williams_low_price' in df.columns and not pd.isna(df['williams_low_price'].iloc[i]):
-            long_target_price = None
-            long_pending_entry = False
+        # ---------------------------------------------------------
+        # Invalidate reference if price crosses below EMA
+        # ---------------------------------------------------------
+        if close_i < ema_i:
+            reference_high = None
+            reference_low = None
 
-        # Update reference price if high fractal appears AND price above EMA
-        if not pd.isna(df['williams_high_price'].iloc[i]) and close_i > ema_i:
-            long_target_price = float(df['high'].iloc[i])
-            long_pending_entry = False
+        # ---------------------------------------------------------
+        # 1. Only consider longs if close is above EMA200
+        # ---------------------------------------------------------
+        if close_i > ema200_i:
 
-        # Enter long on this candle if a pending entry was flagged
-        if not long_position_open and long_pending_entry:
-            long_position_open = True
-            long_pending_entry = False
-            current_long_pos = 1
+            # -----------------------------------------------------
+            # 2. Roll back to last williams_high_price (must be above EMA)
+            # -----------------------------------------------------
+            if not pd.isna(df['williams_high_price'].iloc[i]) and low_i > ema_i:
+                reference_high = df['high'].iloc[i]
+                reference_low  = df['low'].iloc[i]
 
-        # Entry logic: check if at least 50% of body is above reference AND price above EMA200
-        elif not long_position_open and long_target_price is not None and close_i > ema_i and close_i > ema200_i:
-            body = abs(close_i - open_i)
-            if body > 0:
-                top = max(open_i, close_i)
-                bot = min(open_i, close_i)
+            # -----------------------------------------------------
+            # 3. Breakout check: 50% of body above reference_high
+            # -----------------------------------------------------
+            if reference_high is not None:
+                body = abs(close_i - open_i)
+                if body > 0:
+                    top = max(open_i, close_i)
+                    bot = min(open_i, close_i)
 
-                if top <= long_target_price:
-                    body_above = 0
-                elif bot >= long_target_price:
-                    body_above = body
-                else:
-                    body_above = top - long_target_price
+                    if top <= reference_high:
+                        body_above = 0
+                    elif bot >= reference_high:
+                        body_above = body
+                    else:
+                        body_above = top - reference_high
 
-                if body_above >= 0.5 * body:
-                    long_pending_entry = True
+                    if body_above >= 0.5 * body:
+                        entry_signal = True   # breakout detected
 
-        # Exit long logic
-        elif long_position_open and close_i < ema_i:
-            long_position_open = False
-            current_long_pos = 0
-        elif long_position_open:
-            current_long_pos = 1
+        # ---------------------------------------------------------
+        # 4. Enter position at the next candle
+        # ---------------------------------------------------------
+        if entry_signal:
+            open_positions += 1        # add new position
+            entry_candles.append(df.index[i])  # log entry
+            entry_signal = False
+            current_pos = open_positions
 
-        # === SHORT POSITION LOGIC ===
-        # Invalidate target price if ANY fractal appears between
-        if (
-            ('williams_high_price' in df.columns and not pd.isna(df['williams_high_price'].iloc[i])) or
-            ('williams_low_price' in df.columns and not pd.isna(df['williams_low_price'].iloc[i]) and short_target_price is not None)
-        ):
-            short_target_price = None
-            short_pending_entry = False
+        # Exit logic: close below EMA → close ALL open positions
+        if open_positions > 0 and close_i < ema_i:
+            open_positions = 0
+            current_pos = 0
 
-        # Update reference price only if low fractal appears AND price below EMA
-        if not pd.isna(df['williams_low_price'].iloc[i]) and close_i < ema_i:
-            short_target_price = float(df['low'].iloc[i])
-            short_pending_entry = False
+        positions.append(current_pos)
 
-        # Enter short on this candle if a pending entry was flagged
-        if not short_position_open and short_pending_entry:
-            short_position_open = True
-            short_pending_entry = False
-            current_short_pos = -1
+    # Final check
+    assert len(positions) == len(df), f"{len(positions)} vs {len(df)}"
 
-        # Entry logic: 50% body below target & below EMA200
-        elif not short_position_open and short_target_price is not None and close_i < ema_i and close_i < ema200_i:
-            body = abs(close_i - open_i)
-            if body > 0:
-                top = max(open_i, close_i)
-                bot = min(open_i, close_i)
-
-                if bot >= short_target_price:
-                    body_below = 0
-                elif top <= short_target_price:
-                    body_below = body
-                else:
-                    body_below = short_target_price - bot
-
-                if body_below >= 0.5 * body:
-                    short_pending_entry = True
-
-        # Exit short when price crosses above EMA
-        elif short_position_open and close_i > ema_i:
-            short_position_open = False
-            current_short_pos = 0
-        elif short_position_open:
-            current_short_pos = -1
-
-        long_positions.append(current_long_pos)
-        short_positions.append(current_short_pos)
-
-    # Combine long and short positions (long takes precedence if both exist)
-    combined_positions = []
-    for long_pos, short_pos in zip(long_positions, short_positions):
-        if long_pos == 1:
-            combined_positions.append(1)  # Long position
-        elif short_pos == -1:
-            combined_positions.append(-1)  # Short position
-        else:
-            combined_positions.append(0)   # Neutral
-
-    return pd.Series(combined_positions, index=df.index).astype(int)
+    # Create the strategy position series
+    df['strategy_position'] = pd.Series(positions, index=df.index).astype(int)
+    df['entry_signal'] = 0
+    df.loc[entry_candles, 'entry_signal'] = 1
+    
+    return df['strategy_position']
 
 def create_plot(df, ema_col, symbol="XAUUSD"):
     """Create mplfinance plot with indicators and strategy positions"""
@@ -215,22 +174,26 @@ def create_plot(df, ema_col, symbol="XAUUSD"):
             low_fractal_plot = mpf.make_addplot(low_fractals, type='scatter', markersize=100, marker='^', color='green')
             addplots.append(low_fractal_plot)
     
-    # Create entry/exit markers based on strategy positions
-    entry_signal = (df['strategy_position'] == 1) & (df['strategy_position'].shift(1) != 1)
-    exit_signal = (df['strategy_position'] == 0) & (df['strategy_position'].shift(1) == 1)
+    # Create entry markers - only show when positions actually increase
+    position_changes = df['strategy_position'].diff().fillna(0)
+    actual_entries = position_changes > 0  # Only when positions increase
     
-    # Only add entry/exit plots if there are actual signals
-    if entry_signal.any():
+    # Only add entry plots if there are actual entries
+    if actual_entries.any():
         entry_markers = pd.Series(np.nan, index=df.index)
-        entry_markers[entry_signal] = df.loc[entry_signal, 'low'] * 0.995
+        entry_markers[actual_entries] = df.loc[actual_entries, 'low'] * 0.995
         entry_plot = mpf.make_addplot(entry_markers, type='scatter', markersize=100, marker='^', color='lime')
         addplots.append(entry_plot)
     
-    if exit_signal.any():
-        exit_markers = pd.Series(np.nan, index=df.index)
-        exit_markers[exit_signal] = df.loc[exit_signal, 'high'] * 1.005
-        exit_plot = mpf.make_addplot(exit_markers, type='scatter', markersize=100, marker='v', color='orange')
-        addplots.append(exit_plot)
+    # Add position level line if there are positions (only show changes, not repeated values)
+    if df['strategy_position'].max() > 0:
+        # Create a series that only shows position changes
+        position_changes = df['strategy_position'].diff().fillna(0)
+        position_changes = position_changes.where(position_changes != 0, np.nan)
+        
+        if not position_changes.isna().all():
+            position_plot = mpf.make_addplot(position_changes, color='orange', ylabel='Position Changes', panel=1)
+            addplots.append(position_plot)
 
     # Plot with mplfinance candlestick style
     mpf.plot(
@@ -250,9 +213,9 @@ def main():
     symbol = "OANDA:XAUUSD"
     
     # Time range parameters - customize these as needed
-    start_date = None  # "2024-01-01"  # Start date in YYYY-MM-DD format
-    end_date = None    # "2024-12-31"  # End date in YYYY-MM-DD format
-    max_rows = 100     # Maximum number of rows to analyze
+    start_date = "2025-08-01"  # Start date in YYYY-MM-DD format
+    end_date = "2025-08-02"    # End date in YYYY-MM-DD format
+    max_rows = 500     # Maximum number of rows to analyze
 
     try:
         # Load and prepare data with time range filtering
@@ -284,10 +247,10 @@ def main():
         df['strategy_position'] = calculate_strategy_positions(df, ema_col)
         
         # Show strategy summary
-        long_positions = (df['strategy_position'] == 1).sum()
-        short_positions = (df['strategy_position'] == -1).sum()
+        total_positions = df['strategy_position'].max() if df['strategy_position'].max() > 0 else 0
+        actual_entries = (df['strategy_position'].diff().fillna(0) > 0).sum()
         neutral_positions = (df['strategy_position'] == 0).sum()
-        print(f"Strategy Summary: {long_positions} long, {short_positions} short, {neutral_positions} neutral")
+        print(f"Strategy Summary: {total_positions} max positions, {actual_entries} actual entries, {neutral_positions} neutral")
         
         # Create plot
         create_plot(df, ema_col, symbol)

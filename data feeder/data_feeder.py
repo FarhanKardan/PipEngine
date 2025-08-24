@@ -11,7 +11,7 @@ class DataFeeder:
         self.tv = TvDatafeed()
     
     def fetch_data(self, symbol: str, exchange: str = 'OANDA', 
-                   interval: Interval = Interval.in_1_hour, n_bars: int = 5000, max_retries=3):
+                   interval: Interval = Interval.in_1_hour, n_bars: int = 45000, max_retries=3):
         """Fetch data for a symbol with retry logic"""
         for attempt in range(max_retries):
             try:
