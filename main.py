@@ -1,11 +1,9 @@
 #!/usr/bin/env python3
 """
-Main application - fetches XAUUSD data, calculates indicators, exports to CSV and plots
+Main application - fetches XAUUSD data, calculates indicators, exports to CSV and runs EMA Fractal Strategy
 """
 
 import pandas as pd
-import matplotlib.pyplot as plt
-import matplotlib.dates as mdates
 from datetime import datetime
 import sys
 import os
@@ -23,63 +21,45 @@ from indicators.williams_fractal_trailing_stops import williams_fractal_trailing
 # Import data feeder
 from data_feeder.data_feeder import DataFeeder
 
-def plot_chart(df, result_df):
-    """Create chart with price and indicators"""
-    
-    plt.style.use('default')
-    fig, axes = plt.subplots(2, 2, figsize=(20, 12))
-    fig.suptitle('XAUUSD Technical Analysis', fontweight='bold', fontsize=16)
-    
-    # Plot 1: Price with EMAs
-    ax1 = axes[0, 0]
-    ax1.plot(df.index, df['close'], label='Close Price', color='black', linewidth=1)
-    ax1.plot(result_df.index, result_df['EMA_9'], label='EMA(9)', color='blue', linewidth=1)
-    ax1.plot(result_df.index, result_df['DEMA_9'], label='DEMA(9)', color='red', linewidth=1)
-    ax1.set_title('Price with Moving Averages')
-    ax1.legend()
-    ax1.grid(True, alpha=0.3)
-    
-    # Plot 2: ATR
-    ax2 = axes[0, 1]
-    ax2.plot(result_df.index, result_df['ATR_14'], label='ATR(14)', color='purple', linewidth=1)
-    ax2.set_title('Average True Range')
-    ax2.legend()
-    ax2.grid(True, alpha=0.3)
-    
-    # Plot 3: Enhanced Zero Lag MACD
-    ax3 = axes[1, 0]
-    ax3.plot(result_df.index, result_df['zero_lag_macd'], label='MACD Line', color='blue', linewidth=1)
-    ax3.plot(result_df.index, result_df['signal'], label='Signal', color='red', linewidth=1)
-    ax3.bar(result_df.index, result_df['histogram'], label='Histogram', color='gray', alpha=0.5)
-    ax3.set_title('Enhanced Zero Lag MACD')
-    ax3.legend()
-    ax3.grid(True, alpha=0.3)
-    
-    # Plot 4: Williams Fractal Trailing Stops
-    ax4 = axes[1, 1]
-    ax4.plot(df.index, df['close'], label='Close Price', color='black', linewidth=1)
-    ax4.plot(result_df.index, result_df['williams_long_stop_plot'], 
-             label='Long Stop', color='green', linewidth=2)
-    ax4.plot(result_df.index, result_df['williams_short_stop_plot'], 
-             label='Short Stop', color='red', linewidth=2)
-    ax4.set_title('Williams Fractal Trailing Stops')
-    ax4.legend()
-    ax4.grid(True, alpha=0.3)
-    
-    # Format x-axis
-    for ax in axes.flat:
-        ax.xaxis.set_major_formatter(mdates.DateFormatter('%m-%d'))
-        ax.xaxis.set_major_locator(mdates.DayLocator(interval=1))
-        plt.setp(ax.xaxis.get_majorticklabels(), rotation=45)
-    
-    plt.tight_layout()
-    return fig
+# Import EMA Fractal Strategy
+from strategies.strategy_1 import add_ema, calculate_strategy_positions
+
+def apply_ema_fractal_strategy(df):
+    """Apply EMA Fractal Strategy to the dataframe"""
+    try:
+        print("🧮 Applying EMA Fractal Strategy...")
+        
+        # Add EMA 200
+        df, ema_col = add_ema(df, period=200, price_col='close')
+        
+        # Calculate Williams Fractal Trailing Stops
+        wft_df = williams_fractal_trailing_stops(df, 9, 9, 0, "Close")
+        df = df.join(wft_df)
+        
+        # Calculate strategy positions
+        df['strategy_position'] = calculate_strategy_positions(df, ema_col)
+        
+        # Calculate strategy performance metrics
+        long_positions = (df['strategy_position'] == 1).sum()
+        short_positions = (df['strategy_position'] == -1).sum()
+        neutral_positions = (df['strategy_position'] == 0).sum()
+        total_positions = long_positions + short_positions
+        
+        print(f"✅ Strategy applied successfully!")
+        print(f"📊 Positions: {long_positions} long, {short_positions} short, {neutral_positions} neutral")
+        print(f"📈 Total active positions: {total_positions}")
+        
+        return df
+        
+    except Exception as e:
+        print(f"❌ Error applying EMA Fractal Strategy: {e}")
+        return df
 
 def main():
     """Main application function with improved error handling and logging"""
     try:
-        print("🚀 Starting Technical Analysis")
-        print("=" * 50)
+        print("🚀 Starting Technical Analysis with EMA Fractal Strategy")
+        print("=" * 60)
         
         # Initialize and fetch data
         print("📊 Initializing data feeder...")
@@ -141,6 +121,9 @@ def main():
         for col in williams_fractal.columns:
             result_df[col] = williams_fractal[col]
         
+        # Apply EMA Fractal Strategy
+        result_df = apply_ema_fractal_strategy(result_df)
+        
         # Save to CSV
         print("💾 Saving data to CSV...")
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
@@ -152,26 +135,8 @@ def main():
         result_df.to_csv(filename, index=True)
         print(f"✅ Data saved: {len(result_df)} rows to {filename}")
         
-        # Create plot
-        print("📈 Creating chart...")
-        try:
-            fig = plot_chart(df, result_df)
-            
-            # Save plot
-            plot_filename = f"results/data/XAUUSD_Chart_{timestamp}.png"
-            fig.savefig(plot_filename, dpi=300, bbox_inches='tight')
-            print(f"🖼️ Chart saved to: {plot_filename}")
-            
-            print(f"\n✅ Analysis Complete!")
-            print(f"📁 CSV: {filename}")
-            print(f"🖼️ Chart: {plot_filename}")
-            
-            # Show plot
-            plt.show()
-            
-        except Exception as e:
-            print(f"❌ Error creating/saving chart: {e}")
-            print("📊 Data analysis completed successfully, but chart generation failed")
+        print(f"\n✅ Analysis Complete!")
+        print(f"📁 CSV: {filename}")
         
     except Exception as e:
         print(f"❌ Critical error in main application: {e}")
@@ -184,5 +149,89 @@ def main():
         print("   - Ensure results directory exists")
         print("   - Check Python version compatibility")
 
+def run_ema_fractal_backtest():
+    """Run EMA Fractal Strategy backtesting with performance analysis"""
+    try:
+        print("\n" + "=" * 80)
+        print("🚀 EMA FRACTAL STRATEGY BACKTESTING")
+        print("=" * 80)
+        
+        # Import backtesting components
+        from backtester.backtester import GenericBacktester
+        from strategies.ema_fractal_wrapper import EmaFractalStrategy
+        from config import DEFAULT_INITIAL_CAPITAL, DEFAULT_COMMISSION, DEFAULT_POSITION_SIZE
+        
+        print("📊 Initializing backtester...")
+        backtester = GenericBacktester(
+            initial_capital=10000,
+            commission=0.001,
+            position_size=0.2
+        )
+        
+        print("📈 Setting up EMA Fractal Strategy...")
+        strategy = EmaFractalStrategy(
+            ema_period=200,
+            left_range=9,
+            right_range=9
+        )
+        
+        print(f"✅ Strategy: {strategy.name}")
+        print(f"⚙️ Parameters: {strategy.parameters}")
+        print(f"💰 Capital: ${backtester.initial_capital:,.2f}")
+        print(f"💸 Commission: {backtester.commission*100:.2f}%")
+        print(f"📊 Position Size: {backtester.position_size}")
+        
+        print("\n🔄 Running backtest...")
+        results = backtester.run_backtest(
+            strategy=strategy,
+            symbol="XAUUSD",
+            bars=500,
+            timeframe="M1"
+        )
+        
+        if results:
+            print("\n💾 Exporting results...")
+            timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+            backtest_dir = f"results/backtests/ema_fractal_backtest_{timestamp}"
+            backtester.export_results(results, backtest_dir)
+            print("✅ Backtest completed successfully!")
+            print(f"📁 Results saved to: {backtest_dir}")
+            
+            # Display performance summary
+            if 'performance_metrics' in results:
+                metrics = results['performance_metrics']
+                print("\n📊 PERFORMANCE SUMMARY:")
+                print("=" * 50)
+                print(f"💰 Total Return: {metrics.get('total_return', 0):.2f}%")
+                print(f"📈 Sharpe Ratio: {metrics.get('sharpe_ratio', 0):.2f}")
+                print(f"📉 Max Drawdown: {metrics.get('max_drawdown', 0):.2f}%")
+                print(f"🔄 Total Trades: {metrics.get('total_trades', 0)}")
+                print(f"✅ Win Rate: {metrics.get('win_rate', 0):.2f}%")
+                print(f"📊 Profit Factor: {metrics.get('profit_factor', 0):.2f}")
+                print(f"💵 Final Capital: ${metrics.get('final_capital', 0):,.2f}")
+        else:
+            print("❌ Backtest failed!")
+            
+    except ImportError as e:
+        print(f"❌ Import error: {e}")
+        print("💡 Make sure all backtesting modules are available")
+    except Exception as e:
+        print(f"❌ Backtest error: {e}")
+        import traceback
+        traceback.print_exc()
+
 if __name__ == "__main__":
     main()
+    
+    # Ask user if they want to run EMA Fractal Strategy backtesting
+    try:
+        response = input("\n🤔 Would you like to run EMA Fractal Strategy backtesting? (y/n): ").lower().strip()
+        if response in ['y', 'yes']:
+            run_ema_fractal_backtest()
+        else:
+            print("👋 Backtesting skipped. Goodbye!")
+    except KeyboardInterrupt:
+        print("\n👋 Interrupted by user. Goodbye!")
+    except Exception as e:
+        print(f"❌ Error in user input: {e}")
+        print("👋 Exiting...")

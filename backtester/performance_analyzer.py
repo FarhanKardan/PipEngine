@@ -87,10 +87,22 @@ class PerformanceAnalyzer:
         equity_df['cumulative_returns'] = (1 + equity_df['returns']).cumprod()
         
         # Annualized return (assuming daily data)
-        total_days = (equity_df['time'].iloc[-1] - equity_df['time'].iloc[0]).days
-        if total_days > 0:
-            annualized_return = ((final_equity / initial_capital) ** (365 / total_days) - 1) * 100
-        else:
+        try:
+            if isinstance(equity_df['time'].iloc[0], (int, np.integer)):
+                # If time is integer index, assume it's bars and convert to days
+                total_bars = equity_df['time'].iloc[-1] - equity_df['time'].iloc[0]
+                total_days = total_bars / 1440  # Assuming M1 data (1440 bars per day)
+            else:
+                # If time is datetime, calculate actual days
+                total_days = (equity_df['time'].iloc[-1] - equity_df['time'].iloc[0]).days
+            
+            if total_days > 0:
+                annualized_return = ((final_equity / initial_capital) ** (365 / total_days) - 1) * 100
+            else:
+                annualized_return = 0
+        except:
+            # Fallback if time calculation fails
+            total_days = 1
             annualized_return = 0
         
         return {

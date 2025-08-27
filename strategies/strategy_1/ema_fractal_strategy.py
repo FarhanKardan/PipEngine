@@ -48,7 +48,7 @@ def calculate_strategy_positions(df, ema_col='ema_200'):
         open_i  = df['open'].iloc[i]
         close_i = df['close'].iloc[i]
         ema_i   = df[ema_col].iloc[i]
-        ema200_i = df['ema_200'].iloc[i]
+        ema200_i = df[ema_col].iloc[i]
 
         current_long_pos = 0
         current_short_pos = 0

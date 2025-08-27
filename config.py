@@ -43,5 +43,13 @@ DEFAULT_START_DATE = "2025-08-01"
 DEFAULT_END_DATE = "2025-08-10"
 DEFAULT_TIMEFRAME = "M1"
 
+# Data retrieval settings
+DATA_SOURCE = "csv"  # Options: "csv", "api", "database"
+DATA_FILE_PATH = "results/data/klines.csv"  # Default CSV path
+DATA_BARS = 1000  # Number of bars to fetch
+DATA_UPDATE_INTERVAL = 60  # Seconds between data updates
+
+
+
 # API settings
 META_TRADER_BASE_URL = "http://trade-api.reza-developer.com"
