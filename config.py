@@ -36,7 +36,7 @@ BREAKOUT_BODY_THRESHOLD = 0.5  # 50% of body above reference
 
 # Backtest settings
 DEFAULT_INITIAL_CAPITAL = 10000
-DEFAULT_MAX_ROWS = 500
+DEFAULT_MAX_ROWS = None  # Changed from 500 to None to use all available data
 
 # Backtest time range settings
 DEFAULT_START_DATE = "2025-08-01"

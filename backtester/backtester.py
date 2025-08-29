@@ -277,6 +277,9 @@ class GenericBacktester:
                 
                 print(f"📉 Closed {current_trade['type'].lower()} position at {current_time}: {size} lots @ ${current_price:.2f}, P&L: ${net_pnl:.2f}")
                 
+                # Update capital after closing a trade
+                self.capital += net_pnl
+                
                 # Reset for next trade
                 current_trade = None
         
@@ -304,6 +307,9 @@ class GenericBacktester:
             current_trade['commission_exit'] = commission_cost
             
             print(f"📉 Closed final {current_trade['type'].lower()} position at {df.index[-1]}: {size} lots @ ${final_price:.2f}, P&L: ${net_pnl:.2f}")
+            
+            # Update capital after closing a trade
+            self.capital += net_pnl
     
     def _update_equity(self, time: datetime, current_price: float, current_trade: Dict):
         """Update equity curve"""

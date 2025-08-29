@@ -155,7 +155,7 @@ def calculate_strategy_positions(df, ema_col='ema_200'):
 
 def main():
     """Main function to run the strategy"""
-    csv_path = "klines.csv"
+    csv_path = "results/data/klines.csv"
     symbol = "OANDA:XAUUSD"
 
     try:
