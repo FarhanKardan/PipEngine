@@ -1,10 +1,15 @@
 import ssl
 import pandas as pd
 from tvDatafeed import TvDatafeed, Interval
+import sys
+import os
+sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
+from logger import get_logger
 
 class DataFeeder:
     
     def __init__(self, username=None, password=None):
+        self.logger = get_logger("DataFeeder")
         ssl._create_default_https_context = ssl._create_unverified_context
         self.username = username
         self.password = password
@@ -15,12 +20,16 @@ class DataFeeder:
         try:
             if self.username and self.password:
                 self.tv = TvDatafeed(self.username, self.password)
+                self.logger.info("Connected to TradingView with authentication")
             else:
                 self.tv = TvDatafeed()
-        except Exception:
+                self.logger.info("Connected to TradingView without authentication")
+        except Exception as e:
             try:
                 self.tv = TvDatafeed()
-            except Exception:
+                self.logger.warning(f"Initial connection failed, retrying: {e}")
+            except Exception as e2:
+                self.logger.error(f"Failed to connect to TradingView: {e2}")
                 pass
     
     def _get_interval(self, interval_minutes):
@@ -39,36 +48,50 @@ class DataFeeder:
     def fetch_data(self, symbol, exchange='OANDA', interval_minutes=60, n_bars=500):
         """Fetch data with interval in minutes"""
         if not self.tv:
+            self.logger.error("TradingView connection not available")
             return None
         
         try:
             interval = self._get_interval(interval_minutes)
+            self.logger.info(f"Fetching {n_bars} bars for {symbol} ({interval_minutes}min)")
             df = self.tv.get_hist(
                 symbol=symbol,
                 exchange=exchange,
                 interval=interval,
                 n_bars=n_bars
             )
-            return df if df is not None and not df.empty else None
-        except Exception:
+            if df is not None and not df.empty:
+                self.logger.info(f"Successfully fetched {len(df)} bars for {symbol}")
+                return df
+            else:
+                self.logger.warning(f"No data received for {symbol}")
+                return None
+        except Exception as e:
+            self.logger.error(f"Failed to fetch data for {symbol}: {e}")
             return None
     
     def filter_by_date(self, df, start_date, end_date):
         """Filter dataframe by date range"""
         if df is None or df.empty:
+            self.logger.warning("No data to filter")
             return None
         
         try:
             start_date = pd.to_datetime(start_date)
             end_date = pd.to_datetime(end_date)
+            self.logger.info(f"Filtering data from {start_date} to {end_date}")
             
             if 'datetime' in df.columns:
                 df['datetime'] = pd.to_datetime(df['datetime'])
-                return df[(df['datetime'] >= start_date) & (df['datetime'] <= end_date)]
+                filtered_df = df[(df['datetime'] >= start_date) & (df['datetime'] <= end_date)]
             else:
                 df.index = pd.to_datetime(df.index)
-                return df[(df.index >= start_date) & (df.index <= end_date)]
-        except Exception:
+                filtered_df = df[(df.index >= start_date) & (df.index <= end_date)]
+            
+            self.logger.info(f"Filtered to {len(filtered_df)} bars")
+            return filtered_df
+        except Exception as e:
+            self.logger.error(f"Failed to filter data by date: {e}")
             return None
     
     def get_data(self, symbol, start_date, end_date, interval_minutes=60, n_bars=5000):

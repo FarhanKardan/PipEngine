@@ -1,56 +1,19 @@
+import time
 import pandas as pd
-import numpy as np
 import sys
 import os
 from datetime import datetime, timedelta
 
-# To silence FutureWarning about downcasting on fillna, ffill, bfill
-pd.set_option('future.no_silent_downcasting', True)
+# Add project root to path
+sys.path.append(os.path.dirname(__file__))
 
-# Add the project root to the path to import indicators
-sys.path.append(os.path.join(os.path.dirname(__file__), '..', '..'))
-
-# Import existing indicators
+from data_feeder.data_feeder import DataFeeder
 from indicators.ema import calculate_ema
 from indicators.williams_fractal_trailing_stops import williams_fractal_trailing_stops
-from data_feeder.data_feeder import DataFeeder
 from logger import get_logger
 
-def load_and_prepare_data(symbol, start_date, end_date, timeframe):
-    """Load and prepare data using DataFeeder"""
-    logger = get_logger("EMA_Fractal_Strategy")
-    
-    timeframe_map = {
-        'M1': 1,
-        'M5': 5,
-        'M15': 15,
-        'M30': 30,
-        'H1': 60,
-        'H4': 240,
-        'D1': 1440,
-    }
-    interval_minutes = timeframe_map.get(timeframe, 60)
-    
-    logger.info(f"Loading data for {symbol} from {start_date} to {end_date} ({timeframe})")
-    feeder = DataFeeder()
-    df = feeder.get_data(symbol, start_date, end_date, interval_minutes=interval_minutes, n_bars=5000)
-    
-    if df is None or df.empty:
-        logger.error("No data received from feeder")
-        return None
-    
-    # Set datetime as index if it exists
-    if 'datetime' in df.columns:
-        df.set_index('datetime', inplace=True)
-    
-    # Convert column names to lowercase
-    df.columns = df.columns.str.lower()
-    
-    logger.info(f"Data prepared: {len(df)} bars, columns: {list(df.columns)}")
-    return df
-
 def add_ema(df, period=200, price_col='close'):
-    """Add EMA to dataframe using existing indicator"""
+    """Add EMA to dataframe"""
     ema_col = f'ema_{period}'
     df[ema_col] = calculate_ema(df[price_col], period)
     return df, ema_col
@@ -179,52 +142,128 @@ def calculate_strategy_positions(df, ema_col='ema_200'):
 
     return pd.Series(combined_positions, index=df.index).astype(int)
 
-def main():
-    """Main function to run the strategy"""
-    logger = get_logger("EMA_Fractal_Strategy")
+class SimplePipeline:
     
-    symbol = "XAUUSD"
-    start_date = datetime.now() - timedelta(days=7)
-    end_date = datetime.now()
-    timeframe = "M1"
-
-    try:
-        logger.info("Starting EMA + Williams Fractal Strategy")
-        
-        # Load and prepare data using DataFeeder
-        df = load_and_prepare_data(symbol=symbol, start_date=start_date, end_date=end_date, timeframe=timeframe)
-        
+    def __init__(self, symbol="XAUUSD"):
+        self.logger = get_logger("SimplePipeline")
+        self.symbol = symbol
+        self.data_feeder = DataFeeder()
+        self.logger.info(f"Simple pipeline initialized for {symbol}")
+    
+    def get_latest_data(self):
+        """Get latest 200 bars of data"""
+        try:
+            end_time = datetime.now()
+            start_time = end_time - timedelta(minutes=200)
+            
+            df = self.data_feeder.get_data(
+                symbol=self.symbol,
+                start_date=start_time.strftime("%Y-%m-%d %H:%M:%S"),
+                end_date=end_time.strftime("%Y-%m-%d %H:%M:%S"),
+                interval_minutes=1,
+                n_bars=200
+            )
+            
+            if df is not None and not df.empty:
+                self.logger.info(f"Fetched {len(df)} bars")
+                return df
+            else:
+                self.logger.warning("No data received")
+                return None
+                
+        except Exception as e:
+            self.logger.error(f"Data fetch failed: {e}")
+            return None
+    
+    def process_data(self, df):
+        """Process data through strategy"""
+        try:
+            # Add EMA
+            df, ema_col = add_ema(df.copy(), period=200, price_col='close')
+            
+            # Add Williams Fractal
+            wft_df = williams_fractal_trailing_stops(
+                df, left_range=9, right_range=9, buffer_percent=0, flip_on="Close"
+            )
+            df = df.join(wft_df)
+            
+            # Calculate signals
+            df['strategy_position'] = calculate_strategy_positions(df, ema_col)
+            
+            return df
+            
+        except Exception as e:
+            self.logger.error(f"Processing failed: {e}")
+            return None
+    
+    def get_latest_signal(self, df):
+        """Get the latest trading signal"""
         if df is None or df.empty:
-            logger.error("No data loaded")
-            return
-
-        logger.info(f"Data loaded: {df.shape[0]} rows, {df.shape[1]} columns")
-
-        # Add EMA
-        logger.info("Calculating EMA indicators")
-        df, ema_col = add_ema(df, period=200, price_col='close')
-
-        # Calculate Williams Fractal Trailing Stops
-        logger.info("Calculating Williams Fractal Trailing Stops")
-        wft_df = williams_fractal_trailing_stops(df, left_range=9, right_range=9, buffer_percent=0, flip_on="Close")
-        df = df.join(wft_df)
-
-        # Calculate strategy positions
-        logger.info("Calculating strategy positions")
-        df['strategy_position'] = calculate_strategy_positions(df, ema_col)
+            return None
         
-        # Show basic results
-        long_positions = (df['strategy_position'] == 1).sum()
-        short_positions = (df['strategy_position'] == -1).sum()
-        neutral_positions = (df['strategy_position'] == 0).sum()
-        logger.info(f"Strategy Summary: {long_positions} long, {short_positions} short, {neutral_positions} neutral")
+        latest = df.iloc[-1]
+        signal = latest['strategy_position']
         
-        logger.info("Strategy execution completed successfully!")
+        signal_text = "LONG" if signal == 1 else "SHORT" if signal == -1 else "NEUTRAL"
         
-    except Exception as e:
-        logger.error(f"Strategy execution failed: {e}")
-        import traceback
-        traceback.print_exc()
+        return {
+            'timestamp': df.index[-1],
+            'price': latest['close'],
+            'ema': latest['ema_200'],
+            'signal': signal,
+            'signal_text': signal_text
+        }
+    
+    def run_single_iteration(self):
+        """Run one complete iteration"""
+        self.logger.info("Running single iteration")
+        
+        # Get data
+        df = self.get_latest_data()
+        if df is None:
+            return None
+        
+        # Process data
+        processed_df = self.process_data(df)
+        if processed_df is None:
+            return None
+        
+        # Get signal
+        signal = self.get_latest_signal(processed_df)
+        
+        if signal:
+            self.logger.info(f"Signal: {signal['signal_text']} | Price: {signal['price']:.2f}")
+        
+        return signal
+    
+    def run_loop(self, iterations=10, delay_seconds=60):
+        """Run multiple iterations with delay"""
+        self.logger.info(f"Starting loop: {iterations} iterations, {delay_seconds}s delay")
+        
+        for i in range(iterations):
+            self.logger.info(f"--- Iteration {i+1}/{iterations} ---")
+            
+            signal = self.run_single_iteration()
+            
+            if signal:
+                print(f"[{signal['timestamp']}] {signal['signal_text']} | Price: {signal['price']:.2f} | EMA: {signal['ema']:.2f}")
+            
+            if i < iterations - 1:  # Don't sleep after last iteration
+                self.logger.info(f"Waiting {delay_seconds} seconds...")
+                time.sleep(delay_seconds)
+        
+        self.logger.info("Loop completed")
+
+def main():
+    """Test the simple pipeline"""
+    logger = get_logger("Main")
+    
+    logger.info("Starting Simple Pipeline Test")
+    
+    pipeline = SimplePipeline("XAUUSD")
+    
+    # Run 5 iterations with 10 second delay for testing
+    pipeline.run_loop(iterations=5, delay_seconds=10)
 
 if __name__ == "__main__":
     main()

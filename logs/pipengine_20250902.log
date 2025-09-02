@@ -1,0 +1,36 @@
+2025-09-02 16:38:35 - EMA_Fractal_Strategy - INFO - Starting EMA + Williams Fractal Strategy
+2025-09-02 16:38:35 - EMA_Fractal_Strategy - INFO - Loading data for XAUUSD from 2025-08-26 16:38:35.416650 to 2025-09-02 16:38:35.416659 (M1)
+2025-09-02 16:38:35 - DataFeeder - INFO - Connected to TradingView without authentication
+2025-09-02 16:38:35 - DataFeeder - INFO - Fetching 5000 bars for XAUUSD (1min)
+2025-09-02 16:38:36 - DataFeeder - INFO - Successfully fetched 5000 bars for XAUUSD
+2025-09-02 16:38:36 - DataFeeder - INFO - Filtering data from 2025-08-26 16:38:35.416650 to 2025-09-02 16:38:35.416659
+2025-09-02 16:38:36 - DataFeeder - INFO - Filtered to 5000 bars
+2025-09-02 16:38:36 - EMA_Fractal_Strategy - INFO - Data prepared: 5000 bars, columns: ['symbol', 'open', 'high', 'low', 'close', 'volume']
+2025-09-02 16:38:36 - EMA_Fractal_Strategy - INFO - Data loaded: 5000 rows, 6 columns
+2025-09-02 16:38:36 - EMA_Fractal_Strategy - INFO - Calculating EMA indicators
+2025-09-02 16:38:36 - EMA_Fractal_Strategy - INFO - Calculating Williams Fractal Trailing Stops
+2025-09-02 16:38:36 - EMA_Fractal_Strategy - INFO - Calculating strategy positions
+2025-09-02 16:38:37 - EMA_Fractal_Strategy - INFO - Strategy Summary: 352 long, 323 short, 4325 neutral
+2025-09-02 16:38:37 - EMA_Fractal_Strategy - INFO - Strategy execution completed successfully!
+2025-09-02 16:41:59 - Main - INFO - Starting Simple Pipeline Test
+2025-09-02 16:41:59 - DataFeeder - INFO - Connected to TradingView without authentication
+2025-09-02 16:41:59 - SimplePipeline - INFO - Simple pipeline initialized for XAUUSD
+2025-09-02 16:41:59 - SimplePipeline - INFO - Starting loop: 5 iterations, 10s delay
+2025-09-02 16:41:59 - SimplePipeline - INFO - --- Iteration 1/5 ---
+2025-09-02 16:41:59 - SimplePipeline - INFO - Running single iteration
+2025-09-02 16:41:59 - DataFeeder - INFO - Fetching 200 bars for XAUUSD (1min)
+2025-09-02 16:42:00 - DataFeeder - INFO - Successfully fetched 200 bars for XAUUSD
+2025-09-02 16:42:00 - DataFeeder - INFO - Filtering data from 2025-09-02 13:21:59 to 2025-09-02 16:41:59
+2025-09-02 16:42:00 - DataFeeder - INFO - Filtered to 200 bars
+2025-09-02 16:42:00 - SimplePipeline - INFO - Fetched 200 bars
+2025-09-02 16:42:00 - SimplePipeline - INFO - Signal: NEUTRAL | Price: 3483.09
+2025-09-02 16:42:00 - SimplePipeline - INFO - Waiting 10 seconds...
+2025-09-02 16:42:10 - SimplePipeline - INFO - --- Iteration 2/5 ---
+2025-09-02 16:42:10 - SimplePipeline - INFO - Running single iteration
+2025-09-02 16:42:10 - DataFeeder - INFO - Fetching 200 bars for XAUUSD (1min)
+2025-09-02 16:42:11 - DataFeeder - INFO - Successfully fetched 200 bars for XAUUSD
+2025-09-02 16:42:11 - DataFeeder - INFO - Filtering data from 2025-09-02 13:22:10 to 2025-09-02 16:42:10
+2025-09-02 16:42:11 - DataFeeder - INFO - Filtered to 200 bars
+2025-09-02 16:42:11 - SimplePipeline - INFO - Fetched 200 bars
+2025-09-02 16:42:11 - SimplePipeline - INFO - Signal: NEUTRAL | Price: 3482.50
+2025-09-02 16:42:11 - SimplePipeline - INFO - Waiting 10 seconds...
