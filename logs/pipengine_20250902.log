@@ -34,3 +34,1040 @@
 2025-09-02 16:42:11 - SimplePipeline - INFO - Fetched 200 bars
 2025-09-02 16:42:11 - SimplePipeline - INFO - Signal: NEUTRAL | Price: 3482.50
 2025-09-02 16:42:11 - SimplePipeline - INFO - Waiting 10 seconds...
+2025-09-02 22:37:19 - MongoHandler - INFO - Connected to MongoDB: pipengine.trading_data
+2025-09-02 22:37:19 - MongoHandler - INFO - MongoDB connection closed
+2025-09-02 22:37:45 - DataFeeder - INFO - Connected to TradingView without authentication
+2025-09-02 22:37:51 - DataFeeder - INFO - Connected to TradingView without authentication
+2025-09-02 22:37:51 - DataFeeder - INFO - Fetching 100 bars for XAUUSD (60min)
+2025-09-02 22:37:52 - DataFeeder - INFO - Successfully fetched 100 bars for XAUUSD
+2025-09-02 22:37:52 - DataFeeder - INFO - Filtering data from 2025-08-01 00:00:00 to 2025-08-02 00:00:00
+2025-09-02 22:37:52 - DataFeeder - INFO - Filtered to 0 bars
+2025-09-02 22:37:59 - DataFeeder - INFO - Connected to TradingView without authentication
+2025-09-02 22:37:59 - DataFeeder - INFO - Fetching 1000 bars for XAUUSD (60min)
+2025-09-02 22:38:00 - DataFeeder - INFO - Successfully fetched 1000 bars for XAUUSD
+2025-09-02 22:38:00 - DataFeeder - INFO - Filtering data from 2025-07-01 00:00:00 to 2025-08-31 00:00:00
+2025-09-02 22:38:00 - DataFeeder - INFO - Filtered to 957 bars
+2025-09-02 22:39:58 - TelegramBot - ERROR - python-telegram-bot not installed. Install with: pip install python-telegram-bot
+2025-09-02 22:40:17 - TelegramBot - ERROR - python-telegram-bot not installed. Install with: pip install python-telegram-bot
+2025-09-02 22:40:50 - TelegramBot - ERROR - python-telegram-bot not installed. Install with: pip install python-telegram-bot
+2025-09-02 22:40:50 - TelegramBot - WARNING - Telegram not available, notification not sent
+2025-09-02 22:41:50 - TelegramBot - INFO - Database initialized successfully
+2025-09-02 22:41:50 - TelegramBot - INFO - Telegram bot initialized
+2025-09-02 22:41:50 - TelegramBot - ERROR - Failed to send notification: Chat not found
+2025-09-02 22:42:25 - TelegramBot - INFO - Database initialized successfully
+2025-09-02 22:42:25 - TelegramBot - INFO - Telegram bot initialized
+2025-09-02 22:42:27 - TelegramBot - INFO - Notification sent: INFO
+2025-09-02 22:42:40 - TelegramBot - INFO - Database initialized successfully
+2025-09-02 22:42:40 - TelegramBot - INFO - Telegram bot initialized
+2025-09-02 22:42:40 - TelegramBot - INFO - Notification sent: INFO
+2025-09-02 22:44:07 - Main - INFO - Starting Simple Pipeline Test
+2025-09-02 22:44:07 - DataFeeder - INFO - Connected to TradingView without authentication
+2025-09-02 22:44:07 - SimplePipeline - INFO - Simple pipeline initialized for XAUUSD
+2025-09-02 22:44:07 - SimplePipeline - INFO - Starting loop: 5 iterations, 10s delay
+2025-09-02 22:44:07 - SimplePipeline - INFO - --- Iteration 1/5 ---
+2025-09-02 22:44:07 - SimplePipeline - INFO - Running single iteration
+2025-09-02 22:44:07 - DataFeeder - INFO - Fetching 200 bars for XAUUSD (1min)
+2025-09-02 22:44:09 - DataFeeder - INFO - Successfully fetched 200 bars for XAUUSD
+2025-09-02 22:44:09 - DataFeeder - INFO - Filtering data from 2025-09-02 19:24:07 to 2025-09-02 22:44:07
+2025-09-02 22:44:09 - DataFeeder - INFO - Filtered to 200 bars
+2025-09-02 22:44:09 - SimplePipeline - INFO - Fetched 200 bars
+2025-09-02 22:44:09 - SimplePipeline - INFO - Signal: NEUTRAL | Price: 3536.09
+2025-09-02 22:44:09 - SimplePipeline - INFO - Waiting 10 seconds...
+2025-09-02 22:44:19 - SimplePipeline - INFO - --- Iteration 2/5 ---
+2025-09-02 22:44:19 - SimplePipeline - INFO - Running single iteration
+2025-09-02 22:44:19 - DataFeeder - INFO - Fetching 200 bars for XAUUSD (1min)
+2025-09-02 22:44:20 - DataFeeder - INFO - Successfully fetched 200 bars for XAUUSD
+2025-09-02 22:44:20 - DataFeeder - INFO - Filtering data from 2025-09-02 19:24:19 to 2025-09-02 22:44:19
+2025-09-02 22:44:20 - DataFeeder - INFO - Filtered to 200 bars
+2025-09-02 22:44:20 - SimplePipeline - INFO - Fetched 200 bars
+2025-09-02 22:44:20 - SimplePipeline - INFO - Signal: NEUTRAL | Price: 3536.12
+2025-09-02 22:44:20 - SimplePipeline - INFO - Waiting 10 seconds...
+2025-09-02 22:44:30 - SimplePipeline - INFO - --- Iteration 3/5 ---
+2025-09-02 22:44:30 - SimplePipeline - INFO - Running single iteration
+2025-09-02 22:44:30 - DataFeeder - INFO - Fetching 200 bars for XAUUSD (1min)
+2025-09-02 22:44:31 - DataFeeder - INFO - Successfully fetched 200 bars for XAUUSD
+2025-09-02 22:44:31 - DataFeeder - INFO - Filtering data from 2025-09-02 19:24:30 to 2025-09-02 22:44:30
+2025-09-02 22:44:31 - DataFeeder - INFO - Filtered to 200 bars
+2025-09-02 22:44:31 - SimplePipeline - INFO - Fetched 200 bars
+2025-09-02 22:44:31 - SimplePipeline - INFO - Signal: NEUTRAL | Price: 3536.07
+2025-09-02 22:44:31 - SimplePipeline - INFO - Waiting 10 seconds...
+2025-09-02 22:44:41 - SimplePipeline - INFO - --- Iteration 4/5 ---
+2025-09-02 22:44:41 - SimplePipeline - INFO - Running single iteration
+2025-09-02 22:44:41 - DataFeeder - INFO - Fetching 200 bars for XAUUSD (1min)
+2025-09-02 22:44:42 - DataFeeder - INFO - Successfully fetched 200 bars for XAUUSD
+2025-09-02 22:44:42 - DataFeeder - INFO - Filtering data from 2025-09-02 19:24:41 to 2025-09-02 22:44:41
+2025-09-02 22:44:42 - DataFeeder - INFO - Filtered to 200 bars
+2025-09-02 22:44:42 - SimplePipeline - INFO - Fetched 200 bars
+2025-09-02 22:44:42 - SimplePipeline - INFO - Signal: NEUTRAL | Price: 3535.73
+2025-09-02 22:44:42 - SimplePipeline - INFO - Waiting 10 seconds...
+2025-09-02 22:44:52 - SimplePipeline - INFO - --- Iteration 5/5 ---
+2025-09-02 22:44:52 - SimplePipeline - INFO - Running single iteration
+2025-09-02 22:44:52 - DataFeeder - INFO - Fetching 200 bars for XAUUSD (1min)
+2025-09-02 22:44:53 - DataFeeder - INFO - Successfully fetched 200 bars for XAUUSD
+2025-09-02 22:44:53 - DataFeeder - INFO - Filtering data from 2025-09-02 19:24:52 to 2025-09-02 22:44:52
+2025-09-02 22:44:53 - DataFeeder - INFO - Filtered to 200 bars
+2025-09-02 22:44:53 - SimplePipeline - INFO - Fetched 200 bars
+2025-09-02 22:44:53 - SimplePipeline - INFO - Signal: NEUTRAL | Price: 3535.68
+2025-09-02 22:44:53 - SimplePipeline - INFO - Loop completed
+2025-09-02 22:47:36 - Main - INFO - Starting Simple Pipeline Test with Telegram Integration
+2025-09-02 22:47:36 - DataFeeder - INFO - Connected to TradingView without authentication
+2025-09-02 22:47:36 - TelegramBot - INFO - Database initialized successfully
+2025-09-02 22:47:36 - TelegramBot - INFO - Telegram bot initialized
+2025-09-02 22:47:36 - SimplePipeline - INFO - Simple pipeline initialized for XAUUSD
+2025-09-02 22:47:37 - TelegramBot - INFO - Notification sent: INFO
+2025-09-02 22:47:37 - SimplePipeline - INFO - Starting loop: 5 iterations, 10s delay
+2025-09-02 22:47:37 - SimplePipeline - INFO - --- Iteration 1/5 ---
+2025-09-02 22:47:37 - SimplePipeline - INFO - Running single iteration
+2025-09-02 22:47:37 - DataFeeder - INFO - Fetching 200 bars for XAUUSD (1min)
+2025-09-02 22:47:39 - DataFeeder - INFO - Successfully fetched 200 bars for XAUUSD
+2025-09-02 22:47:39 - DataFeeder - INFO - Filtering data from 2025-09-02 19:27:37 to 2025-09-02 22:47:37
+2025-09-02 22:47:39 - DataFeeder - INFO - Filtered to 200 bars
+2025-09-02 22:47:39 - SimplePipeline - INFO - Fetched 200 bars
+2025-09-02 22:47:39 - SimplePipeline - INFO - Signal: NEUTRAL | Price: 3536.32
+2025-09-02 22:47:39 - SimplePipeline - INFO - Waiting 10 seconds...
+2025-09-02 22:47:49 - SimplePipeline - INFO - --- Iteration 2/5 ---
+2025-09-02 22:47:49 - SimplePipeline - INFO - Running single iteration
+2025-09-02 22:47:49 - DataFeeder - INFO - Fetching 200 bars for XAUUSD (1min)
+2025-09-02 22:47:49 - DataFeeder - INFO - Successfully fetched 200 bars for XAUUSD
+2025-09-02 22:47:49 - DataFeeder - INFO - Filtering data from 2025-09-02 19:27:49 to 2025-09-02 22:47:49
+2025-09-02 22:47:49 - DataFeeder - INFO - Filtered to 200 bars
+2025-09-02 22:47:49 - SimplePipeline - INFO - Fetched 200 bars
+2025-09-02 22:47:49 - SimplePipeline - INFO - Signal: NEUTRAL | Price: 3536.33
+2025-09-02 22:47:49 - SimplePipeline - INFO - Waiting 10 seconds...
+2025-09-02 22:48:26 - Main - INFO - Starting Simple Pipeline Test with Telegram Integration
+2025-09-02 22:48:26 - DataFeeder - INFO - Connected to TradingView without authentication
+2025-09-02 22:48:26 - TelegramBot - INFO - Database initialized successfully
+2025-09-02 22:48:26 - TelegramBot - INFO - Telegram bot initialized
+2025-09-02 22:48:26 - SimplePipeline - INFO - Simple pipeline initialized for XAUUSD
+2025-09-02 22:48:27 - TelegramBot - INFO - Notification sent: INFO
+2025-09-02 22:48:27 - SimplePipeline - INFO - Starting loop: 10 iterations, 1s delay
+2025-09-02 22:48:27 - SimplePipeline - INFO - --- Iteration 1/10 ---
+2025-09-02 22:48:27 - SimplePipeline - INFO - Running single iteration
+2025-09-02 22:48:27 - DataFeeder - INFO - Fetching 200 bars for XAUUSD (1min)
+2025-09-02 22:48:28 - DataFeeder - INFO - Successfully fetched 200 bars for XAUUSD
+2025-09-02 22:48:28 - DataFeeder - INFO - Filtering data from 2025-09-02 19:28:27 to 2025-09-02 22:48:27
+2025-09-02 22:48:28 - DataFeeder - INFO - Filtered to 200 bars
+2025-09-02 22:48:28 - SimplePipeline - INFO - Fetched 200 bars
+2025-09-02 22:48:28 - SimplePipeline - INFO - Signal: NEUTRAL | Price: 3536.84
+2025-09-02 22:48:28 - SimplePipeline - INFO - Waiting 1 seconds...
+2025-09-02 22:48:29 - SimplePipeline - INFO - --- Iteration 2/10 ---
+2025-09-02 22:48:29 - SimplePipeline - INFO - Running single iteration
+2025-09-02 22:48:29 - DataFeeder - INFO - Fetching 200 bars for XAUUSD (1min)
+2025-09-02 22:48:30 - DataFeeder - INFO - Successfully fetched 200 bars for XAUUSD
+2025-09-02 22:48:30 - DataFeeder - INFO - Filtering data from 2025-09-02 19:28:29 to 2025-09-02 22:48:29
+2025-09-02 22:48:30 - DataFeeder - INFO - Filtered to 200 bars
+2025-09-02 22:48:30 - SimplePipeline - INFO - Fetched 200 bars
+2025-09-02 22:48:30 - SimplePipeline - INFO - Signal: NEUTRAL | Price: 3536.89
+2025-09-02 22:48:30 - SimplePipeline - INFO - Waiting 1 seconds...
+2025-09-02 22:48:31 - SimplePipeline - INFO - --- Iteration 3/10 ---
+2025-09-02 22:48:31 - SimplePipeline - INFO - Running single iteration
+2025-09-02 22:48:31 - DataFeeder - INFO - Fetching 200 bars for XAUUSD (1min)
+2025-09-02 22:48:32 - DataFeeder - INFO - Successfully fetched 200 bars for XAUUSD
+2025-09-02 22:48:32 - DataFeeder - INFO - Filtering data from 2025-09-02 19:28:31 to 2025-09-02 22:48:31
+2025-09-02 22:48:32 - DataFeeder - INFO - Filtered to 200 bars
+2025-09-02 22:48:32 - SimplePipeline - INFO - Fetched 200 bars
+2025-09-02 22:48:32 - SimplePipeline - INFO - Signal: NEUTRAL | Price: 3536.89
+2025-09-02 22:48:32 - SimplePipeline - INFO - Waiting 1 seconds...
+2025-09-02 22:48:33 - SimplePipeline - INFO - --- Iteration 4/10 ---
+2025-09-02 22:48:33 - SimplePipeline - INFO - Running single iteration
+2025-09-02 22:48:33 - DataFeeder - INFO - Fetching 200 bars for XAUUSD (1min)
+2025-09-02 22:48:34 - DataFeeder - INFO - Successfully fetched 200 bars for XAUUSD
+2025-09-02 22:48:34 - DataFeeder - INFO - Filtering data from 2025-09-02 19:28:33 to 2025-09-02 22:48:33
+2025-09-02 22:48:34 - DataFeeder - INFO - Filtered to 200 bars
+2025-09-02 22:48:34 - SimplePipeline - INFO - Fetched 200 bars
+2025-09-02 22:48:34 - SimplePipeline - INFO - Signal: NEUTRAL | Price: 3536.89
+2025-09-02 22:48:34 - SimplePipeline - INFO - Waiting 1 seconds...
+2025-09-02 22:48:35 - SimplePipeline - INFO - --- Iteration 5/10 ---
+2025-09-02 22:48:35 - SimplePipeline - INFO - Running single iteration
+2025-09-02 22:48:35 - DataFeeder - INFO - Fetching 200 bars for XAUUSD (1min)
+2025-09-02 22:48:36 - DataFeeder - INFO - Successfully fetched 200 bars for XAUUSD
+2025-09-02 22:48:36 - DataFeeder - INFO - Filtering data from 2025-09-02 19:28:35 to 2025-09-02 22:48:35
+2025-09-02 22:48:36 - DataFeeder - INFO - Filtered to 200 bars
+2025-09-02 22:48:36 - SimplePipeline - INFO - Fetched 200 bars
+2025-09-02 22:48:36 - SimplePipeline - INFO - Signal: NEUTRAL | Price: 3537.07
+2025-09-02 22:48:36 - SimplePipeline - INFO - Waiting 1 seconds...
+2025-09-02 22:48:37 - SimplePipeline - INFO - --- Iteration 6/10 ---
+2025-09-02 22:48:37 - SimplePipeline - INFO - Running single iteration
+2025-09-02 22:48:37 - DataFeeder - INFO - Fetching 200 bars for XAUUSD (1min)
+2025-09-02 22:48:38 - DataFeeder - INFO - Successfully fetched 200 bars for XAUUSD
+2025-09-02 22:48:38 - DataFeeder - INFO - Filtering data from 2025-09-02 19:28:37 to 2025-09-02 22:48:37
+2025-09-02 22:48:38 - DataFeeder - INFO - Filtered to 200 bars
+2025-09-02 22:48:38 - SimplePipeline - INFO - Fetched 200 bars
+2025-09-02 22:48:38 - SimplePipeline - INFO - Signal: NEUTRAL | Price: 3537.07
+2025-09-02 22:48:38 - SimplePipeline - INFO - Waiting 1 seconds...
+2025-09-02 22:48:39 - SimplePipeline - INFO - --- Iteration 7/10 ---
+2025-09-02 22:48:39 - SimplePipeline - INFO - Running single iteration
+2025-09-02 22:48:39 - DataFeeder - INFO - Fetching 200 bars for XAUUSD (1min)
+2025-09-02 22:48:40 - DataFeeder - INFO - Successfully fetched 200 bars for XAUUSD
+2025-09-02 22:48:40 - DataFeeder - INFO - Filtering data from 2025-09-02 19:28:39 to 2025-09-02 22:48:39
+2025-09-02 22:48:40 - DataFeeder - INFO - Filtered to 200 bars
+2025-09-02 22:48:40 - SimplePipeline - INFO - Fetched 200 bars
+2025-09-02 22:48:40 - SimplePipeline - INFO - Signal: NEUTRAL | Price: 3537.07
+2025-09-02 22:48:40 - SimplePipeline - INFO - Waiting 1 seconds...
+2025-09-02 22:48:41 - SimplePipeline - INFO - --- Iteration 8/10 ---
+2025-09-02 22:48:41 - SimplePipeline - INFO - Running single iteration
+2025-09-02 22:48:41 - DataFeeder - INFO - Fetching 200 bars for XAUUSD (1min)
+2025-09-02 22:48:42 - DataFeeder - INFO - Successfully fetched 200 bars for XAUUSD
+2025-09-02 22:48:42 - DataFeeder - INFO - Filtering data from 2025-09-02 19:28:41 to 2025-09-02 22:48:41
+2025-09-02 22:48:42 - DataFeeder - INFO - Filtered to 200 bars
+2025-09-02 22:48:42 - SimplePipeline - INFO - Fetched 200 bars
+2025-09-02 22:48:42 - SimplePipeline - INFO - Signal: NEUTRAL | Price: 3537.07
+2025-09-02 22:48:42 - SimplePipeline - INFO - Waiting 1 seconds...
+2025-09-02 22:48:43 - SimplePipeline - INFO - --- Iteration 9/10 ---
+2025-09-02 22:48:43 - SimplePipeline - INFO - Running single iteration
+2025-09-02 22:48:43 - DataFeeder - INFO - Fetching 200 bars for XAUUSD (1min)
+2025-09-02 22:48:44 - DataFeeder - INFO - Successfully fetched 200 bars for XAUUSD
+2025-09-02 22:48:44 - DataFeeder - INFO - Filtering data from 2025-09-02 19:28:43 to 2025-09-02 22:48:43
+2025-09-02 22:48:44 - DataFeeder - INFO - Filtered to 200 bars
+2025-09-02 22:48:44 - SimplePipeline - INFO - Fetched 200 bars
+2025-09-02 22:48:44 - SimplePipeline - INFO - Signal: NEUTRAL | Price: 3537.07
+2025-09-02 22:48:44 - SimplePipeline - INFO - Waiting 1 seconds...
+2025-09-02 22:48:45 - SimplePipeline - INFO - --- Iteration 10/10 ---
+2025-09-02 22:48:45 - SimplePipeline - INFO - Running single iteration
+2025-09-02 22:48:45 - DataFeeder - INFO - Fetching 200 bars for XAUUSD (1min)
+2025-09-02 22:48:46 - DataFeeder - INFO - Successfully fetched 200 bars for XAUUSD
+2025-09-02 22:48:46 - DataFeeder - INFO - Filtering data from 2025-09-02 19:28:45 to 2025-09-02 22:48:45
+2025-09-02 22:48:46 - DataFeeder - INFO - Filtered to 200 bars
+2025-09-02 22:48:46 - SimplePipeline - INFO - Fetched 200 bars
+2025-09-02 22:48:46 - SimplePipeline - INFO - Signal: NEUTRAL | Price: 3537.25
+2025-09-02 22:48:46 - SimplePipeline - INFO - Loop completed
+2025-09-02 22:48:47 - TelegramBot - INFO - Notification sent: INFO
+2025-09-02 22:49:56 - Main - INFO - Starting Simple Pipeline Test with Telegram Integration
+2025-09-02 22:49:56 - DataFeeder - INFO - Connected to TradingView without authentication
+2025-09-02 22:49:56 - TelegramBot - INFO - Database initialized successfully
+2025-09-02 22:49:56 - TelegramBot - INFO - Telegram bot initialized
+2025-09-02 22:49:56 - SimplePipeline - INFO - Simple pipeline initialized for XAUUSD
+2025-09-02 22:49:56 - TelegramBot - INFO - Notification sent: INFO
+2025-09-02 22:49:56 - SimplePipeline - INFO - Starting continuous monitoring until signal generated (delay: 1s)
+2025-09-02 22:49:56 - SimplePipeline - INFO - --- Iteration 1 ---
+2025-09-02 22:49:56 - SimplePipeline - INFO - Running single iteration
+2025-09-02 22:49:56 - DataFeeder - INFO - Fetching 200 bars for XAUUSD (1min)
+2025-09-02 22:49:58 - DataFeeder - INFO - Successfully fetched 200 bars for XAUUSD
+2025-09-02 22:49:58 - DataFeeder - INFO - Filtering data from 2025-09-02 19:29:56 to 2025-09-02 22:49:56
+2025-09-02 22:49:58 - DataFeeder - INFO - Filtered to 200 bars
+2025-09-02 22:49:58 - SimplePipeline - INFO - Fetched 200 bars
+2025-09-02 22:49:58 - SimplePipeline - INFO - Signal: NEUTRAL | Price: 3537.28
+2025-09-02 22:49:59 - SimplePipeline - INFO - --- Iteration 2 ---
+2025-09-02 22:49:59 - SimplePipeline - INFO - Running single iteration
+2025-09-02 22:49:59 - DataFeeder - INFO - Fetching 200 bars for XAUUSD (1min)
+2025-09-02 22:49:59 - DataFeeder - INFO - Successfully fetched 200 bars for XAUUSD
+2025-09-02 22:49:59 - DataFeeder - INFO - Filtering data from 2025-09-02 19:29:59 to 2025-09-02 22:49:59
+2025-09-02 22:49:59 - DataFeeder - INFO - Filtered to 200 bars
+2025-09-02 22:49:59 - SimplePipeline - INFO - Fetched 200 bars
+2025-09-02 22:49:59 - SimplePipeline - INFO - Signal: NEUTRAL | Price: 3537.28
+2025-09-02 22:50:00 - SimplePipeline - INFO - --- Iteration 3 ---
+2025-09-02 22:50:00 - SimplePipeline - INFO - Running single iteration
+2025-09-02 22:50:00 - DataFeeder - INFO - Fetching 200 bars for XAUUSD (1min)
+2025-09-02 22:50:02 - DataFeeder - INFO - Successfully fetched 200 bars for XAUUSD
+2025-09-02 22:50:02 - DataFeeder - INFO - Filtering data from 2025-09-02 19:30:00 to 2025-09-02 22:50:00
+2025-09-02 22:50:02 - DataFeeder - INFO - Filtered to 200 bars
+2025-09-02 22:50:02 - SimplePipeline - INFO - Fetched 200 bars
+2025-09-02 22:50:02 - SimplePipeline - INFO - Signal: NEUTRAL | Price: 3537.39
+2025-09-02 22:50:03 - SimplePipeline - INFO - --- Iteration 4 ---
+2025-09-02 22:50:03 - SimplePipeline - INFO - Running single iteration
+2025-09-02 22:50:03 - DataFeeder - INFO - Fetching 200 bars for XAUUSD (1min)
+2025-09-02 22:50:04 - DataFeeder - INFO - Successfully fetched 200 bars for XAUUSD
+2025-09-02 22:50:04 - DataFeeder - INFO - Filtering data from 2025-09-02 19:30:03 to 2025-09-02 22:50:03
+2025-09-02 22:50:04 - DataFeeder - INFO - Filtered to 200 bars
+2025-09-02 22:50:04 - SimplePipeline - INFO - Fetched 200 bars
+2025-09-02 22:50:04 - SimplePipeline - INFO - Signal: NEUTRAL | Price: 3537.39
+2025-09-02 22:50:05 - SimplePipeline - INFO - --- Iteration 5 ---
+2025-09-02 22:50:05 - SimplePipeline - INFO - Running single iteration
+2025-09-02 22:50:05 - DataFeeder - INFO - Fetching 200 bars for XAUUSD (1min)
+2025-09-02 22:50:06 - DataFeeder - INFO - Successfully fetched 200 bars for XAUUSD
+2025-09-02 22:50:06 - DataFeeder - INFO - Filtering data from 2025-09-02 19:30:05 to 2025-09-02 22:50:05
+2025-09-02 22:50:06 - DataFeeder - INFO - Filtered to 200 bars
+2025-09-02 22:50:06 - SimplePipeline - INFO - Fetched 200 bars
+2025-09-02 22:50:06 - SimplePipeline - INFO - Signal: NEUTRAL | Price: 3537.59
+2025-09-02 22:50:07 - SimplePipeline - INFO - --- Iteration 6 ---
+2025-09-02 22:50:07 - SimplePipeline - INFO - Running single iteration
+2025-09-02 22:50:07 - DataFeeder - INFO - Fetching 200 bars for XAUUSD (1min)
+2025-09-02 22:50:08 - DataFeeder - INFO - Successfully fetched 200 bars for XAUUSD
+2025-09-02 22:50:08 - DataFeeder - INFO - Filtering data from 2025-09-02 19:30:07 to 2025-09-02 22:50:07
+2025-09-02 22:50:08 - DataFeeder - INFO - Filtered to 200 bars
+2025-09-02 22:50:08 - SimplePipeline - INFO - Fetched 200 bars
+2025-09-02 22:50:08 - SimplePipeline - INFO - Signal: NEUTRAL | Price: 3537.59
+2025-09-02 22:50:09 - SimplePipeline - INFO - --- Iteration 7 ---
+2025-09-02 22:50:09 - SimplePipeline - INFO - Running single iteration
+2025-09-02 22:50:09 - DataFeeder - INFO - Fetching 200 bars for XAUUSD (1min)
+2025-09-02 22:50:10 - DataFeeder - INFO - Successfully fetched 200 bars for XAUUSD
+2025-09-02 22:50:10 - DataFeeder - INFO - Filtering data from 2025-09-02 19:30:09 to 2025-09-02 22:50:09
+2025-09-02 22:50:10 - DataFeeder - INFO - Filtered to 200 bars
+2025-09-02 22:50:10 - SimplePipeline - INFO - Fetched 200 bars
+2025-09-02 22:50:10 - SimplePipeline - INFO - Signal: NEUTRAL | Price: 3537.59
+2025-09-02 22:50:11 - SimplePipeline - INFO - --- Iteration 8 ---
+2025-09-02 22:50:11 - SimplePipeline - INFO - Running single iteration
+2025-09-02 22:50:11 - DataFeeder - INFO - Fetching 200 bars for XAUUSD (1min)
+2025-09-02 22:50:12 - DataFeeder - INFO - Successfully fetched 200 bars for XAUUSD
+2025-09-02 22:50:12 - DataFeeder - INFO - Filtering data from 2025-09-02 19:30:11 to 2025-09-02 22:50:11
+2025-09-02 22:50:12 - DataFeeder - INFO - Filtered to 200 bars
+2025-09-02 22:50:12 - SimplePipeline - INFO - Fetched 200 bars
+2025-09-02 22:50:12 - SimplePipeline - INFO - Signal: NEUTRAL | Price: 3537.78
+2025-09-02 22:50:13 - SimplePipeline - INFO - --- Iteration 9 ---
+2025-09-02 22:50:13 - SimplePipeline - INFO - Running single iteration
+2025-09-02 22:50:13 - DataFeeder - INFO - Fetching 200 bars for XAUUSD (1min)
+2025-09-02 22:50:14 - DataFeeder - INFO - Successfully fetched 200 bars for XAUUSD
+2025-09-02 22:50:14 - DataFeeder - INFO - Filtering data from 2025-09-02 19:30:13 to 2025-09-02 22:50:13
+2025-09-02 22:50:14 - DataFeeder - INFO - Filtered to 200 bars
+2025-09-02 22:50:14 - SimplePipeline - INFO - Fetched 200 bars
+2025-09-02 22:50:14 - SimplePipeline - INFO - Signal: NEUTRAL | Price: 3537.78
+2025-09-02 22:50:15 - SimplePipeline - INFO - --- Iteration 10 ---
+2025-09-02 22:50:15 - SimplePipeline - INFO - Running single iteration
+2025-09-02 22:50:15 - DataFeeder - INFO - Fetching 200 bars for XAUUSD (1min)
+2025-09-02 22:50:16 - DataFeeder - INFO - Successfully fetched 200 bars for XAUUSD
+2025-09-02 22:50:16 - DataFeeder - INFO - Filtering data from 2025-09-02 19:30:15 to 2025-09-02 22:50:15
+2025-09-02 22:50:16 - DataFeeder - INFO - Filtered to 200 bars
+2025-09-02 22:50:16 - SimplePipeline - INFO - Fetched 200 bars
+2025-09-02 22:50:16 - SimplePipeline - INFO - Signal: NEUTRAL | Price: 3537.78
+2025-09-02 22:50:17 - SimplePipeline - INFO - --- Iteration 11 ---
+2025-09-02 22:50:17 - SimplePipeline - INFO - Running single iteration
+2025-09-02 22:50:17 - DataFeeder - INFO - Fetching 200 bars for XAUUSD (1min)
+2025-09-02 22:50:18 - DataFeeder - INFO - Successfully fetched 200 bars for XAUUSD
+2025-09-02 22:50:18 - DataFeeder - INFO - Filtering data from 2025-09-02 19:30:17 to 2025-09-02 22:50:17
+2025-09-02 22:50:18 - DataFeeder - INFO - Filtered to 200 bars
+2025-09-02 22:50:18 - SimplePipeline - INFO - Fetched 200 bars
+2025-09-02 22:50:18 - SimplePipeline - INFO - Signal: NEUTRAL | Price: 3537.83
+2025-09-02 22:50:19 - SimplePipeline - INFO - --- Iteration 12 ---
+2025-09-02 22:50:19 - SimplePipeline - INFO - Running single iteration
+2025-09-02 22:50:19 - DataFeeder - INFO - Fetching 200 bars for XAUUSD (1min)
+2025-09-02 22:50:24 - DataFeeder - ERROR - Failed to fetch data for XAUUSD: _ssl.c:983: The handshake operation timed out
+2025-09-02 22:50:24 - DataFeeder - WARNING - No data to filter
+2025-09-02 22:50:24 - SimplePipeline - WARNING - No data received
+2025-09-02 22:50:25 - SimplePipeline - INFO - --- Iteration 13 ---
+2025-09-02 22:50:25 - SimplePipeline - INFO - Running single iteration
+2025-09-02 22:50:25 - DataFeeder - INFO - Fetching 200 bars for XAUUSD (1min)
+2025-09-02 22:50:26 - DataFeeder - INFO - Successfully fetched 200 bars for XAUUSD
+2025-09-02 22:50:26 - DataFeeder - INFO - Filtering data from 2025-09-02 19:30:25 to 2025-09-02 22:50:25
+2025-09-02 22:50:26 - DataFeeder - INFO - Filtered to 200 bars
+2025-09-02 22:50:26 - SimplePipeline - INFO - Fetched 200 bars
+2025-09-02 22:50:26 - SimplePipeline - INFO - Signal: NEUTRAL | Price: 3537.55
+2025-09-02 22:50:27 - SimplePipeline - INFO - --- Iteration 14 ---
+2025-09-02 22:50:27 - SimplePipeline - INFO - Running single iteration
+2025-09-02 22:50:27 - DataFeeder - INFO - Fetching 200 bars for XAUUSD (1min)
+2025-09-02 22:50:28 - DataFeeder - INFO - Successfully fetched 200 bars for XAUUSD
+2025-09-02 22:50:28 - DataFeeder - INFO - Filtering data from 2025-09-02 19:30:27 to 2025-09-02 22:50:27
+2025-09-02 22:50:28 - DataFeeder - INFO - Filtered to 200 bars
+2025-09-02 22:50:28 - SimplePipeline - INFO - Fetched 200 bars
+2025-09-02 22:50:29 - SimplePipeline - INFO - Signal: NEUTRAL | Price: 3537.53
+2025-09-02 22:50:30 - SimplePipeline - INFO - --- Iteration 15 ---
+2025-09-02 22:50:30 - SimplePipeline - INFO - Running single iteration
+2025-09-02 22:50:30 - DataFeeder - INFO - Fetching 200 bars for XAUUSD (1min)
+2025-09-02 22:50:30 - DataFeeder - INFO - Successfully fetched 200 bars for XAUUSD
+2025-09-02 22:50:30 - DataFeeder - INFO - Filtering data from 2025-09-02 19:30:30 to 2025-09-02 22:50:30
+2025-09-02 22:50:30 - DataFeeder - INFO - Filtered to 200 bars
+2025-09-02 22:50:30 - SimplePipeline - INFO - Fetched 200 bars
+2025-09-02 22:50:30 - SimplePipeline - INFO - Signal: NEUTRAL | Price: 3537.53
+2025-09-02 22:50:31 - SimplePipeline - INFO - --- Iteration 16 ---
+2025-09-02 22:50:31 - SimplePipeline - INFO - Running single iteration
+2025-09-02 22:50:31 - DataFeeder - INFO - Fetching 200 bars for XAUUSD (1min)
+2025-09-02 22:50:33 - DataFeeder - INFO - Successfully fetched 200 bars for XAUUSD
+2025-09-02 22:50:33 - DataFeeder - INFO - Filtering data from 2025-09-02 19:30:31 to 2025-09-02 22:50:31
+2025-09-02 22:50:33 - DataFeeder - INFO - Filtered to 200 bars
+2025-09-02 22:50:33 - SimplePipeline - INFO - Fetched 200 bars
+2025-09-02 22:50:33 - SimplePipeline - INFO - Signal: NEUTRAL | Price: 3537.70
+2025-09-02 22:50:34 - SimplePipeline - INFO - --- Iteration 17 ---
+2025-09-02 22:50:34 - SimplePipeline - INFO - Running single iteration
+2025-09-02 22:50:34 - DataFeeder - INFO - Fetching 200 bars for XAUUSD (1min)
+2025-09-02 22:50:35 - DataFeeder - INFO - Successfully fetched 200 bars for XAUUSD
+2025-09-02 22:50:35 - DataFeeder - INFO - Filtering data from 2025-09-02 19:30:34 to 2025-09-02 22:50:34
+2025-09-02 22:50:35 - DataFeeder - INFO - Filtered to 200 bars
+2025-09-02 22:50:35 - SimplePipeline - INFO - Fetched 200 bars
+2025-09-02 22:50:35 - SimplePipeline - INFO - Signal: NEUTRAL | Price: 3537.70
+2025-09-02 22:50:36 - SimplePipeline - INFO - --- Iteration 18 ---
+2025-09-02 22:50:36 - SimplePipeline - INFO - Running single iteration
+2025-09-02 22:50:36 - DataFeeder - INFO - Fetching 200 bars for XAUUSD (1min)
+2025-09-02 22:50:36 - DataFeeder - INFO - Successfully fetched 200 bars for XAUUSD
+2025-09-02 22:50:36 - DataFeeder - INFO - Filtering data from 2025-09-02 19:30:36 to 2025-09-02 22:50:36
+2025-09-02 22:50:36 - DataFeeder - INFO - Filtered to 200 bars
+2025-09-02 22:50:36 - SimplePipeline - INFO - Fetched 200 bars
+2025-09-02 22:50:36 - SimplePipeline - INFO - Signal: NEUTRAL | Price: 3537.70
+2025-09-02 22:50:37 - SimplePipeline - INFO - --- Iteration 19 ---
+2025-09-02 22:50:37 - SimplePipeline - INFO - Running single iteration
+2025-09-02 22:50:37 - DataFeeder - INFO - Fetching 200 bars for XAUUSD (1min)
+2025-09-02 22:50:38 - DataFeeder - INFO - Successfully fetched 200 bars for XAUUSD
+2025-09-02 22:50:38 - DataFeeder - INFO - Filtering data from 2025-09-02 19:30:37 to 2025-09-02 22:50:37
+2025-09-02 22:50:38 - DataFeeder - INFO - Filtered to 200 bars
+2025-09-02 22:50:38 - SimplePipeline - INFO - Fetched 200 bars
+2025-09-02 22:50:38 - SimplePipeline - INFO - Signal: NEUTRAL | Price: 3537.86
+2025-09-02 22:50:39 - SimplePipeline - INFO - --- Iteration 20 ---
+2025-09-02 22:50:39 - SimplePipeline - INFO - Running single iteration
+2025-09-02 22:50:39 - DataFeeder - INFO - Fetching 200 bars for XAUUSD (1min)
+2025-09-02 22:50:40 - DataFeeder - INFO - Successfully fetched 200 bars for XAUUSD
+2025-09-02 22:50:40 - DataFeeder - INFO - Filtering data from 2025-09-02 19:30:39 to 2025-09-02 22:50:39
+2025-09-02 22:50:40 - DataFeeder - INFO - Filtered to 200 bars
+2025-09-02 22:50:40 - SimplePipeline - INFO - Fetched 200 bars
+2025-09-02 22:50:40 - SimplePipeline - INFO - Signal: NEUTRAL | Price: 3537.86
+2025-09-02 22:50:41 - SimplePipeline - INFO - --- Iteration 21 ---
+2025-09-02 22:50:41 - SimplePipeline - INFO - Running single iteration
+2025-09-02 22:50:41 - DataFeeder - INFO - Fetching 200 bars for XAUUSD (1min)
+2025-09-02 22:50:42 - DataFeeder - INFO - Successfully fetched 200 bars for XAUUSD
+2025-09-02 22:50:42 - DataFeeder - INFO - Filtering data from 2025-09-02 19:30:41 to 2025-09-02 22:50:41
+2025-09-02 22:50:42 - DataFeeder - INFO - Filtered to 200 bars
+2025-09-02 22:50:42 - SimplePipeline - INFO - Fetched 200 bars
+2025-09-02 22:50:42 - SimplePipeline - INFO - Signal: NEUTRAL | Price: 3537.86
+2025-09-02 22:50:43 - SimplePipeline - INFO - --- Iteration 22 ---
+2025-09-02 22:50:43 - SimplePipeline - INFO - Running single iteration
+2025-09-02 22:50:43 - DataFeeder - INFO - Fetching 200 bars for XAUUSD (1min)
+2025-09-02 22:50:44 - DataFeeder - INFO - Successfully fetched 200 bars for XAUUSD
+2025-09-02 22:50:44 - DataFeeder - INFO - Filtering data from 2025-09-02 19:30:43 to 2025-09-02 22:50:43
+2025-09-02 22:50:44 - DataFeeder - INFO - Filtered to 200 bars
+2025-09-02 22:50:44 - SimplePipeline - INFO - Fetched 200 bars
+2025-09-02 22:50:44 - SimplePipeline - INFO - Signal: NEUTRAL | Price: 3537.99
+2025-09-02 22:50:45 - SimplePipeline - INFO - --- Iteration 23 ---
+2025-09-02 22:50:45 - SimplePipeline - INFO - Running single iteration
+2025-09-02 22:50:45 - DataFeeder - INFO - Fetching 200 bars for XAUUSD (1min)
+2025-09-02 22:50:46 - DataFeeder - INFO - Successfully fetched 200 bars for XAUUSD
+2025-09-02 22:50:46 - DataFeeder - INFO - Filtering data from 2025-09-02 19:30:45 to 2025-09-02 22:50:45
+2025-09-02 22:50:46 - DataFeeder - INFO - Filtered to 200 bars
+2025-09-02 22:50:46 - SimplePipeline - INFO - Fetched 200 bars
+2025-09-02 22:50:46 - SimplePipeline - INFO - Signal: NEUTRAL | Price: 3537.99
+2025-09-02 22:50:47 - SimplePipeline - INFO - --- Iteration 24 ---
+2025-09-02 22:50:47 - SimplePipeline - INFO - Running single iteration
+2025-09-02 22:50:47 - DataFeeder - INFO - Fetching 200 bars for XAUUSD (1min)
+2025-09-02 22:50:50 - DataFeeder - INFO - Successfully fetched 200 bars for XAUUSD
+2025-09-02 22:50:50 - DataFeeder - INFO - Filtering data from 2025-09-02 19:30:47 to 2025-09-02 22:50:47
+2025-09-02 22:50:50 - DataFeeder - INFO - Filtered to 200 bars
+2025-09-02 22:50:50 - SimplePipeline - INFO - Fetched 200 bars
+2025-09-02 22:50:50 - SimplePipeline - INFO - Signal: NEUTRAL | Price: 3537.97
+2025-09-02 22:50:51 - SimplePipeline - INFO - --- Iteration 25 ---
+2025-09-02 22:50:51 - SimplePipeline - INFO - Running single iteration
+2025-09-02 22:50:51 - DataFeeder - INFO - Fetching 200 bars for XAUUSD (1min)
+2025-09-02 22:50:52 - DataFeeder - WARNING - No data received for XAUUSD
+2025-09-02 22:50:52 - DataFeeder - WARNING - No data to filter
+2025-09-02 22:50:52 - SimplePipeline - WARNING - No data received
+2025-09-02 22:50:53 - SimplePipeline - INFO - --- Iteration 26 ---
+2025-09-02 22:50:53 - SimplePipeline - INFO - Running single iteration
+2025-09-02 22:50:53 - DataFeeder - INFO - Fetching 200 bars for XAUUSD (1min)
+2025-09-02 22:50:54 - DataFeeder - INFO - Successfully fetched 200 bars for XAUUSD
+2025-09-02 22:50:54 - DataFeeder - INFO - Filtering data from 2025-09-02 19:30:53 to 2025-09-02 22:50:53
+2025-09-02 22:50:54 - DataFeeder - INFO - Filtered to 200 bars
+2025-09-02 22:50:54 - SimplePipeline - INFO - Fetched 200 bars
+2025-09-02 22:50:54 - SimplePipeline - INFO - Signal: NEUTRAL | Price: 3537.97
+2025-09-02 22:50:55 - SimplePipeline - INFO - --- Iteration 27 ---
+2025-09-02 22:50:55 - SimplePipeline - INFO - Running single iteration
+2025-09-02 22:50:55 - DataFeeder - INFO - Fetching 200 bars for XAUUSD (1min)
+2025-09-02 22:50:56 - DataFeeder - INFO - Successfully fetched 200 bars for XAUUSD
+2025-09-02 22:50:56 - DataFeeder - INFO - Filtering data from 2025-09-02 19:30:55 to 2025-09-02 22:50:55
+2025-09-02 22:50:56 - DataFeeder - INFO - Filtered to 200 bars
+2025-09-02 22:50:56 - SimplePipeline - INFO - Fetched 200 bars
+2025-09-02 22:50:56 - SimplePipeline - INFO - Signal: NEUTRAL | Price: 3538.08
+2025-09-02 22:50:57 - SimplePipeline - INFO - --- Iteration 28 ---
+2025-09-02 22:50:57 - SimplePipeline - INFO - Running single iteration
+2025-09-02 22:50:57 - DataFeeder - INFO - Fetching 200 bars for XAUUSD (1min)
+2025-09-02 22:50:58 - DataFeeder - INFO - Successfully fetched 200 bars for XAUUSD
+2025-09-02 22:50:58 - DataFeeder - INFO - Filtering data from 2025-09-02 19:30:57 to 2025-09-02 22:50:57
+2025-09-02 22:50:58 - DataFeeder - INFO - Filtered to 200 bars
+2025-09-02 22:50:58 - SimplePipeline - INFO - Fetched 200 bars
+2025-09-02 22:50:58 - SimplePipeline - INFO - Signal: NEUTRAL | Price: 3538.08
+2025-09-02 22:50:59 - SimplePipeline - INFO - --- Iteration 29 ---
+2025-09-02 22:50:59 - SimplePipeline - INFO - Running single iteration
+2025-09-02 22:50:59 - DataFeeder - INFO - Fetching 200 bars for XAUUSD (1min)
+2025-09-02 22:51:00 - DataFeeder - INFO - Successfully fetched 200 bars for XAUUSD
+2025-09-02 22:51:00 - DataFeeder - INFO - Filtering data from 2025-09-02 19:30:59 to 2025-09-02 22:50:59
+2025-09-02 22:51:00 - DataFeeder - INFO - Filtered to 200 bars
+2025-09-02 22:51:00 - SimplePipeline - INFO - Fetched 200 bars
+2025-09-02 22:51:00 - SimplePipeline - INFO - Signal: NEUTRAL | Price: 3538.03
+2025-09-02 22:51:01 - SimplePipeline - INFO - --- Iteration 30 ---
+2025-09-02 22:51:01 - SimplePipeline - INFO - Running single iteration
+2025-09-02 22:51:01 - DataFeeder - INFO - Fetching 200 bars for XAUUSD (1min)
+2025-09-02 22:51:02 - DataFeeder - INFO - Successfully fetched 200 bars for XAUUSD
+2025-09-02 22:51:02 - DataFeeder - INFO - Filtering data from 2025-09-02 19:31:01 to 2025-09-02 22:51:01
+2025-09-02 22:51:02 - DataFeeder - INFO - Filtered to 200 bars
+2025-09-02 22:51:02 - SimplePipeline - INFO - Fetched 200 bars
+2025-09-02 22:51:02 - SimplePipeline - INFO - Signal: NEUTRAL | Price: 3537.99
+2025-09-02 22:51:03 - SimplePipeline - INFO - --- Iteration 31 ---
+2025-09-02 22:51:03 - SimplePipeline - INFO - Running single iteration
+2025-09-02 22:51:03 - DataFeeder - INFO - Fetching 200 bars for XAUUSD (1min)
+2025-09-02 22:51:04 - DataFeeder - INFO - Successfully fetched 200 bars for XAUUSD
+2025-09-02 22:51:04 - DataFeeder - INFO - Filtering data from 2025-09-02 19:31:03 to 2025-09-02 22:51:03
+2025-09-02 22:51:04 - DataFeeder - INFO - Filtered to 200 bars
+2025-09-02 22:51:04 - SimplePipeline - INFO - Fetched 200 bars
+2025-09-02 22:51:04 - SimplePipeline - INFO - Signal: NEUTRAL | Price: 3537.99
+2025-09-02 22:51:05 - SimplePipeline - INFO - --- Iteration 32 ---
+2025-09-02 22:51:05 - SimplePipeline - INFO - Running single iteration
+2025-09-02 22:51:05 - DataFeeder - INFO - Fetching 200 bars for XAUUSD (1min)
+2025-09-02 22:51:06 - DataFeeder - INFO - Successfully fetched 200 bars for XAUUSD
+2025-09-02 22:51:06 - DataFeeder - INFO - Filtering data from 2025-09-02 19:31:05 to 2025-09-02 22:51:05
+2025-09-02 22:51:06 - DataFeeder - INFO - Filtered to 200 bars
+2025-09-02 22:51:06 - SimplePipeline - INFO - Fetched 200 bars
+2025-09-02 22:51:06 - SimplePipeline - INFO - Signal: NEUTRAL | Price: 3538.01
+2025-09-02 22:51:07 - SimplePipeline - INFO - --- Iteration 33 ---
+2025-09-02 22:51:07 - SimplePipeline - INFO - Running single iteration
+2025-09-02 22:51:07 - DataFeeder - INFO - Fetching 200 bars for XAUUSD (1min)
+2025-09-02 22:51:08 - DataFeeder - INFO - Successfully fetched 200 bars for XAUUSD
+2025-09-02 22:51:08 - DataFeeder - INFO - Filtering data from 2025-09-02 19:31:07 to 2025-09-02 22:51:07
+2025-09-02 22:51:08 - DataFeeder - INFO - Filtered to 200 bars
+2025-09-02 22:51:08 - SimplePipeline - INFO - Fetched 200 bars
+2025-09-02 22:51:08 - SimplePipeline - INFO - Signal: NEUTRAL | Price: 3538.01
+2025-09-02 22:51:09 - SimplePipeline - INFO - --- Iteration 34 ---
+2025-09-02 22:51:09 - SimplePipeline - INFO - Running single iteration
+2025-09-02 22:51:09 - DataFeeder - INFO - Fetching 200 bars for XAUUSD (1min)
+2025-09-02 22:51:10 - DataFeeder - INFO - Successfully fetched 200 bars for XAUUSD
+2025-09-02 22:51:10 - DataFeeder - INFO - Filtering data from 2025-09-02 19:31:09 to 2025-09-02 22:51:09
+2025-09-02 22:51:10 - DataFeeder - INFO - Filtered to 200 bars
+2025-09-02 22:51:10 - SimplePipeline - INFO - Fetched 200 bars
+2025-09-02 22:51:10 - SimplePipeline - INFO - Signal: NEUTRAL | Price: 3538.01
+2025-09-02 22:51:11 - SimplePipeline - INFO - --- Iteration 35 ---
+2025-09-02 22:51:11 - SimplePipeline - INFO - Running single iteration
+2025-09-02 22:51:11 - DataFeeder - INFO - Fetching 200 bars for XAUUSD (1min)
+2025-09-02 22:51:12 - DataFeeder - INFO - Successfully fetched 200 bars for XAUUSD
+2025-09-02 22:51:12 - DataFeeder - INFO - Filtering data from 2025-09-02 19:31:11 to 2025-09-02 22:51:11
+2025-09-02 22:51:12 - DataFeeder - INFO - Filtered to 200 bars
+2025-09-02 22:51:12 - SimplePipeline - INFO - Fetched 200 bars
+2025-09-02 22:51:12 - SimplePipeline - INFO - Signal: NEUTRAL | Price: 3537.76
+2025-09-02 22:51:13 - SimplePipeline - INFO - --- Iteration 36 ---
+2025-09-02 22:51:13 - SimplePipeline - INFO - Running single iteration
+2025-09-02 22:51:13 - DataFeeder - INFO - Fetching 200 bars for XAUUSD (1min)
+2025-09-02 22:51:14 - DataFeeder - INFO - Successfully fetched 200 bars for XAUUSD
+2025-09-02 22:51:14 - DataFeeder - INFO - Filtering data from 2025-09-02 19:31:13 to 2025-09-02 22:51:13
+2025-09-02 22:51:14 - DataFeeder - INFO - Filtered to 200 bars
+2025-09-02 22:51:14 - SimplePipeline - INFO - Fetched 200 bars
+2025-09-02 22:51:14 - SimplePipeline - INFO - Signal: NEUTRAL | Price: 3537.76
+2025-09-02 22:51:15 - SimplePipeline - INFO - --- Iteration 37 ---
+2025-09-02 22:51:15 - SimplePipeline - INFO - Running single iteration
+2025-09-02 22:51:15 - DataFeeder - INFO - Fetching 200 bars for XAUUSD (1min)
+2025-09-02 22:51:16 - DataFeeder - INFO - Successfully fetched 200 bars for XAUUSD
+2025-09-02 22:51:16 - DataFeeder - INFO - Filtering data from 2025-09-02 19:31:15 to 2025-09-02 22:51:15
+2025-09-02 22:51:17 - DataFeeder - INFO - Filtered to 200 bars
+2025-09-02 22:51:17 - SimplePipeline - INFO - Fetched 200 bars
+2025-09-02 22:51:17 - SimplePipeline - INFO - Signal: NEUTRAL | Price: 3537.72
+2025-09-02 22:51:18 - SimplePipeline - INFO - --- Iteration 38 ---
+2025-09-02 22:51:18 - SimplePipeline - INFO - Running single iteration
+2025-09-02 22:51:18 - DataFeeder - INFO - Fetching 200 bars for XAUUSD (1min)
+2025-09-02 22:51:19 - DataFeeder - INFO - Successfully fetched 200 bars for XAUUSD
+2025-09-02 22:51:19 - DataFeeder - INFO - Filtering data from 2025-09-02 19:31:18 to 2025-09-02 22:51:18
+2025-09-02 22:51:19 - DataFeeder - INFO - Filtered to 200 bars
+2025-09-02 22:51:19 - SimplePipeline - INFO - Fetched 200 bars
+2025-09-02 22:51:19 - SimplePipeline - INFO - Signal: NEUTRAL | Price: 3537.72
+2025-09-02 22:51:20 - SimplePipeline - INFO - --- Iteration 39 ---
+2025-09-02 22:51:20 - SimplePipeline - INFO - Running single iteration
+2025-09-02 22:51:20 - DataFeeder - INFO - Fetching 200 bars for XAUUSD (1min)
+2025-09-02 22:51:20 - DataFeeder - INFO - Successfully fetched 200 bars for XAUUSD
+2025-09-02 22:51:20 - DataFeeder - INFO - Filtering data from 2025-09-02 19:31:20 to 2025-09-02 22:51:20
+2025-09-02 22:51:20 - DataFeeder - INFO - Filtered to 200 bars
+2025-09-02 22:51:20 - SimplePipeline - INFO - Fetched 200 bars
+2025-09-02 22:51:20 - SimplePipeline - INFO - Signal: NEUTRAL | Price: 3537.72
+2025-09-02 22:51:21 - SimplePipeline - INFO - --- Iteration 40 ---
+2025-09-02 22:51:21 - SimplePipeline - INFO - Running single iteration
+2025-09-02 22:51:21 - DataFeeder - INFO - Fetching 200 bars for XAUUSD (1min)
+2025-09-02 22:51:22 - DataFeeder - INFO - Successfully fetched 200 bars for XAUUSD
+2025-09-02 22:51:22 - DataFeeder - INFO - Filtering data from 2025-09-02 19:31:21 to 2025-09-02 22:51:21
+2025-09-02 22:51:22 - DataFeeder - INFO - Filtered to 200 bars
+2025-09-02 22:51:22 - SimplePipeline - INFO - Fetched 200 bars
+2025-09-02 22:51:22 - SimplePipeline - INFO - Signal: NEUTRAL | Price: 3537.72
+2025-09-02 22:51:23 - SimplePipeline - INFO - --- Iteration 41 ---
+2025-09-02 22:51:23 - SimplePipeline - INFO - Running single iteration
+2025-09-02 22:51:23 - DataFeeder - INFO - Fetching 200 bars for XAUUSD (1min)
+2025-09-02 22:51:25 - DataFeeder - INFO - Successfully fetched 200 bars for XAUUSD
+2025-09-02 22:51:25 - DataFeeder - INFO - Filtering data from 2025-09-02 19:31:23 to 2025-09-02 22:51:23
+2025-09-02 22:51:25 - DataFeeder - INFO - Filtered to 200 bars
+2025-09-02 22:51:25 - SimplePipeline - INFO - Fetched 200 bars
+2025-09-02 22:51:25 - SimplePipeline - INFO - Signal: NEUTRAL | Price: 3537.55
+2025-09-02 22:51:26 - SimplePipeline - INFO - --- Iteration 42 ---
+2025-09-02 22:51:26 - SimplePipeline - INFO - Running single iteration
+2025-09-02 22:51:26 - DataFeeder - INFO - Fetching 200 bars for XAUUSD (1min)
+2025-09-02 22:51:26 - DataFeeder - INFO - Successfully fetched 200 bars for XAUUSD
+2025-09-02 22:51:26 - DataFeeder - INFO - Filtering data from 2025-09-02 19:31:26 to 2025-09-02 22:51:26
+2025-09-02 22:51:26 - DataFeeder - INFO - Filtered to 200 bars
+2025-09-02 22:51:26 - SimplePipeline - INFO - Fetched 200 bars
+2025-09-02 22:51:26 - SimplePipeline - INFO - Signal: NEUTRAL | Price: 3537.55
+2025-09-02 22:51:27 - SimplePipeline - INFO - --- Iteration 43 ---
+2025-09-02 22:51:27 - SimplePipeline - INFO - Running single iteration
+2025-09-02 22:51:27 - DataFeeder - INFO - Fetching 200 bars for XAUUSD (1min)
+2025-09-02 22:51:28 - DataFeeder - INFO - Successfully fetched 200 bars for XAUUSD
+2025-09-02 22:51:28 - DataFeeder - INFO - Filtering data from 2025-09-02 19:31:27 to 2025-09-02 22:51:27
+2025-09-02 22:51:28 - DataFeeder - INFO - Filtered to 200 bars
+2025-09-02 22:51:28 - SimplePipeline - INFO - Fetched 200 bars
+2025-09-02 22:51:28 - SimplePipeline - INFO - Signal: NEUTRAL | Price: 3537.58
+2025-09-02 22:51:29 - SimplePipeline - INFO - --- Iteration 44 ---
+2025-09-02 22:51:29 - SimplePipeline - INFO - Running single iteration
+2025-09-02 22:51:29 - DataFeeder - INFO - Fetching 200 bars for XAUUSD (1min)
+2025-09-02 22:51:30 - DataFeeder - INFO - Successfully fetched 200 bars for XAUUSD
+2025-09-02 22:51:30 - DataFeeder - INFO - Filtering data from 2025-09-02 19:31:29 to 2025-09-02 22:51:29
+2025-09-02 22:51:30 - DataFeeder - INFO - Filtered to 200 bars
+2025-09-02 22:51:30 - SimplePipeline - INFO - Fetched 200 bars
+2025-09-02 22:51:30 - SimplePipeline - INFO - Signal: NEUTRAL | Price: 3537.58
+2025-09-02 22:51:31 - SimplePipeline - INFO - --- Iteration 45 ---
+2025-09-02 22:51:31 - SimplePipeline - INFO - Running single iteration
+2025-09-02 22:51:31 - DataFeeder - INFO - Fetching 200 bars for XAUUSD (1min)
+2025-09-02 22:51:32 - DataFeeder - INFO - Successfully fetched 200 bars for XAUUSD
+2025-09-02 22:51:32 - DataFeeder - INFO - Filtering data from 2025-09-02 19:31:31 to 2025-09-02 22:51:31
+2025-09-02 22:51:32 - DataFeeder - INFO - Filtered to 200 bars
+2025-09-02 22:51:32 - SimplePipeline - INFO - Fetched 200 bars
+2025-09-02 22:51:32 - SimplePipeline - INFO - Signal: NEUTRAL | Price: 3537.58
+2025-09-02 22:51:33 - SimplePipeline - INFO - --- Iteration 46 ---
+2025-09-02 22:51:33 - SimplePipeline - INFO - Running single iteration
+2025-09-02 22:51:33 - DataFeeder - INFO - Fetching 200 bars for XAUUSD (1min)
+2025-09-02 22:51:34 - DataFeeder - INFO - Successfully fetched 200 bars for XAUUSD
+2025-09-02 22:51:34 - DataFeeder - INFO - Filtering data from 2025-09-02 19:31:33 to 2025-09-02 22:51:33
+2025-09-02 22:51:34 - DataFeeder - INFO - Filtered to 200 bars
+2025-09-02 22:51:34 - SimplePipeline - INFO - Fetched 200 bars
+2025-09-02 22:51:34 - SimplePipeline - INFO - Signal: NEUTRAL | Price: 3537.44
+2025-09-02 22:51:35 - SimplePipeline - INFO - --- Iteration 47 ---
+2025-09-02 22:51:35 - SimplePipeline - INFO - Running single iteration
+2025-09-02 22:51:35 - DataFeeder - INFO - Fetching 200 bars for XAUUSD (1min)
+2025-09-02 22:51:36 - DataFeeder - WARNING - No data received for XAUUSD
+2025-09-02 22:51:36 - DataFeeder - WARNING - No data to filter
+2025-09-02 22:51:36 - SimplePipeline - WARNING - No data received
+2025-09-02 22:51:37 - SimplePipeline - INFO - --- Iteration 48 ---
+2025-09-02 22:51:37 - SimplePipeline - INFO - Running single iteration
+2025-09-02 22:51:37 - DataFeeder - INFO - Fetching 200 bars for XAUUSD (1min)
+2025-09-02 22:51:39 - DataFeeder - INFO - Successfully fetched 200 bars for XAUUSD
+2025-09-02 22:51:39 - DataFeeder - INFO - Filtering data from 2025-09-02 19:31:37 to 2025-09-02 22:51:37
+2025-09-02 22:51:39 - DataFeeder - INFO - Filtered to 200 bars
+2025-09-02 22:51:39 - SimplePipeline - INFO - Fetched 200 bars
+2025-09-02 22:51:39 - SimplePipeline - INFO - Signal: NEUTRAL | Price: 3537.30
+2025-09-02 22:51:40 - SimplePipeline - INFO - --- Iteration 49 ---
+2025-09-02 22:51:40 - SimplePipeline - INFO - Running single iteration
+2025-09-02 22:51:40 - DataFeeder - INFO - Fetching 200 bars for XAUUSD (1min)
+2025-09-02 22:51:41 - DataFeeder - INFO - Successfully fetched 200 bars for XAUUSD
+2025-09-02 22:51:41 - DataFeeder - INFO - Filtering data from 2025-09-02 19:31:40 to 2025-09-02 22:51:40
+2025-09-02 22:51:41 - DataFeeder - INFO - Filtered to 200 bars
+2025-09-02 22:51:41 - SimplePipeline - INFO - Fetched 200 bars
+2025-09-02 22:51:41 - SimplePipeline - INFO - Signal: NEUTRAL | Price: 3537.30
+2025-09-02 22:51:42 - SimplePipeline - INFO - --- Iteration 50 ---
+2025-09-02 22:51:42 - SimplePipeline - INFO - Running single iteration
+2025-09-02 22:51:42 - DataFeeder - INFO - Fetching 200 bars for XAUUSD (1min)
+2025-09-02 22:51:43 - DataFeeder - INFO - Successfully fetched 200 bars for XAUUSD
+2025-09-02 22:51:43 - DataFeeder - INFO - Filtering data from 2025-09-02 19:31:42 to 2025-09-02 22:51:42
+2025-09-02 22:51:43 - DataFeeder - INFO - Filtered to 200 bars
+2025-09-02 22:51:43 - SimplePipeline - INFO - Fetched 200 bars
+2025-09-02 22:51:43 - SimplePipeline - INFO - Signal: NEUTRAL | Price: 3537.30
+2025-09-02 22:51:44 - SimplePipeline - INFO - --- Iteration 51 ---
+2025-09-02 22:51:44 - SimplePipeline - INFO - Running single iteration
+2025-09-02 22:51:44 - DataFeeder - INFO - Fetching 200 bars for XAUUSD (1min)
+2025-09-02 22:51:45 - DataFeeder - INFO - Successfully fetched 200 bars for XAUUSD
+2025-09-02 22:51:45 - DataFeeder - INFO - Filtering data from 2025-09-02 19:31:44 to 2025-09-02 22:51:44
+2025-09-02 22:51:45 - DataFeeder - INFO - Filtered to 200 bars
+2025-09-02 22:51:45 - SimplePipeline - INFO - Fetched 200 bars
+2025-09-02 22:51:45 - SimplePipeline - INFO - Signal: NEUTRAL | Price: 3537.32
+2025-09-02 22:51:46 - SimplePipeline - INFO - --- Iteration 52 ---
+2025-09-02 22:51:46 - SimplePipeline - INFO - Running single iteration
+2025-09-02 22:51:46 - DataFeeder - INFO - Fetching 200 bars for XAUUSD (1min)
+2025-09-02 22:51:47 - DataFeeder - INFO - Successfully fetched 200 bars for XAUUSD
+2025-09-02 22:51:47 - DataFeeder - INFO - Filtering data from 2025-09-02 19:31:46 to 2025-09-02 22:51:46
+2025-09-02 22:51:47 - DataFeeder - INFO - Filtered to 200 bars
+2025-09-02 22:51:47 - SimplePipeline - INFO - Fetched 200 bars
+2025-09-02 22:51:47 - SimplePipeline - INFO - Signal: NEUTRAL | Price: 3537.32
+2025-09-02 22:51:48 - SimplePipeline - INFO - --- Iteration 53 ---
+2025-09-02 22:51:48 - SimplePipeline - INFO - Running single iteration
+2025-09-02 22:51:48 - DataFeeder - INFO - Fetching 200 bars for XAUUSD (1min)
+2025-09-02 22:51:49 - DataFeeder - INFO - Successfully fetched 200 bars for XAUUSD
+2025-09-02 22:51:49 - DataFeeder - INFO - Filtering data from 2025-09-02 19:31:48 to 2025-09-02 22:51:48
+2025-09-02 22:51:49 - DataFeeder - INFO - Filtered to 200 bars
+2025-09-02 22:51:49 - SimplePipeline - INFO - Fetched 200 bars
+2025-09-02 22:51:49 - SimplePipeline - INFO - Signal: NEUTRAL | Price: 3537.32
+2025-09-02 22:51:50 - SimplePipeline - INFO - --- Iteration 54 ---
+2025-09-02 22:51:50 - SimplePipeline - INFO - Running single iteration
+2025-09-02 22:51:50 - DataFeeder - INFO - Fetching 200 bars for XAUUSD (1min)
+2025-09-02 22:51:52 - DataFeeder - INFO - Successfully fetched 200 bars for XAUUSD
+2025-09-02 22:51:52 - DataFeeder - INFO - Filtering data from 2025-09-02 19:31:50 to 2025-09-02 22:51:50
+2025-09-02 22:51:52 - DataFeeder - INFO - Filtered to 200 bars
+2025-09-02 22:51:52 - SimplePipeline - INFO - Fetched 200 bars
+2025-09-02 22:51:52 - SimplePipeline - INFO - Signal: NEUTRAL | Price: 3537.30
+2025-09-02 22:51:53 - SimplePipeline - INFO - --- Iteration 55 ---
+2025-09-02 22:51:53 - SimplePipeline - INFO - Running single iteration
+2025-09-02 22:51:53 - DataFeeder - INFO - Fetching 200 bars for XAUUSD (1min)
+2025-09-02 22:51:54 - DataFeeder - INFO - Successfully fetched 200 bars for XAUUSD
+2025-09-02 22:51:54 - DataFeeder - INFO - Filtering data from 2025-09-02 19:31:53 to 2025-09-02 22:51:53
+2025-09-02 22:51:54 - DataFeeder - INFO - Filtered to 200 bars
+2025-09-02 22:51:54 - SimplePipeline - INFO - Fetched 200 bars
+2025-09-02 22:51:54 - SimplePipeline - INFO - Signal: NEUTRAL | Price: 3537.30
+2025-09-02 22:51:55 - SimplePipeline - INFO - --- Iteration 56 ---
+2025-09-02 22:51:55 - SimplePipeline - INFO - Running single iteration
+2025-09-02 22:51:55 - DataFeeder - INFO - Fetching 200 bars for XAUUSD (1min)
+2025-09-02 22:51:56 - DataFeeder - INFO - Successfully fetched 200 bars for XAUUSD
+2025-09-02 22:51:56 - DataFeeder - INFO - Filtering data from 2025-09-02 19:31:55 to 2025-09-02 22:51:55
+2025-09-02 22:51:56 - DataFeeder - INFO - Filtered to 200 bars
+2025-09-02 22:51:56 - SimplePipeline - INFO - Fetched 200 bars
+2025-09-02 22:51:56 - SimplePipeline - INFO - Signal: NEUTRAL | Price: 3537.01
+2025-09-02 22:51:57 - SimplePipeline - INFO - --- Iteration 57 ---
+2025-09-02 22:51:57 - SimplePipeline - INFO - Running single iteration
+2025-09-02 22:51:57 - DataFeeder - INFO - Fetching 200 bars for XAUUSD (1min)
+2025-09-02 22:51:58 - DataFeeder - INFO - Successfully fetched 200 bars for XAUUSD
+2025-09-02 22:51:58 - DataFeeder - INFO - Filtering data from 2025-09-02 19:31:57 to 2025-09-02 22:51:57
+2025-09-02 22:51:58 - DataFeeder - INFO - Filtered to 200 bars
+2025-09-02 22:51:58 - SimplePipeline - INFO - Fetched 200 bars
+2025-09-02 22:51:58 - SimplePipeline - INFO - Signal: NEUTRAL | Price: 3537.01
+2025-09-02 22:51:59 - SimplePipeline - INFO - --- Iteration 58 ---
+2025-09-02 22:51:59 - SimplePipeline - INFO - Running single iteration
+2025-09-02 22:51:59 - DataFeeder - INFO - Fetching 200 bars for XAUUSD (1min)
+2025-09-02 22:52:00 - DataFeeder - INFO - Successfully fetched 200 bars for XAUUSD
+2025-09-02 22:52:00 - DataFeeder - INFO - Filtering data from 2025-09-02 19:31:59 to 2025-09-02 22:51:59
+2025-09-02 22:52:00 - DataFeeder - INFO - Filtered to 200 bars
+2025-09-02 22:52:00 - SimplePipeline - INFO - Fetched 200 bars
+2025-09-02 22:52:00 - SimplePipeline - INFO - Signal: NEUTRAL | Price: 3537.01
+2025-09-02 22:52:01 - SimplePipeline - INFO - --- Iteration 59 ---
+2025-09-02 22:52:01 - SimplePipeline - INFO - Running single iteration
+2025-09-02 22:52:01 - DataFeeder - INFO - Fetching 200 bars for XAUUSD (1min)
+2025-09-02 22:52:01 - DataFeeder - INFO - Successfully fetched 200 bars for XAUUSD
+2025-09-02 22:52:01 - DataFeeder - INFO - Filtering data from 2025-09-02 19:32:01 to 2025-09-02 22:52:01
+2025-09-02 22:52:01 - DataFeeder - INFO - Filtered to 200 bars
+2025-09-02 22:52:01 - SimplePipeline - INFO - Fetched 200 bars
+2025-09-02 22:52:01 - SimplePipeline - INFO - Signal: NEUTRAL | Price: 3536.92
+2025-09-02 22:52:02 - SimplePipeline - INFO - --- Iteration 60 ---
+2025-09-02 22:52:02 - SimplePipeline - INFO - Running single iteration
+2025-09-02 22:52:02 - DataFeeder - INFO - Fetching 200 bars for XAUUSD (1min)
+2025-09-02 22:52:03 - DataFeeder - INFO - Successfully fetched 200 bars for XAUUSD
+2025-09-02 22:52:03 - DataFeeder - INFO - Filtering data from 2025-09-02 19:32:02 to 2025-09-02 22:52:02
+2025-09-02 22:52:03 - DataFeeder - INFO - Filtered to 200 bars
+2025-09-02 22:52:03 - SimplePipeline - INFO - Fetched 200 bars
+2025-09-02 22:52:03 - SimplePipeline - INFO - Signal: NEUTRAL | Price: 3536.92
+2025-09-02 22:52:04 - SimplePipeline - INFO - --- Iteration 61 ---
+2025-09-02 22:52:04 - SimplePipeline - INFO - Running single iteration
+2025-09-02 22:52:04 - DataFeeder - INFO - Fetching 200 bars for XAUUSD (1min)
+2025-09-02 22:52:06 - DataFeeder - INFO - Successfully fetched 200 bars for XAUUSD
+2025-09-02 22:52:06 - DataFeeder - INFO - Filtering data from 2025-09-02 19:32:04 to 2025-09-02 22:52:04
+2025-09-02 22:52:06 - DataFeeder - INFO - Filtered to 200 bars
+2025-09-02 22:52:06 - SimplePipeline - INFO - Fetched 200 bars
+2025-09-02 22:52:06 - SimplePipeline - INFO - Signal: NEUTRAL | Price: 3537.32
+2025-09-02 22:52:07 - SimplePipeline - INFO - --- Iteration 62 ---
+2025-09-02 22:52:07 - SimplePipeline - INFO - Running single iteration
+2025-09-02 22:52:07 - DataFeeder - INFO - Fetching 200 bars for XAUUSD (1min)
+2025-09-02 22:52:08 - DataFeeder - INFO - Successfully fetched 200 bars for XAUUSD
+2025-09-02 22:52:08 - DataFeeder - INFO - Filtering data from 2025-09-02 19:32:07 to 2025-09-02 22:52:07
+2025-09-02 22:52:08 - DataFeeder - INFO - Filtered to 200 bars
+2025-09-02 22:52:08 - SimplePipeline - INFO - Fetched 200 bars
+2025-09-02 22:52:08 - SimplePipeline - INFO - Signal: NEUTRAL | Price: 3537.32
+2025-09-02 22:52:09 - SimplePipeline - INFO - --- Iteration 63 ---
+2025-09-02 22:52:09 - SimplePipeline - INFO - Running single iteration
+2025-09-02 22:52:09 - DataFeeder - INFO - Fetching 200 bars for XAUUSD (1min)
+2025-09-02 22:52:10 - DataFeeder - INFO - Successfully fetched 200 bars for XAUUSD
+2025-09-02 22:52:10 - DataFeeder - INFO - Filtering data from 2025-09-02 19:32:09 to 2025-09-02 22:52:09
+2025-09-02 22:52:10 - DataFeeder - INFO - Filtered to 200 bars
+2025-09-02 22:52:10 - SimplePipeline - INFO - Fetched 200 bars
+2025-09-02 22:52:10 - SimplePipeline - INFO - Signal: NEUTRAL | Price: 3537.23
+2025-09-02 22:58:34 - Main - INFO - Starting Optimized Trading Pipeline
+2025-09-02 22:58:34 - DataFeeder - INFO - Connected to TradingView without authentication
+2025-09-02 22:58:34 - TelegramBot - INFO - Database initialized successfully
+2025-09-02 22:58:34 - TelegramBot - INFO - Telegram bot initialized
+2025-09-02 22:58:34 - PipelineOrchestrator - INFO - Pipeline initialized for XAUUSD
+2025-09-02 22:58:34 - PipelineOrchestrator - INFO - Starting continuous monitoring (delay: 1s)
+2025-09-02 22:58:35 - TelegramBot - INFO - Notification sent: INFO
+2025-09-02 22:58:35 - PipelineOrchestrator - INFO - --- Iteration 1 ---
+2025-09-02 22:58:35 - DataFeeder - INFO - Fetching 200 bars for XAUUSD (1min)
+2025-09-02 22:58:35 - DataFeeder - INFO - Successfully fetched 200 bars for XAUUSD
+2025-09-02 22:58:35 - DataFeeder - INFO - Filtering data from 2025-09-02 19:38:35 to 2025-09-02 22:58:35
+2025-09-02 22:58:35 - DataFeeder - INFO - Filtered to 200 bars
+2025-09-02 22:58:35 - PipelineOrchestrator - INFO - Fetched 200 bars
+2025-09-02 22:58:36 - PipelineOrchestrator - INFO - Signal: NEUTRAL | Price: 3536.34
+2025-09-02 22:58:37 - PipelineOrchestrator - INFO - --- Iteration 2 ---
+2025-09-02 22:58:37 - PipelineOrchestrator - INFO - Signal: NEUTRAL | Price: 3536.34
+2025-09-02 22:58:38 - PipelineOrchestrator - INFO - --- Iteration 3 ---
+2025-09-02 22:58:38 - PipelineOrchestrator - INFO - Signal: NEUTRAL | Price: 3536.34
+2025-09-02 22:58:39 - PipelineOrchestrator - INFO - --- Iteration 4 ---
+2025-09-02 22:58:39 - PipelineOrchestrator - INFO - Signal: NEUTRAL | Price: 3536.34
+2025-09-02 22:58:40 - PipelineOrchestrator - INFO - --- Iteration 5 ---
+2025-09-02 22:58:40 - PipelineOrchestrator - INFO - Signal: NEUTRAL | Price: 3536.34
+2025-09-02 22:58:41 - PipelineOrchestrator - INFO - --- Iteration 6 ---
+2025-09-02 22:58:41 - PipelineOrchestrator - INFO - Signal: NEUTRAL | Price: 3536.34
+2025-09-02 22:58:42 - PipelineOrchestrator - INFO - --- Iteration 7 ---
+2025-09-02 22:58:42 - PipelineOrchestrator - INFO - Signal: NEUTRAL | Price: 3536.34
+2025-09-02 22:58:43 - PipelineOrchestrator - INFO - --- Iteration 8 ---
+2025-09-02 22:58:43 - PipelineOrchestrator - INFO - Signal: NEUTRAL | Price: 3536.34
+2025-09-02 22:58:44 - PipelineOrchestrator - INFO - --- Iteration 9 ---
+2025-09-02 22:58:44 - PipelineOrchestrator - INFO - Signal: NEUTRAL | Price: 3536.34
+2025-09-02 22:58:45 - PipelineOrchestrator - INFO - --- Iteration 10 ---
+2025-09-02 22:58:45 - PipelineOrchestrator - INFO - Signal: NEUTRAL | Price: 3536.34
+2025-09-02 22:58:46 - PipelineOrchestrator - INFO - --- Iteration 11 ---
+2025-09-02 22:58:46 - PipelineOrchestrator - INFO - Signal: NEUTRAL | Price: 3536.34
+2025-09-02 22:58:47 - PipelineOrchestrator - INFO - --- Iteration 12 ---
+2025-09-02 22:58:47 - PipelineOrchestrator - INFO - Signal: NEUTRAL | Price: 3536.34
+2025-09-02 22:58:48 - PipelineOrchestrator - INFO - --- Iteration 13 ---
+2025-09-02 22:58:48 - PipelineOrchestrator - INFO - Signal: NEUTRAL | Price: 3536.34
+2025-09-02 22:58:49 - PipelineOrchestrator - INFO - --- Iteration 14 ---
+2025-09-02 22:58:49 - PipelineOrchestrator - INFO - Signal: NEUTRAL | Price: 3536.34
+2025-09-02 22:58:50 - PipelineOrchestrator - INFO - --- Iteration 15 ---
+2025-09-02 22:58:50 - PipelineOrchestrator - INFO - Signal: NEUTRAL | Price: 3536.34
+2025-09-02 22:58:51 - PipelineOrchestrator - INFO - --- Iteration 16 ---
+2025-09-02 22:58:51 - PipelineOrchestrator - INFO - Signal: NEUTRAL | Price: 3536.34
+2025-09-02 22:58:52 - PipelineOrchestrator - INFO - --- Iteration 17 ---
+2025-09-02 22:58:52 - PipelineOrchestrator - INFO - Signal: NEUTRAL | Price: 3536.34
+2025-09-02 22:58:53 - PipelineOrchestrator - INFO - --- Iteration 18 ---
+2025-09-02 22:58:53 - PipelineOrchestrator - INFO - Signal: NEUTRAL | Price: 3536.34
+2025-09-02 22:58:54 - PipelineOrchestrator - INFO - --- Iteration 19 ---
+2025-09-02 22:58:54 - PipelineOrchestrator - INFO - Signal: NEUTRAL | Price: 3536.34
+2025-09-02 22:58:55 - PipelineOrchestrator - INFO - --- Iteration 20 ---
+2025-09-02 22:58:55 - PipelineOrchestrator - INFO - Signal: NEUTRAL | Price: 3536.34
+2025-09-02 22:58:56 - PipelineOrchestrator - INFO - --- Iteration 21 ---
+2025-09-02 22:58:56 - PipelineOrchestrator - INFO - Signal: NEUTRAL | Price: 3536.34
+2025-09-02 22:58:57 - PipelineOrchestrator - INFO - --- Iteration 22 ---
+2025-09-02 22:58:57 - PipelineOrchestrator - INFO - Signal: NEUTRAL | Price: 3536.34
+2025-09-02 22:58:58 - PipelineOrchestrator - INFO - --- Iteration 23 ---
+2025-09-02 22:58:58 - PipelineOrchestrator - INFO - Signal: NEUTRAL | Price: 3536.34
+2025-09-02 22:58:59 - PipelineOrchestrator - INFO - --- Iteration 24 ---
+2025-09-02 22:58:59 - PipelineOrchestrator - INFO - Signal: NEUTRAL | Price: 3536.34
+2025-09-02 22:59:00 - PipelineOrchestrator - INFO - --- Iteration 25 ---
+2025-09-02 22:59:00 - PipelineOrchestrator - INFO - Signal: NEUTRAL | Price: 3536.34
+2025-09-02 22:59:01 - PipelineOrchestrator - INFO - --- Iteration 26 ---
+2025-09-02 22:59:01 - PipelineOrchestrator - INFO - Signal: NEUTRAL | Price: 3536.34
+2025-09-02 22:59:02 - PipelineOrchestrator - INFO - --- Iteration 27 ---
+2025-09-02 22:59:02 - PipelineOrchestrator - INFO - Signal: NEUTRAL | Price: 3536.34
+2025-09-02 22:59:03 - PipelineOrchestrator - INFO - --- Iteration 28 ---
+2025-09-02 22:59:03 - PipelineOrchestrator - INFO - Signal: NEUTRAL | Price: 3536.34
+2025-09-02 22:59:04 - PipelineOrchestrator - INFO - --- Iteration 29 ---
+2025-09-02 22:59:04 - PipelineOrchestrator - INFO - Signal: NEUTRAL | Price: 3536.34
+2025-09-02 22:59:05 - PipelineOrchestrator - INFO - --- Iteration 30 ---
+2025-09-02 22:59:05 - DataFeeder - INFO - Fetching 200 bars for XAUUSD (1min)
+2025-09-02 22:59:06 - DataFeeder - INFO - Successfully fetched 200 bars for XAUUSD
+2025-09-02 22:59:06 - DataFeeder - INFO - Filtering data from 2025-09-02 19:39:05 to 2025-09-02 22:59:05
+2025-09-02 22:59:06 - DataFeeder - INFO - Filtered to 200 bars
+2025-09-02 22:59:06 - PipelineOrchestrator - INFO - Fetched 200 bars
+2025-09-02 22:59:06 - PipelineOrchestrator - INFO - Signal: NEUTRAL | Price: 3536.60
+2025-09-02 22:59:07 - PipelineOrchestrator - INFO - --- Iteration 31 ---
+2025-09-02 22:59:07 - PipelineOrchestrator - INFO - Signal: NEUTRAL | Price: 3536.60
+2025-09-02 22:59:08 - PipelineOrchestrator - INFO - --- Iteration 32 ---
+2025-09-02 22:59:08 - PipelineOrchestrator - INFO - Signal: NEUTRAL | Price: 3536.60
+2025-09-02 22:59:09 - PipelineOrchestrator - INFO - --- Iteration 33 ---
+2025-09-02 22:59:09 - PipelineOrchestrator - INFO - Signal: NEUTRAL | Price: 3536.60
+2025-09-02 22:59:10 - PipelineOrchestrator - INFO - --- Iteration 34 ---
+2025-09-02 22:59:10 - PipelineOrchestrator - INFO - Signal: NEUTRAL | Price: 3536.60
+2025-09-02 22:59:11 - PipelineOrchestrator - INFO - --- Iteration 35 ---
+2025-09-02 22:59:11 - PipelineOrchestrator - INFO - Signal: NEUTRAL | Price: 3536.60
+2025-09-02 22:59:12 - PipelineOrchestrator - INFO - --- Iteration 36 ---
+2025-09-02 22:59:12 - PipelineOrchestrator - INFO - Signal: NEUTRAL | Price: 3536.60
+2025-09-02 22:59:13 - PipelineOrchestrator - INFO - --- Iteration 37 ---
+2025-09-02 22:59:14 - PipelineOrchestrator - INFO - Signal: NEUTRAL | Price: 3536.60
+2025-09-02 22:59:15 - PipelineOrchestrator - INFO - --- Iteration 38 ---
+2025-09-02 22:59:15 - PipelineOrchestrator - INFO - Signal: NEUTRAL | Price: 3536.60
+2025-09-02 22:59:16 - PipelineOrchestrator - INFO - --- Iteration 39 ---
+2025-09-02 22:59:16 - PipelineOrchestrator - INFO - Signal: NEUTRAL | Price: 3536.60
+2025-09-02 22:59:17 - PipelineOrchestrator - INFO - --- Iteration 40 ---
+2025-09-02 22:59:17 - PipelineOrchestrator - INFO - Signal: NEUTRAL | Price: 3536.60
+2025-09-02 22:59:18 - PipelineOrchestrator - INFO - --- Iteration 41 ---
+2025-09-02 22:59:18 - PipelineOrchestrator - INFO - Signal: NEUTRAL | Price: 3536.60
+2025-09-02 22:59:19 - PipelineOrchestrator - INFO - --- Iteration 42 ---
+2025-09-02 22:59:19 - PipelineOrchestrator - INFO - Signal: NEUTRAL | Price: 3536.60
+2025-09-02 22:59:20 - PipelineOrchestrator - INFO - --- Iteration 43 ---
+2025-09-02 22:59:20 - PipelineOrchestrator - INFO - Signal: NEUTRAL | Price: 3536.60
+2025-09-02 22:59:21 - PipelineOrchestrator - INFO - --- Iteration 44 ---
+2025-09-02 22:59:21 - PipelineOrchestrator - INFO - Signal: NEUTRAL | Price: 3536.60
+2025-09-02 22:59:22 - PipelineOrchestrator - INFO - --- Iteration 45 ---
+2025-09-02 22:59:22 - PipelineOrchestrator - INFO - Signal: NEUTRAL | Price: 3536.60
+2025-09-02 22:59:23 - PipelineOrchestrator - INFO - --- Iteration 46 ---
+2025-09-02 22:59:23 - PipelineOrchestrator - INFO - Signal: NEUTRAL | Price: 3536.60
+2025-09-02 22:59:24 - PipelineOrchestrator - INFO - --- Iteration 47 ---
+2025-09-02 22:59:24 - PipelineOrchestrator - INFO - Signal: NEUTRAL | Price: 3536.60
+2025-09-02 22:59:25 - PipelineOrchestrator - INFO - --- Iteration 48 ---
+2025-09-02 22:59:25 - PipelineOrchestrator - INFO - Signal: NEUTRAL | Price: 3536.60
+2025-09-02 22:59:26 - PipelineOrchestrator - INFO - --- Iteration 49 ---
+2025-09-02 22:59:26 - PipelineOrchestrator - INFO - Signal: NEUTRAL | Price: 3536.60
+2025-09-02 22:59:27 - PipelineOrchestrator - INFO - --- Iteration 50 ---
+2025-09-02 22:59:27 - PipelineOrchestrator - INFO - Signal: NEUTRAL | Price: 3536.60
+2025-09-02 22:59:28 - PipelineOrchestrator - INFO - --- Iteration 51 ---
+2025-09-02 22:59:28 - PipelineOrchestrator - INFO - Signal: NEUTRAL | Price: 3536.60
+2025-09-02 22:59:29 - PipelineOrchestrator - INFO - --- Iteration 52 ---
+2025-09-02 22:59:29 - PipelineOrchestrator - INFO - Signal: NEUTRAL | Price: 3536.60
+2025-09-02 22:59:30 - PipelineOrchestrator - INFO - --- Iteration 53 ---
+2025-09-02 22:59:30 - PipelineOrchestrator - INFO - Signal: NEUTRAL | Price: 3536.60
+2025-09-02 22:59:31 - PipelineOrchestrator - INFO - --- Iteration 54 ---
+2025-09-02 22:59:31 - PipelineOrchestrator - INFO - Signal: NEUTRAL | Price: 3536.60
+2025-09-02 22:59:32 - PipelineOrchestrator - INFO - --- Iteration 55 ---
+2025-09-02 22:59:32 - PipelineOrchestrator - INFO - Signal: NEUTRAL | Price: 3536.60
+2025-09-02 22:59:33 - TelegramBot - INFO - Notification sent: INFO
+2025-09-02 23:02:29 - Main - INFO - Starting Optimized Trading Pipeline
+2025-09-02 23:02:29 - DataFeeder - INFO - Connected to TradingView without authentication
+2025-09-02 23:02:29 - TelegramBot - INFO - Database initialized successfully
+2025-09-02 23:02:29 - TelegramBot - INFO - Telegram bot initialized
+2025-09-02 23:02:29 - PipelineOrchestrator - INFO - Pipeline initialized for XAUUSD
+2025-09-02 23:02:29 - PipelineOrchestrator - INFO - Starting continuous monitoring (delay: 1s)
+2025-09-02 23:02:30 - TelegramBot - INFO - Notification sent: INFO
+2025-09-02 23:02:30 - PipelineOrchestrator - INFO - --- Iteration 1 ---
+2025-09-02 23:02:30 - DataFeeder - INFO - Fetching 200 bars for XAUUSD (1min)
+2025-09-02 23:02:31 - DataFeeder - INFO - Successfully fetched 200 bars for XAUUSD
+2025-09-02 23:02:31 - DataFeeder - INFO - Filtering data from 2025-09-02 19:42:30 to 2025-09-02 23:02:30
+2025-09-02 23:02:31 - DataFeeder - INFO - Filtered to 200 bars
+2025-09-02 23:02:31 - PipelineOrchestrator - INFO - Fetched 200 bars
+2025-09-02 23:02:31 - PipelineOrchestrator - INFO - Signal: NEUTRAL | Price: 3537.49
+2025-09-02 23:02:32 - PipelineOrchestrator - INFO - --- Iteration 2 ---
+2025-09-02 23:02:32 - PipelineOrchestrator - INFO - Signal: NEUTRAL | Price: 3537.49
+2025-09-02 23:02:33 - PipelineOrchestrator - INFO - --- Iteration 3 ---
+2025-09-02 23:02:33 - PipelineOrchestrator - INFO - Signal: NEUTRAL | Price: 3537.49
+2025-09-02 23:02:34 - PipelineOrchestrator - INFO - --- Iteration 4 ---
+2025-09-02 23:02:34 - PipelineOrchestrator - INFO - Signal: NEUTRAL | Price: 3537.49
+2025-09-02 23:02:35 - PipelineOrchestrator - INFO - --- Iteration 5 ---
+2025-09-02 23:02:35 - PipelineOrchestrator - INFO - Signal: NEUTRAL | Price: 3537.49
+2025-09-02 23:02:36 - PipelineOrchestrator - INFO - --- Iteration 6 ---
+2025-09-02 23:02:36 - PipelineOrchestrator - INFO - Signal: NEUTRAL | Price: 3537.49
+2025-09-02 23:02:37 - PipelineOrchestrator - INFO - --- Iteration 7 ---
+2025-09-02 23:02:37 - PipelineOrchestrator - INFO - Signal: NEUTRAL | Price: 3537.49
+2025-09-02 23:02:38 - PipelineOrchestrator - INFO - --- Iteration 8 ---
+2025-09-02 23:02:38 - PipelineOrchestrator - INFO - Signal: NEUTRAL | Price: 3537.49
+2025-09-02 23:02:39 - PipelineOrchestrator - INFO - --- Iteration 9 ---
+2025-09-02 23:02:39 - PipelineOrchestrator - INFO - Signal: NEUTRAL | Price: 3537.49
+2025-09-02 23:02:40 - PipelineOrchestrator - INFO - --- Iteration 10 ---
+2025-09-02 23:02:40 - PipelineOrchestrator - INFO - Signal: NEUTRAL | Price: 3537.49
+2025-09-02 23:02:41 - PipelineOrchestrator - INFO - --- Iteration 11 ---
+2025-09-02 23:02:41 - PipelineOrchestrator - INFO - Signal: NEUTRAL | Price: 3537.49
+2025-09-02 23:02:42 - PipelineOrchestrator - INFO - --- Iteration 12 ---
+2025-09-02 23:02:42 - PipelineOrchestrator - INFO - Signal: NEUTRAL | Price: 3537.49
+2025-09-02 23:02:43 - PipelineOrchestrator - INFO - --- Iteration 13 ---
+2025-09-02 23:02:43 - PipelineOrchestrator - INFO - Signal: NEUTRAL | Price: 3537.49
+2025-09-02 23:02:44 - PipelineOrchestrator - INFO - --- Iteration 14 ---
+2025-09-02 23:02:44 - PipelineOrchestrator - INFO - Signal: NEUTRAL | Price: 3537.49
+2025-09-02 23:02:45 - PipelineOrchestrator - INFO - --- Iteration 15 ---
+2025-09-02 23:02:45 - PipelineOrchestrator - INFO - Signal: NEUTRAL | Price: 3537.49
+2025-09-02 23:02:46 - PipelineOrchestrator - INFO - --- Iteration 16 ---
+2025-09-02 23:02:46 - PipelineOrchestrator - INFO - Signal: NEUTRAL | Price: 3537.49
+2025-09-02 23:02:47 - PipelineOrchestrator - INFO - --- Iteration 17 ---
+2025-09-02 23:02:47 - PipelineOrchestrator - INFO - Signal: NEUTRAL | Price: 3537.49
+2025-09-02 23:02:48 - PipelineOrchestrator - INFO - --- Iteration 18 ---
+2025-09-02 23:02:48 - PipelineOrchestrator - INFO - Signal: NEUTRAL | Price: 3537.49
+2025-09-02 23:02:49 - PipelineOrchestrator - INFO - --- Iteration 19 ---
+2025-09-02 23:02:49 - PipelineOrchestrator - INFO - Signal: NEUTRAL | Price: 3537.49
+2025-09-02 23:02:50 - PipelineOrchestrator - INFO - --- Iteration 20 ---
+2025-09-02 23:02:50 - PipelineOrchestrator - INFO - Signal: NEUTRAL | Price: 3537.49
+2025-09-02 23:02:51 - PipelineOrchestrator - INFO - --- Iteration 21 ---
+2025-09-02 23:02:51 - PipelineOrchestrator - INFO - Signal: NEUTRAL | Price: 3537.49
+2025-09-02 23:02:52 - PipelineOrchestrator - INFO - --- Iteration 22 ---
+2025-09-02 23:02:52 - PipelineOrchestrator - INFO - Signal: NEUTRAL | Price: 3537.49
+2025-09-02 23:02:53 - PipelineOrchestrator - INFO - --- Iteration 23 ---
+2025-09-02 23:02:53 - PipelineOrchestrator - INFO - Signal: NEUTRAL | Price: 3537.49
+2025-09-02 23:02:54 - PipelineOrchestrator - INFO - --- Iteration 24 ---
+2025-09-02 23:02:54 - PipelineOrchestrator - INFO - Signal: NEUTRAL | Price: 3537.49
+2025-09-02 23:02:55 - PipelineOrchestrator - INFO - --- Iteration 25 ---
+2025-09-02 23:02:55 - PipelineOrchestrator - INFO - Signal: NEUTRAL | Price: 3537.49
+2025-09-02 23:02:56 - PipelineOrchestrator - INFO - --- Iteration 26 ---
+2025-09-02 23:02:56 - PipelineOrchestrator - INFO - Signal: NEUTRAL | Price: 3537.49
+2025-09-02 23:02:57 - PipelineOrchestrator - INFO - --- Iteration 27 ---
+2025-09-02 23:02:57 - PipelineOrchestrator - INFO - Signal: NEUTRAL | Price: 3537.49
+2025-09-02 23:02:58 - PipelineOrchestrator - INFO - --- Iteration 28 ---
+2025-09-02 23:02:58 - PipelineOrchestrator - INFO - Signal: NEUTRAL | Price: 3537.49
+2025-09-02 23:02:59 - PipelineOrchestrator - INFO - --- Iteration 29 ---
+2025-09-02 23:02:59 - PipelineOrchestrator - INFO - Signal: NEUTRAL | Price: 3537.49
+2025-09-02 23:03:01 - PipelineOrchestrator - INFO - --- Iteration 30 ---
+2025-09-02 23:03:01 - DataFeeder - INFO - Fetching 200 bars for XAUUSD (1min)
+2025-09-02 23:03:01 - DataFeeder - INFO - Successfully fetched 200 bars for XAUUSD
+2025-09-02 23:03:01 - DataFeeder - INFO - Filtering data from 2025-09-02 19:43:01 to 2025-09-02 23:03:01
+2025-09-02 23:03:01 - DataFeeder - INFO - Filtered to 200 bars
+2025-09-02 23:03:01 - PipelineOrchestrator - INFO - Fetched 200 bars
+2025-09-02 23:03:01 - PipelineOrchestrator - INFO - Signal: NEUTRAL | Price: 3537.70
+2025-09-02 23:03:02 - PipelineOrchestrator - INFO - --- Iteration 31 ---
+2025-09-02 23:03:02 - PipelineOrchestrator - INFO - Signal: NEUTRAL | Price: 3537.70
+2025-09-02 23:03:03 - PipelineOrchestrator - INFO - --- Iteration 32 ---
+2025-09-02 23:03:03 - PipelineOrchestrator - INFO - Signal: NEUTRAL | Price: 3537.70
+2025-09-02 23:03:04 - PipelineOrchestrator - INFO - --- Iteration 33 ---
+2025-09-02 23:03:04 - PipelineOrchestrator - INFO - Signal: NEUTRAL | Price: 3537.70
+2025-09-02 23:03:05 - PipelineOrchestrator - INFO - --- Iteration 34 ---
+2025-09-02 23:03:05 - PipelineOrchestrator - INFO - Signal: NEUTRAL | Price: 3537.70
+2025-09-02 23:03:06 - PipelineOrchestrator - INFO - --- Iteration 35 ---
+2025-09-02 23:03:06 - PipelineOrchestrator - INFO - Signal: NEUTRAL | Price: 3537.70
+2025-09-02 23:03:07 - PipelineOrchestrator - INFO - --- Iteration 36 ---
+2025-09-02 23:03:07 - PipelineOrchestrator - INFO - Signal: NEUTRAL | Price: 3537.70
+2025-09-02 23:03:08 - PipelineOrchestrator - INFO - --- Iteration 37 ---
+2025-09-02 23:03:08 - PipelineOrchestrator - INFO - Signal: NEUTRAL | Price: 3537.70
+2025-09-02 23:03:09 - PipelineOrchestrator - INFO - --- Iteration 38 ---
+2025-09-02 23:03:09 - PipelineOrchestrator - INFO - Signal: NEUTRAL | Price: 3537.70
+2025-09-02 23:03:10 - PipelineOrchestrator - INFO - --- Iteration 39 ---
+2025-09-02 23:03:10 - PipelineOrchestrator - INFO - Signal: NEUTRAL | Price: 3537.70
+2025-09-02 23:03:11 - PipelineOrchestrator - INFO - --- Iteration 40 ---
+2025-09-02 23:03:11 - PipelineOrchestrator - INFO - Signal: NEUTRAL | Price: 3537.70
+2025-09-02 23:03:12 - PipelineOrchestrator - INFO - --- Iteration 41 ---
+2025-09-02 23:03:12 - PipelineOrchestrator - INFO - Signal: NEUTRAL | Price: 3537.70
+2025-09-02 23:03:13 - PipelineOrchestrator - INFO - --- Iteration 42 ---
+2025-09-02 23:03:13 - PipelineOrchestrator - INFO - Signal: NEUTRAL | Price: 3537.70
+2025-09-02 23:03:14 - PipelineOrchestrator - INFO - --- Iteration 43 ---
+2025-09-02 23:03:15 - PipelineOrchestrator - INFO - Signal: NEUTRAL | Price: 3537.70
+2025-09-02 23:03:16 - PipelineOrchestrator - INFO - --- Iteration 44 ---
+2025-09-02 23:03:16 - PipelineOrchestrator - INFO - Signal: NEUTRAL | Price: 3537.70
+2025-09-02 23:03:17 - PipelineOrchestrator - INFO - --- Iteration 45 ---
+2025-09-02 23:03:17 - PipelineOrchestrator - INFO - Signal: NEUTRAL | Price: 3537.70
+2025-09-02 23:03:18 - PipelineOrchestrator - INFO - --- Iteration 46 ---
+2025-09-02 23:03:18 - PipelineOrchestrator - INFO - Signal: NEUTRAL | Price: 3537.70
+2025-09-02 23:03:19 - PipelineOrchestrator - INFO - --- Iteration 47 ---
+2025-09-02 23:03:19 - PipelineOrchestrator - INFO - Signal: NEUTRAL | Price: 3537.70
+2025-09-02 23:03:20 - PipelineOrchestrator - INFO - --- Iteration 48 ---
+2025-09-02 23:03:20 - PipelineOrchestrator - INFO - Signal: NEUTRAL | Price: 3537.70
+2025-09-02 23:03:21 - PipelineOrchestrator - INFO - --- Iteration 49 ---
+2025-09-02 23:03:21 - PipelineOrchestrator - INFO - Signal: NEUTRAL | Price: 3537.70
+2025-09-02 23:03:22 - PipelineOrchestrator - INFO - --- Iteration 50 ---
+2025-09-02 23:03:22 - PipelineOrchestrator - INFO - Signal: NEUTRAL | Price: 3537.70
+2025-09-02 23:03:23 - PipelineOrchestrator - INFO - --- Iteration 51 ---
+2025-09-02 23:03:23 - PipelineOrchestrator - INFO - Signal: NEUTRAL | Price: 3537.70
+2025-09-02 23:03:24 - PipelineOrchestrator - INFO - --- Iteration 52 ---
+2025-09-02 23:03:24 - PipelineOrchestrator - INFO - Signal: NEUTRAL | Price: 3537.70
+2025-09-02 23:03:25 - PipelineOrchestrator - INFO - --- Iteration 53 ---
+2025-09-02 23:03:25 - PipelineOrchestrator - INFO - Signal: NEUTRAL | Price: 3537.70
+2025-09-02 23:03:26 - PipelineOrchestrator - INFO - --- Iteration 54 ---
+2025-09-02 23:03:26 - PipelineOrchestrator - INFO - Signal: NEUTRAL | Price: 3537.70
+2025-09-02 23:03:27 - PipelineOrchestrator - INFO - --- Iteration 55 ---
+2025-09-02 23:03:27 - PipelineOrchestrator - INFO - Signal: NEUTRAL | Price: 3537.70
+2025-09-02 23:03:28 - PipelineOrchestrator - INFO - --- Iteration 56 ---
+2025-09-02 23:03:28 - PipelineOrchestrator - INFO - Signal: NEUTRAL | Price: 3537.70
+2025-09-02 23:03:29 - PipelineOrchestrator - INFO - --- Iteration 57 ---
+2025-09-02 23:03:29 - PipelineOrchestrator - INFO - Signal: NEUTRAL | Price: 3537.70
+2025-09-02 23:03:30 - PipelineOrchestrator - INFO - --- Iteration 58 ---
+2025-09-02 23:03:30 - PipelineOrchestrator - INFO - Signal: NEUTRAL | Price: 3537.70
+2025-09-02 23:03:31 - PipelineOrchestrator - INFO - --- Iteration 59 ---
+2025-09-02 23:03:31 - DataFeeder - INFO - Fetching 200 bars for XAUUSD (1min)
+2025-09-02 23:03:32 - DataFeeder - ERROR - Failed to fetch data for XAUUSD: [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1000)
+2025-09-02 23:03:32 - DataFeeder - WARNING - No data to filter
+2025-09-02 23:03:32 - PipelineOrchestrator - WARNING - No data received
+2025-09-02 23:03:33 - PipelineOrchestrator - INFO - --- Iteration 60 ---
+2025-09-02 23:03:33 - DataFeeder - INFO - Fetching 200 bars for XAUUSD (1min)
+2025-09-02 23:03:33 - DataFeeder - ERROR - Failed to fetch data for XAUUSD: [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1000)
+2025-09-02 23:03:33 - DataFeeder - WARNING - No data to filter
+2025-09-02 23:03:33 - PipelineOrchestrator - WARNING - No data received
+2025-09-02 23:03:34 - PipelineOrchestrator - INFO - --- Iteration 61 ---
+2025-09-02 23:03:34 - DataFeeder - INFO - Fetching 200 bars for XAUUSD (1min)
+2025-09-02 23:03:35 - DataFeeder - INFO - Successfully fetched 200 bars for XAUUSD
+2025-09-02 23:03:35 - DataFeeder - INFO - Filtering data from 2025-09-02 19:43:34 to 2025-09-02 23:03:34
+2025-09-02 23:03:35 - DataFeeder - INFO - Filtered to 200 bars
+2025-09-02 23:03:35 - PipelineOrchestrator - INFO - Fetched 200 bars
+2025-09-02 23:03:35 - PipelineOrchestrator - INFO - Signal: NEUTRAL | Price: 3538.16
+2025-09-02 23:03:36 - PipelineOrchestrator - INFO - --- Iteration 62 ---
+2025-09-02 23:03:36 - PipelineOrchestrator - INFO - Signal: NEUTRAL | Price: 3538.16
+2025-09-02 23:03:37 - PipelineOrchestrator - INFO - --- Iteration 63 ---
+2025-09-02 23:03:37 - PipelineOrchestrator - INFO - Signal: NEUTRAL | Price: 3538.16
+2025-09-02 23:03:38 - PipelineOrchestrator - INFO - --- Iteration 64 ---
+2025-09-02 23:03:38 - PipelineOrchestrator - INFO - Signal: NEUTRAL | Price: 3538.16
+2025-09-02 23:03:39 - PipelineOrchestrator - INFO - --- Iteration 65 ---
+2025-09-02 23:03:39 - PipelineOrchestrator - INFO - Signal: NEUTRAL | Price: 3538.16
+2025-09-02 23:03:40 - PipelineOrchestrator - INFO - --- Iteration 66 ---
+2025-09-02 23:03:40 - PipelineOrchestrator - INFO - Signal: NEUTRAL | Price: 3538.16
+2025-09-02 23:03:41 - PipelineOrchestrator - INFO - --- Iteration 67 ---
+2025-09-02 23:03:41 - PipelineOrchestrator - INFO - Signal: NEUTRAL | Price: 3538.16
+2025-09-02 23:03:42 - PipelineOrchestrator - INFO - --- Iteration 68 ---
+2025-09-02 23:03:42 - PipelineOrchestrator - INFO - Signal: NEUTRAL | Price: 3538.16
+2025-09-02 23:03:43 - PipelineOrchestrator - INFO - --- Iteration 69 ---
+2025-09-02 23:03:43 - PipelineOrchestrator - INFO - Signal: NEUTRAL | Price: 3538.16
+2025-09-02 23:03:44 - PipelineOrchestrator - INFO - --- Iteration 70 ---
+2025-09-02 23:03:44 - PipelineOrchestrator - INFO - Signal: NEUTRAL | Price: 3538.16
+2025-09-02 23:03:45 - PipelineOrchestrator - INFO - --- Iteration 71 ---
+2025-09-02 23:03:45 - PipelineOrchestrator - INFO - Signal: NEUTRAL | Price: 3538.16
+2025-09-02 23:03:46 - PipelineOrchestrator - INFO - --- Iteration 72 ---
+2025-09-02 23:03:46 - PipelineOrchestrator - INFO - Signal: NEUTRAL | Price: 3538.16
+2025-09-02 23:03:47 - PipelineOrchestrator - INFO - --- Iteration 73 ---
+2025-09-02 23:03:47 - PipelineOrchestrator - INFO - Signal: NEUTRAL | Price: 3538.16
+2025-09-02 23:03:49 - TelegramBot - INFO - Notification sent: INFO
+2025-09-02 23:04:40 - TelegramBot - INFO - Database initialized successfully
+2025-09-02 23:04:40 - TelegramBot - INFO - Telegram bot initialized
+2025-09-02 23:04:40 - DataFeeder - INFO - Connected to TradingView without authentication
+2025-09-02 23:04:40 - TelegramBot - INFO - Database initialized successfully
+2025-09-02 23:04:40 - TelegramBot - INFO - Telegram bot initialized
+2025-09-02 23:04:40 - PipelineOrchestrator - INFO - Pipeline initialized for XAUUSD
+2025-09-02 23:05:30 - DataFeeder - INFO - Connected to TradingView without authentication
+2025-09-02 23:05:36 - MongoHandler - INFO - Connected to MongoDB: pipengine.trading_data
+2025-09-02 23:05:36 - TelegramBot - INFO - Database initialized successfully
+2025-09-02 23:05:36 - TelegramBot - INFO - Telegram bot initialized
+2025-09-02 23:05:37 - TelegramBot - INFO - Notification sent: INFO
+2025-09-02 23:05:44 - DataFeeder - INFO - Connected to TradingView without authentication
+2025-09-02 23:05:44 - DataFeeder - INFO - Fetching 100 bars for XAUUSD (60min)
+2025-09-02 23:05:45 - DataFeeder - INFO - Successfully fetched 100 bars for XAUUSD
+2025-09-02 23:05:45 - DataFeeder - INFO - Filtering data from 2025-08-01 00:00:00 to 2025-08-02 00:00:00
+2025-09-02 23:05:45 - DataFeeder - INFO - Filtered to 0 bars
+2025-09-02 23:05:53 - DataFeeder - INFO - Connected to TradingView without authentication
+2025-09-02 23:05:53 - DataFeeder - INFO - Fetching 500 bars for XAUUSD (60min)
+2025-09-02 23:05:54 - DataFeeder - INFO - Successfully fetched 500 bars for XAUUSD
+2025-09-02 23:05:54 - DataFeeder - INFO - Filtering data from 2025-07-01 00:00:00 to 2025-08-31 00:00:00
+2025-09-02 23:05:54 - DataFeeder - INFO - Filtered to 457 bars
+2025-09-02 23:06:16 - DataFeeder - INFO - Connected to TradingView without authentication
+2025-09-02 23:06:16 - TelegramBot - INFO - Database initialized successfully
+2025-09-02 23:06:16 - TelegramBot - INFO - Telegram bot initialized
+2025-09-02 23:06:16 - PipelineOrchestrator - INFO - Pipeline initialized for XAUUSD
+2025-09-02 23:06:16 - DataFeeder - INFO - Fetching 200 bars for XAUUSD (1min)
+2025-09-02 23:06:17 - DataFeeder - INFO - Successfully fetched 200 bars for XAUUSD
+2025-09-02 23:06:17 - DataFeeder - INFO - Filtering data from 2025-09-02 19:46:16 to 2025-09-02 23:06:16
+2025-09-02 23:06:17 - DataFeeder - INFO - Filtered to 200 bars
+2025-09-02 23:06:17 - PipelineOrchestrator - INFO - Fetched 200 bars
+2025-09-02 23:06:17 - PipelineOrchestrator - INFO - Signal: NEUTRAL | Price: 3538.59

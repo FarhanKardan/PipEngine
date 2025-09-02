@@ -18,6 +18,12 @@ try:
     TELEGRAM_AVAILABLE = True
 except ImportError:
     TELEGRAM_AVAILABLE = False
+    # Create dummy classes for when telegram is not available
+    class Update:
+        pass
+    class ContextTypes:
+        class DEFAULT_TYPE:
+            pass
 
 class TelegramBot:
     
@@ -31,7 +37,7 @@ class TelegramBot:
             self.logger.error("python-telegram-bot not installed. Install with: pip install python-telegram-bot")
             return
         
-        self.bot = Bot(token=bot_token)
+        self.bot = Bot(token=self.bot_token)
         self.application = None
         self._init_database()
         
@@ -269,9 +275,11 @@ class TelegramBot:
             await self.bot.send_message(chat_id=self.chat_id, text=formatted_message)
             
             self.logger.info(f"Notification sent: {notification_type}")
+            return True
             
         except Exception as e:
             self.logger.error(f"Failed to send notification: {e}")
+            return False
     
     async def notify_order_created(self, order_data: Dict):
         """Send order created notification"""

@@ -18,8 +18,8 @@ LOG_DIR.mkdir(parents=True, exist_ok=True)
 META_TRADER_BASE_URL = "http://trade-api.reza-developer.com"
 
 # Telegram Bot Configuration
-BOT_TOKEN = "YOUR_BOT_TOKEN_HERE"  # Get from @BotFather
-CHAT_ID = "YOUR_CHAT_ID_HERE"      # Your Telegram chat ID
+BOT_TOKEN = "7805936590:AAGAea8dSNxdR2YOUTw8FmthCIuRVLYK3Y8"  # Get from @BotFather
+CHAT_ID = "6463294729"      # Your Telegram chat ID
 
 # Database Configuration
 DATABASE_PATH = "telegram_monitoring/orders.db"
