@@ -17,3 +17,6 @@ tvdatafeed
 
 # Telegram bot
 python-telegram-bot>=20.0
+
+# MongoDB
+pymongo>=4.0.0

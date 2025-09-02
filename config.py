@@ -36,3 +36,9 @@ NOTIFICATION_TYPES = [
 # Bot Settings
 BOT_NAME = "PipEngine Trading Bot"
 BOT_DESCRIPTION = "Monitors trading orders and sends notifications"
+
+# MongoDB Configuration
+MONGODB_CONNECTION_STRING = "mongodb://localhost:27017/"
+MONGODB_DATABASE_NAME = "pipengine"
+MONGODB_TRADING_COLLECTION = "trading_data"
+MONGODB_ORDERS_COLLECTION = "orders"
