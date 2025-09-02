@@ -1,0 +1,39 @@
+---
+description: >
+  Rules to keep code simple, avoid over-engineering, and ensure every module has tests.
+  Do not add comments, extra prints, or logs unless absolutely necessary.
+globs:
+  alwaysApply: true
+---
+
+# General Principles
+- Keep solutions simple and minimal.
+- Avoid over-engineering, unnecessary abstractions, or unused features.
+- Working code is prioritized over optimization or cleverness.
+- Build features incrementally, step by step.
+
+# Coding Style
+- Functions and classes must be short and focused.
+- Use explicit, descriptive names.
+- Avoid deep inheritance; prefer composition or plain functions.
+- Only add docstrings when clarity is required (inputs/outputs).
+
+# Testing Requirements
+- For every new module, create a corresponding test file using pytest.
+- Example: `risk_engine.py` → `test_risk_engine.py`.
+- Tests must include:
+  - Unit tests for core functions
+  - Edge cases
+  - At least one integration test across modules
+- No code is complete without passing tests.
+
+# Project Structure
+- Organize code into logical folders: `/core`, `/tests`, `/api`, `/models`.
+- Keep external dependencies minimal.
+- Document APIs with short usage examples.
+
+# Additional Rules
+- After writing code, provide a usage example showing how to call it.
+- Prioritize MVP delivery first (Risk Engine, Greeks, Margin, Liquidation).
+- Confirm all existing tests pass before adding new features.
+- Do not add unnecessary future-proofing.

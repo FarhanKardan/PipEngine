@@ -1,100 +1,86 @@
+import ssl
 import pandas as pd
-from datetime import datetime, timedelta
-import sys
-import os
-
-# Add the project root to the path to import config
-sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
-
-from config import DEFAULT_SYMBOL, DEFAULT_TIMEFRAME
+from tvDatafeed import TvDatafeed, Interval
 
 class DataFeeder:
-    """Data feeder for market data"""
     
-    def __init__(self):
-        """Initialize the data feeder"""
-        pass
+    def __init__(self, username=None, password=None):
+        ssl._create_default_https_context = ssl._create_unverified_context
+        self.username = username
+        self.password = password
+        self.tv = None
+        self._connect()
     
-    def fetch_data(self, symbol=None, timeframe=None, bars=1000):
-        """Fetch market data"""
-        if symbol is None:
-            symbol = DEFAULT_SYMBOL
-        if timeframe is None:
-            timeframe = DEFAULT_TIMEFRAME
-            
-        print(f"📊 Fetching {bars} bars of {timeframe} data for {symbol}")
+    def _connect(self):
+        try:
+            if self.username and self.password:
+                self.tv = TvDatafeed(self.username, self.password)
+            else:
+                self.tv = TvDatafeed()
+        except Exception:
+            try:
+                self.tv = TvDatafeed()
+            except Exception:
+                pass
+    
+    def _get_interval(self, interval_minutes):
+        """Convert minutes to tvDatafeed Interval"""
+        interval_map = {
+            1: Interval.in_1_minute,
+            5: Interval.in_5_minute,
+            15: Interval.in_15_minute,
+            30: Interval.in_30_minute,
+            60: Interval.in_1_hour,
+            240: Interval.in_4_hour,
+            1440: Interval.in_daily,
+        }
+        return interval_map.get(interval_minutes, Interval.in_1_hour)
+    
+    def fetch_data(self, symbol, exchange='OANDA', interval_minutes=60, n_bars=500):
+        """Fetch data with interval in minutes"""
+        if not self.tv:
+            return None
         
         try:
-            # For now, we'll use a simple approach
-            # In a real implementation, you'd connect to your data source
-            print("⚠️  This is a placeholder implementation")
-            print("📝 Please implement actual data fetching logic")
-            
-            # Return sample data structure
-            return self._create_sample_data(symbol, bars)
-            
-        except Exception as e:
-            print(f"❌ Error fetching data: {e}")
+            interval = self._get_interval(interval_minutes)
+            df = self.tv.get_hist(
+                symbol=symbol,
+                exchange=exchange,
+                interval=interval,
+                n_bars=n_bars
+            )
+            return df if df is not None and not df.empty else None
+        except Exception:
             return None
     
-    def fetch_xauusd(self, **kwargs):
-        """Fetch XAUUSD data - convenience method"""
-        return self.fetch_data('XAUUSD', **kwargs)
+    def filter_by_date(self, df, start_date, end_date):
+        """Filter dataframe by date range"""
+        if df is None or df.empty:
+            return None
+        
+        try:
+            start_date = pd.to_datetime(start_date)
+            end_date = pd.to_datetime(end_date)
+            
+            if 'datetime' in df.columns:
+                df['datetime'] = pd.to_datetime(df['datetime'])
+                return df[(df['datetime'] >= start_date) & (df['datetime'] <= end_date)]
+            else:
+                df.index = pd.to_datetime(df.index)
+                return df[(df.index >= start_date) & (df.index <= end_date)]
+        except Exception:
+            return None
     
-    def _create_sample_data(self, symbol, bars):
-        """Create sample data for testing purposes"""
-        # Generate sample data with realistic structure
-        end_date = datetime.now()
-        start_date = end_date - timedelta(hours=bars)  # Use hours instead of days
-        
-        # Create datetime range - fix the parameters
-        date_range = pd.date_range(start=start_date, end=end_date, periods=bars)
-        
-        # Create sample OHLCV data
-        import numpy as np
-        np.random.seed(42)  # For reproducible results
-        
-        base_price = 3300.0  # Base price for XAUUSD
-        price_changes = np.random.normal(0, 5, bars)  # Random price changes
-        prices = base_price + np.cumsum(price_changes)
-        
-        # Create OHLCV data
-        data = {
-            'datetime': date_range,
-            'symbol': [symbol] * bars,
-            'open': prices + np.random.normal(0, 1, bars),
-            'high': prices + np.random.normal(2, 1, bars),
-            'low': prices + np.random.normal(-2, 1, bars),
-            'close': prices,
-            'volume': np.random.randint(100, 1000, bars)
-        }
-        
-        df = pd.DataFrame(data)
-        
-        # Ensure high >= open, close and low <= open, close
-        df['high'] = df[['open', 'close', 'high']].max(axis=1)
-        df['low'] = df[['open', 'close', 'low']].min(axis=1)
-        
-        print(f"✅ Generated sample data: {len(df)} bars")
-        return df
+    def get_data(self, symbol, start_date, end_date, interval_minutes=60, n_bars=5000):
+        """Main method: fetch data and filter by date range"""
+        df = self.fetch_data(symbol, interval_minutes=interval_minutes, n_bars=n_bars)
+        return self.filter_by_date(df, start_date, end_date)
+    
+
 
 if __name__ == "__main__":
     feeder = DataFeeder()
-    
-    # Test data fetching
-    df = feeder.fetch_xauusd(bars=100)
-    
+    df = feeder.get_data('XAUUSD', '2025-01-01', '2025-01-02', interval_minutes=60)
     if df is not None:
-        print(f"Data: {df.shape[0]} bars, {df.shape[1]} columns")
+        print(f"Data shape: {df.shape}")
         print(f"Columns: {list(df.columns)}")
-        print(f"Sample data:")
-        print(df.head())
-        
-        # Save to CSV
-        output_file = "results/data/klines.csv"
-        df.to_csv(output_file, index=False)
-        print(f"✅ Data saved to {output_file}")
-        print(f"📊 Total records: {len(df)}")
-        print(f"📅 Date range: {df['datetime'].min()} to {df['datetime'].max()}")
-    else:
-        print("Failed to fetch data")

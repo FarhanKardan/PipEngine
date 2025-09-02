@@ -15,6 +15,7 @@ sys.path.append(os.path.join(os.path.dirname(__file__), '..', '..'))
 # Import existing indicators
 from indicators.ema import calculate_ema
 from indicators.williams_fractal_trailing_stops import williams_fractal_trailing_stops
+from data_feeder.data_feeder import DataFeeder
 
 # Import config
 from config import (
@@ -26,44 +27,34 @@ from config import (
     WILLIAMS_FRACTAL_RIGHT_RANGE
 )
 
-def load_and_prepare_data(path, symbol=None, start_date=None, end_date=None, max_rows=100):
-    """
-    Load and prepare data from CSV file with optional time range filtering
+def load_and_prepare_data(symbol, start_date, end_date, timeframe):
+    """Load and prepare data using DataFeeder"""
+    timeframe_map = {
+        'M1': 1,
+        'M5': 5,
+        'M15': 15,
+        'M30': 30,
+        'H1': 60,
+        'H4': 240,
+        'D1': 1440,
+    }
+    interval_minutes = timeframe_map.get(timeframe, 60)
     
-    Args:
-        path (str): Path to CSV file
-        symbol (str, optional): Symbol to filter by
-        start_date (str, optional): Start date in 'YYYY-MM-DD' format
-        end_date (str, optional): End date in 'YYYY-MM-DD' format
-        max_rows (int, optional): Maximum number of rows to return (default: 100)
-    """
-    df = pd.read_csv(path, parse_dates=['datetime'])
+    feeder = DataFeeder()
+    df = feeder.get_data(symbol, start_date, end_date, interval_minutes=interval_minutes, n_bars=5000)
     
-    # Filter by symbol if provided
-    if symbol:
-        df = df[df['symbol'] == symbol].copy()
+    if df is None or df.empty:
+        print("No data received from feeder")
+        return None
     
-    # Set datetime as index
-    df.set_index('datetime', inplace=True)
+    # Set datetime as index if it exists
+    if 'datetime' in df.columns:
+        df.set_index('datetime', inplace=True)
+    
+    # Standardize column names
     df.columns = df.columns.str.lower()
     
-    # Filter by date range if provided
-    if start_date:
-        start_dt = pd.to_datetime(start_date)
-        df = df[df.index >= start_dt]
-    
-    if end_date:
-        end_dt = pd.to_datetime(end_date)
-        df = df[df.index <= end_dt]
-    
-    # Sort by datetime to ensure proper order
-    df = df.sort_index()
-    
-    # Return first max_rows rows if specified, otherwise return all filtered data
-    if max_rows and len(df) > max_rows:
-        return df.iloc[:max_rows]  # Changed from df.iloc[-max_rows:] to df.iloc[:max_rows]
-    else:
-        return df
+    return df
 
 def add_ema(df, period=200, price_col='close'):
     """Add EMA to dataframe using existing indicator"""

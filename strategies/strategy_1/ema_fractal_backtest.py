@@ -11,9 +11,21 @@ from indicators.ema import calculate_ema
 from indicators.williams_fractal_trailing_stops import williams_fractal_trailing_stops
 from data_feeder.data_feeder import DataFeeder
 
-def load_and_prepare_data(symbol=None, bars=500):
+def load_and_prepare_data(symbol, start_date, end_date, timeframe):
+    """Load and prepare data using DataFeeder"""
+    timeframe_map = {
+        'M1': 1,
+        'M5': 5,
+        'M15': 15,
+        'M30': 30,
+        'H1': 60,
+        'H4': 240,
+        'D1': 1440,
+    }
+    interval_minutes = timeframe_map.get(timeframe, 60)
+    
     feeder = DataFeeder()
-    df = feeder.fetch_data(symbol, bars=bars)
+    df = feeder.get_data(symbol, start_date, end_date, interval_minutes=interval_minutes, n_bars=5000)
     
     if df is None or df.empty:
         print("No data received from feeder")
@@ -214,7 +226,7 @@ def main():
     
     try:
         print("📊 Loading and preparing data...")
-        df = load_and_prepare_data(symbol=SYMBOL, bars=1000)
+        df = load_and_prepare_data(symbol=SYMBOL, start_date=START_DATE, end_date=END_DATE, timeframe="H1")
         
         if df is None or df.empty:
             print("❌ No data loaded")

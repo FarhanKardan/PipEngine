@@ -2,26 +2,47 @@ import pandas as pd
 import numpy as np
 import sys
 import os
-from datetime import datetime
+from datetime import datetime, timedelta
 
 # To silence FutureWarning about downcasting on fillna, ffill, bfill
 pd.set_option('future.no_silent_downcasting', True)
 
 # Add the project root to the path to import indicators
-sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
+sys.path.append(os.path.join(os.path.dirname(__file__), '..', '..'))
 
 # Import existing indicators
 from indicators.ema import calculate_ema
 from indicators.williams_fractal_trailing_stops import williams_fractal_trailing_stops
+from data_feeder.data_feeder import DataFeeder
 
-def load_and_prepare_data(path, symbol=None):
-    """Load and prepare data from CSV file"""
-    df = pd.read_csv(path, parse_dates=['datetime'])
-    if symbol:
-        df = df[df['symbol'] == symbol].copy()
-    df.set_index('datetime', inplace=True)
+def load_and_prepare_data(symbol, start_date, end_date, timeframe):
+    """Load and prepare data using DataFeeder"""
+    timeframe_map = {
+        'M1': 1,
+        'M5': 5,
+        'M15': 15,
+        'M30': 30,
+        'H1': 60,
+        'H4': 240,
+        'D1': 1440,
+    }
+    interval_minutes = timeframe_map.get(timeframe, 60)
+    
+    feeder = DataFeeder()
+    df = feeder.get_data(symbol, start_date, end_date, interval_minutes=interval_minutes, n_bars=5000)
+    
+    if df is None or df.empty:
+        print("No data received from feeder")
+        return None
+    
+    # Set datetime as index if it exists
+    if 'datetime' in df.columns:
+        df.set_index('datetime', inplace=True)
+    
+    # Convert column names to lowercase
     df.columns = df.columns.str.lower()
-    return df.iloc[-100:]  # last 100 rows
+    
+    return df
 
 def add_ema(df, period=200, price_col='close'):
     """Add EMA to dataframe using existing indicator"""
@@ -155,12 +176,14 @@ def calculate_strategy_positions(df, ema_col='ema_200'):
 
 def main():
     """Main function to run the strategy"""
-    csv_path = "results/data/klines.csv"
-    symbol = "OANDA:XAUUSD"
+    symbol = "XAUUSD"
+    start_date = datetime.now() - timedelta(days=7)
+    end_date = datetime.now()
+    timeframe = "M1"
 
     try:
-        # Load and prepare data
-        df = load_and_prepare_data(csv_path, symbol=symbol)
+        # Load and prepare data using DataFeeder
+        df = load_and_prepare_data(symbol=symbol, start_date=start_date, end_date=end_date, timeframe=timeframe)
         
         if df is None or df.empty:
             print("No data loaded")
@@ -186,8 +209,6 @@ def main():
         
         print("Strategy execution completed successfully!")
         
-    except FileNotFoundError:
-        print(f"File not found: {csv_path}")
     except Exception as e:
         print(f"Error: {e}")
         import traceback
