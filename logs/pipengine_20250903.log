@@ -1,0 +1,242 @@
+2025-09-03 11:37:11 - TelegramBot - INFO - Database initialized successfully
+2025-09-03 11:37:11 - TelegramBot - INFO - Telegram bot initialized
+2025-09-03 11:37:50 - TelegramBot - INFO - Database initialized successfully
+2025-09-03 11:37:50 - TelegramBot - INFO - Telegram bot initialized
+2025-09-03 11:37:50 - TelegramMonitor - INFO - Telegram monitor initialized
+2025-09-03 11:37:50 - OrderTracker - INFO - Telegram monitoring enabled
+2025-09-03 11:37:50 - TelegramMonitor - INFO - Starting Telegram monitoring
+2025-09-03 11:37:51 - TelegramBot - ERROR - Failed to start bot: 'Updater' object has no attribute '_Updater__polling_cleanup_cb' and no __dict__ for setting new attributes
+2025-09-03 11:37:51 - OrderTracker - INFO - Order tracking started
+2025-09-03 11:37:51 - OrderTracker - INFO - Tracking new order: TEST_001
+2025-09-03 11:37:51 - TelegramBot - INFO - Order added to database: TEST_001
+2025-09-03 11:37:51 - TelegramBot - INFO - Notification sent: ORDER_CREATED
+2025-09-03 11:37:53 - TelegramMonitor - INFO - Stopping Telegram monitoring
+2025-09-03 11:37:53 - OrderTracker - INFO - Order tracking stopped
+2025-09-03 11:43:16 - DataFeeder - INFO - Connected to TradingView without authentication
+2025-09-03 11:43:16 - TestPipelineFlow - INFO - Fetching XAUUSD data for August 1-5, 2025 (5-minute timeframe)
+2025-09-03 11:43:16 - DataFeeder - INFO - Fetching 5000 bars for XAUUSD (5min)
+2025-09-03 11:43:22 - DataFeeder - INFO - Successfully fetched 5000 bars for XAUUSD
+2025-09-03 11:43:22 - DataFeeder - INFO - Filtering data from 2025-08-01 00:00:00 to 2025-08-05 23:59:59
+2025-09-03 11:43:22 - DataFeeder - INFO - Filtered to 0 bars
+2025-09-03 11:43:22 - TestPipelineFlow - ERROR - No data received from feeder
+2025-09-03 11:43:56 - DataFeeder - INFO - Connected to TradingView without authentication
+2025-09-03 11:43:56 - TestPipelineFlow - INFO - Fetching XAUUSD data for last 5 days (5-minute timeframe)
+2025-09-03 11:43:56 - DataFeeder - INFO - Fetching 2000 bars for XAUUSD (5min)
+2025-09-03 11:43:59 - DataFeeder - INFO - Successfully fetched 2000 bars for XAUUSD
+2025-09-03 11:43:59 - DataFeeder - INFO - Filtering data from 2025-08-29 11:43:56 to 2025-09-03 11:43:56
+2025-09-03 11:43:59 - DataFeeder - INFO - Filtered to 798 bars
+2025-09-03 11:43:59 - TestPipelineFlow - INFO - Data saved to test_data_xauusd_5min.csv
+2025-09-03 11:43:59 - TestPipelineFlow - INFO - Total candles: 798
+2025-09-03 11:43:59 - TestPipelineFlow - INFO - Date range: 2025-08-29 11:45:00 to 2025-09-03 11:40:00
+2025-09-03 11:43:59 - TestPipelineFlow - INFO - Loaded 798 candles from CSV
+2025-09-03 11:43:59 - TestPipelineFlow - INFO - Starting candle iteration and signal detection
+2025-09-03 11:49:02 - DataFeeder - INFO - Connected to TradingView without authentication
+2025-09-03 11:49:02 - TestPipelineFlow - INFO - Fetching XAUUSD data for last 5 days (5-minute timeframe)
+2025-09-03 11:49:02 - DataFeeder - INFO - Fetching 2000 bars for XAUUSD (5min)
+2025-09-03 11:49:04 - DataFeeder - INFO - Successfully fetched 2000 bars for XAUUSD
+2025-09-03 11:49:04 - DataFeeder - INFO - Filtering data from 2025-08-29 11:49:02 to 2025-09-03 11:49:02
+2025-09-03 11:49:04 - DataFeeder - INFO - Filtered to 798 bars
+2025-09-03 11:49:04 - TestPipelineFlow - INFO - Data saved to test_data_xauusd_5min.csv
+2025-09-03 11:49:04 - TestPipelineFlow - INFO - Total candles: 798
+2025-09-03 11:49:04 - TestPipelineFlow - INFO - Date range: 2025-08-29 11:50:00 to 2025-09-03 11:45:00
+2025-09-03 11:49:04 - TestPipelineFlow - INFO - Loaded 798 candles from CSV
+2025-09-03 11:49:04 - TestPipelineFlow - INFO - Starting candle iteration and signal detection
+2025-09-03 11:50:43 - DataFeeder - INFO - Connected to TradingView without authentication
+2025-09-03 11:50:43 - TestPipelineFlow - INFO - Fetching XAUUSD data for last 5 days (5-minute timeframe)
+2025-09-03 11:50:43 - DataFeeder - INFO - Fetching 2000 bars for XAUUSD (5min)
+2025-09-03 11:50:46 - DataFeeder - INFO - Successfully fetched 2000 bars for XAUUSD
+2025-09-03 11:50:46 - DataFeeder - INFO - Filtering data from 2025-08-29 11:50:43 to 2025-09-03 11:50:43
+2025-09-03 11:50:46 - DataFeeder - INFO - Filtered to 798 bars
+2025-09-03 11:50:46 - TestPipelineFlow - INFO - Data saved to test_data_xauusd_5min.csv
+2025-09-03 11:50:46 - TestPipelineFlow - INFO - Total candles: 798
+2025-09-03 11:50:46 - TestPipelineFlow - INFO - Date range: 2025-08-29 11:55:00 to 2025-09-03 11:50:00
+2025-09-03 11:50:46 - TestPipelineFlow - INFO - Loaded 798 candles from CSV
+2025-09-03 11:50:46 - TestPipelineFlow - INFO - Starting candle iteration and signal detection
+2025-09-03 11:51:54 - DataFeeder - INFO - Connected to TradingView without authentication
+2025-09-03 11:51:54 - TestPipelineFlow - INFO - Fetching XAUUSD data from Aug 1 to Aug 4 (5-minute timeframe)
+2025-09-03 11:51:54 - DataFeeder - INFO - Fetching 2000 bars for XAUUSD (5min)
+2025-09-03 11:51:56 - DataFeeder - INFO - Successfully fetched 2000 bars for XAUUSD
+2025-09-03 11:51:56 - DataFeeder - INFO - Filtering data from 2025-08-01 00:00:00 to 2025-08-04 23:59:59
+2025-09-03 11:51:56 - DataFeeder - INFO - Filtered to 0 bars
+2025-09-03 11:51:56 - TestPipelineFlow - ERROR - No data received from feeder
+2025-09-03 11:52:09 - DataFeeder - INFO - Connected to TradingView without authentication
+2025-09-03 11:52:09 - TestPipelineFlow - INFO - Fetching XAUUSD data from Aug 1 to Aug 4 (5-minute timeframe)
+2025-09-03 11:52:09 - DataFeeder - INFO - Fetching 2000 bars for XAUUSD (5min)
+2025-09-03 11:52:10 - DataFeeder - INFO - Successfully fetched 2000 bars for XAUUSD
+2025-09-03 11:52:10 - DataFeeder - INFO - Filtering data from 2024-08-01 00:00:00 to 2024-08-04 23:59:59
+2025-09-03 11:52:10 - DataFeeder - INFO - Filtered to 0 bars
+2025-09-03 11:52:10 - TestPipelineFlow - ERROR - No data received from feeder
+2025-09-03 11:52:36 - DataFeeder - INFO - Connected to TradingView without authentication
+2025-09-03 11:52:36 - TestPipelineFlow - INFO - Fetching XAUUSD data from Aug 1 to Aug 4 (5-minute timeframe)
+2025-09-03 11:52:36 - DataFeeder - INFO - Fetching 5000 bars for XAUUSD (5min)
+2025-09-03 11:52:39 - DataFeeder - INFO - Successfully fetched 5000 bars for XAUUSD
+2025-09-03 11:52:39 - DataFeeder - INFO - Filtering data from 2025-08-01 00:00:00 to 2025-08-04 23:59:59
+2025-09-03 11:52:39 - DataFeeder - INFO - Filtered to 0 bars
+2025-09-03 11:52:39 - TestPipelineFlow - ERROR - No data received from feeder
+2025-09-03 11:53:13 - DataFeeder - INFO - Connected to TradingView without authentication
+2025-09-03 11:53:13 - TestPipelineFlow - INFO - Fetching XAUUSD data from Aug 1 to Aug 4 (5-minute timeframe)
+2025-09-03 11:53:13 - DataFeeder - INFO - Fetching 5000 bars for XAUUSD (5min)
+2025-09-03 11:53:17 - DataFeeder - INFO - Successfully fetched 5000 bars for XAUUSD
+2025-09-03 11:53:17 - DataFeeder - INFO - Filtering data from 2024-08-01 00:00:00 to 2024-08-04 23:59:59
+2025-09-03 11:53:17 - DataFeeder - INFO - Filtered to 0 bars
+2025-09-03 11:53:17 - TestPipelineFlow - ERROR - No data received from feeder
+2025-09-03 11:54:26 - DataFeeder - INFO - Connected to TradingView without authentication
+2025-09-03 11:54:26 - TestPipelineFlow - INFO - Fetching XAUUSD data from Aug 1 to Aug 4 (5-minute timeframe)
+2025-09-03 11:54:26 - DataFeeder - INFO - Fetching 5000 bars for XAUUSD (5min)
+2025-09-03 11:54:32 - DataFeeder - INFO - Connected to TradingView without authentication
+2025-09-03 11:54:32 - TestPipelineFlow - INFO - Fetching XAUUSD data from Aug 1 to Aug 4 (5-minute timeframe)
+2025-09-03 11:54:32 - DataFeeder - INFO - Fetching 5000 bars for XAUUSD (5min)
+2025-09-03 11:54:35 - DataFeeder - INFO - Successfully fetched 5000 bars for XAUUSD
+2025-09-03 11:54:35 - DataFeeder - INFO - Filtering data from 2025-08-01 00:00:00 to 2025-08-04 23:59:59
+2025-09-03 11:54:35 - DataFeeder - INFO - Filtered to 0 bars
+2025-09-03 11:54:35 - TestPipelineFlow - ERROR - No data received from feeder
+2025-09-03 11:54:58 - DataFeeder - INFO - Connected to TradingView without authentication
+2025-09-03 11:54:58 - TestPipelineFlow - INFO - Fetching XAUUSD data from Aug 1 to Aug 4 (5-minute timeframe)
+2025-09-03 11:54:58 - DataFeeder - INFO - Fetching 5000 bars for XAUUSD (5min)
+2025-09-03 11:55:01 - DataFeeder - INFO - Successfully fetched 5000 bars for XAUUSD
+2025-09-03 11:55:01 - DataFeeder - INFO - Filtering data from None to None
+2025-09-03 11:55:01 - DataFeeder - ERROR - Failed to filter data by date: Invalid comparison between dtype=datetime64[ns] and NoneType
+2025-09-03 11:55:01 - TestPipelineFlow - ERROR - No data received from feeder
+2025-09-03 11:55:17 - DataFeeder - INFO - Connected to TradingView without authentication
+2025-09-03 11:55:17 - TestPipelineFlow - INFO - Fetching XAUUSD data from Aug 1 to Aug 4 (5-minute timeframe)
+2025-09-03 11:55:17 - DataFeeder - INFO - Fetching 5000 bars for XAUUSD (5min)
+2025-09-03 11:55:19 - DataFeeder - INFO - Successfully fetched 5000 bars for XAUUSD
+2025-09-03 11:55:19 - TestPipelineFlow - INFO - Raw data date range: 2025-08-08 06:50:00 to 2025-09-03 11:55:00
+2025-09-03 11:55:19 - TestPipelineFlow - INFO - Requested date range: 2025-08-01 00:00:00 to 2025-08-04 23:59:59
+2025-09-03 11:55:19 - TestPipelineFlow - INFO - After filtering: 0 bars from NaT to NaT
+2025-09-03 11:55:19 - TestPipelineFlow - INFO - Data saved to test_data_xauusd_5min.csv
+2025-09-03 11:55:19 - TestPipelineFlow - INFO - Total candles: 0
+2025-09-03 11:55:19 - TestPipelineFlow - INFO - Date range: NaT to NaT
+2025-09-03 11:55:19 - TestPipelineFlow - INFO - Loaded 0 candles from CSV
+2025-09-03 11:55:19 - TestPipelineFlow - INFO - Starting candle iteration and signal detection
+2025-09-03 11:55:40 - DataFeeder - INFO - Connected to TradingView without authentication
+2025-09-03 11:55:40 - TestPipelineFlow - INFO - Fetching XAUUSD data from Aug 8 to Aug 11 (5-minute timeframe)
+2025-09-03 11:55:40 - DataFeeder - INFO - Fetching 5000 bars for XAUUSD (5min)
+2025-09-03 11:55:43 - DataFeeder - INFO - Successfully fetched 5000 bars for XAUUSD
+2025-09-03 11:55:43 - TestPipelineFlow - INFO - Raw data date range: 2025-08-08 06:50:00 to 2025-09-03 11:55:00
+2025-09-03 11:55:43 - TestPipelineFlow - INFO - Requested date range: 2025-08-08 00:00:00 to 2025-08-11 23:59:59
+2025-09-03 11:55:43 - TestPipelineFlow - INFO - After filtering: 482 bars from 2025-08-08 06:50:00 to 2025-08-11 23:55:00
+2025-09-03 11:55:43 - TestPipelineFlow - INFO - Data saved to test_data_xauusd_5min.csv
+2025-09-03 11:55:43 - TestPipelineFlow - INFO - Total candles: 482
+2025-09-03 11:55:43 - TestPipelineFlow - INFO - Date range: 2025-08-08 06:50:00 to 2025-08-11 23:55:00
+2025-09-03 11:55:43 - TestPipelineFlow - INFO - Loaded 482 candles from CSV
+2025-09-03 11:55:43 - TestPipelineFlow - INFO - Starting candle iteration and signal detection
+2025-09-03 11:57:10 - DataFeeder - INFO - Connected to TradingView without authentication
+2025-09-03 11:57:11 - TelegramBot - INFO - Database initialized successfully
+2025-09-03 11:57:11 - TelegramBot - INFO - Telegram bot initialized
+2025-09-03 11:57:11 - TestPipelineFlow - INFO - Fetching XAUUSD data from Aug 8 to Aug 11 (5-minute timeframe)
+2025-09-03 11:57:11 - DataFeeder - INFO - Fetching 5000 bars for XAUUSD (5min)
+2025-09-03 11:57:20 - DataFeeder - INFO - Successfully fetched 5000 bars for XAUUSD
+2025-09-03 11:57:20 - TestPipelineFlow - INFO - Raw data date range: 2025-08-08 06:50:00 to 2025-09-03 11:55:00
+2025-09-03 11:57:20 - TestPipelineFlow - INFO - Requested date range: 2025-08-08 00:00:00 to 2025-08-11 23:59:59
+2025-09-03 11:57:20 - TestPipelineFlow - INFO - After filtering: 482 bars from 2025-08-08 06:50:00 to 2025-08-11 23:55:00
+2025-09-03 11:57:20 - TestPipelineFlow - INFO - Data saved to test_data_xauusd_5min.csv
+2025-09-03 11:57:20 - TestPipelineFlow - INFO - Total candles: 482
+2025-09-03 11:57:20 - TestPipelineFlow - INFO - Date range: 2025-08-08 06:50:00 to 2025-08-11 23:55:00
+2025-09-03 11:57:20 - TestPipelineFlow - INFO - Loaded 482 candles from CSV
+2025-09-03 11:57:20 - TestPipelineFlow - INFO - Starting candle iteration and signal detection
+2025-09-03 11:57:22 - TestPipelineFlow - ERROR - Failed to send Telegram notification: 'TelegramBot' object has no attribute 'send_message'
+2025-09-03 11:58:36 - DataFeeder - INFO - Connected to TradingView without authentication
+2025-09-03 11:58:36 - TelegramBot - INFO - Database initialized successfully
+2025-09-03 11:58:36 - TelegramBot - INFO - Telegram bot initialized
+2025-09-03 11:58:36 - TelegramMonitor - INFO - Telegram monitor initialized
+2025-09-03 11:58:36 - TestPipelineFlow - INFO - Fetching XAUUSD data from Aug 8 to Aug 11 (5-minute timeframe)
+2025-09-03 11:58:36 - DataFeeder - INFO - Fetching 5000 bars for XAUUSD (5min)
+2025-09-03 11:58:38 - DataFeeder - INFO - Successfully fetched 5000 bars for XAUUSD
+2025-09-03 11:58:38 - TestPipelineFlow - INFO - Raw data date range: 2025-08-08 06:50:00 to 2025-09-03 11:55:00
+2025-09-03 11:58:38 - TestPipelineFlow - INFO - Requested date range: 2025-08-08 00:00:00 to 2025-08-11 23:59:59
+2025-09-03 11:58:38 - TestPipelineFlow - INFO - After filtering: 482 bars from 2025-08-08 06:50:00 to 2025-08-11 23:55:00
+2025-09-03 11:58:38 - TestPipelineFlow - INFO - Data saved to test_data_xauusd_5min.csv
+2025-09-03 11:58:38 - TestPipelineFlow - INFO - Total candles: 482
+2025-09-03 11:58:38 - TestPipelineFlow - INFO - Date range: 2025-08-08 06:50:00 to 2025-08-11 23:55:00
+2025-09-03 11:58:38 - TestPipelineFlow - INFO - Loaded 482 candles from CSV
+2025-09-03 11:58:38 - TestPipelineFlow - INFO - Starting candle iteration and signal detection
+2025-09-03 11:58:46 - TelegramBot - ERROR - Failed to send notification: Timed out
+2025-09-03 11:58:46 - TestPipelineFlow - INFO - Telegram notification sent for SELL position
+2025-09-03 11:59:23 - TelegramBot - INFO - Database initialized successfully
+2025-09-03 11:59:23 - TelegramBot - INFO - Telegram bot initialized
+2025-09-03 11:59:23 - TelegramTest - INFO - Sending test Telegram notification...
+2025-09-03 11:59:28 - TelegramBot - ERROR - Failed to send notification: Timed out
+2025-09-03 12:02:10 - TelegramBot - INFO - Database initialized successfully
+2025-09-03 12:02:10 - TelegramBot - INFO - Telegram bot initialized
+2025-09-03 12:02:10 - TelegramTest - INFO - Sending test Telegram notification...
+2025-09-03 12:02:15 - TelegramBot - ERROR - Failed to send notification: Timed out
+2025-09-03 12:06:28 - DataFeeder - INFO - Connected to TradingView without authentication
+2025-09-03 12:06:28 - TestPipelineFlow - INFO - Fetching XAUUSD data from Aug 8 to Aug 11 (5-minute timeframe)
+2025-09-03 12:06:28 - DataFeeder - INFO - Fetching 5000 bars for XAUUSD (5min)
+2025-09-03 12:06:32 - DataFeeder - INFO - Successfully fetched 5000 bars for XAUUSD
+2025-09-03 12:06:32 - TestPipelineFlow - INFO - Raw data date range: 2025-08-08 07:00:00 to 2025-09-03 12:05:00
+2025-09-03 12:06:32 - TestPipelineFlow - INFO - Requested date range: 2025-08-08 00:00:00 to 2025-08-11 23:59:59
+2025-09-03 12:06:32 - TestPipelineFlow - INFO - After filtering: 480 bars from 2025-08-08 07:00:00 to 2025-08-11 23:55:00
+2025-09-03 12:06:32 - TestPipelineFlow - INFO - Data saved to test_data_xauusd_5min.csv
+2025-09-03 12:06:32 - TestPipelineFlow - INFO - Total candles: 480
+2025-09-03 12:06:32 - TestPipelineFlow - INFO - Date range: 2025-08-08 07:00:00 to 2025-08-11 23:55:00
+2025-09-03 12:06:32 - TestPipelineFlow - INFO - Loaded 480 candles from CSV
+2025-09-03 12:06:32 - TestPipelineFlow - INFO - Starting candle iteration and signal detection
+2025-09-03 12:06:35 - TestPipelineFlow - INFO - NOTIFICATION: SELL position opened at 2025-08-11 16:05:00 - Price: 3354.18
+2025-09-03 12:08:19 - SimpleTelegram - ERROR - Failed to send Telegram message: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot7805936590:AAGAea8dSNxdR2YOUTw8FmthCIuRVLYK3Y8/sendMessage (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x000002460BD0FA10>, 'Connection to api.telegram.org timed out. (connect timeout=10)'))
+2025-09-03 12:09:00 - TelegramBot - INFO - Database initialized successfully
+2025-09-03 12:09:00 - TelegramBot - INFO - Telegram bot initialized
+2025-09-03 12:09:49 - TelegramBot - INFO - Database initialized successfully
+2025-09-03 12:09:49 - TelegramBot - INFO - Telegram bot initialized
+2025-09-03 12:09:49 - TelegramTest - INFO - Bot initialized successfully
+2025-09-03 12:09:49 - TelegramTest - INFO - Sending test message...
+2025-09-03 12:09:49 - TelegramBot - INFO - Notification sent: INFO
+2025-09-03 12:09:49 - TelegramTest - INFO - SUCCESS: Telegram message sent!
+2025-09-03 12:10:21 - DataFeeder - INFO - Connected to TradingView without authentication
+2025-09-03 12:10:22 - TelegramBot - INFO - Database initialized successfully
+2025-09-03 12:10:22 - TelegramBot - INFO - Telegram bot initialized
+2025-09-03 12:10:22 - TestPipelineFlow - INFO - Fetching XAUUSD data from Aug 8 to Aug 11 (5-minute timeframe)
+2025-09-03 12:10:22 - DataFeeder - INFO - Fetching 5000 bars for XAUUSD (5min)
+2025-09-03 12:10:24 - DataFeeder - INFO - Successfully fetched 5000 bars for XAUUSD
+2025-09-03 12:10:24 - TestPipelineFlow - INFO - Raw data date range: 2025-08-08 07:05:00 to 2025-09-03 12:10:00
+2025-09-03 12:10:24 - TestPipelineFlow - INFO - Requested date range: 2025-08-08 00:00:00 to 2025-08-11 23:59:59
+2025-09-03 12:10:24 - TestPipelineFlow - INFO - After filtering: 479 bars from 2025-08-08 07:05:00 to 2025-08-11 23:55:00
+2025-09-03 12:10:24 - TestPipelineFlow - INFO - Data saved to test_data_xauusd_5min.csv
+2025-09-03 12:10:24 - TestPipelineFlow - INFO - Total candles: 479
+2025-09-03 12:10:24 - TestPipelineFlow - INFO - Date range: 2025-08-08 07:05:00 to 2025-08-11 23:55:00
+2025-09-03 12:10:24 - TestPipelineFlow - INFO - Loaded 479 candles from CSV
+2025-09-03 12:10:24 - TestPipelineFlow - INFO - Starting candle iteration and signal detection
+2025-09-03 12:10:27 - TelegramBot - INFO - Notification sent: INFO
+2025-09-03 12:10:27 - TestPipelineFlow - INFO - Telegram notification sent for SELL position
+2025-09-03 12:12:45 - TelegramBot - INFO - Database initialized successfully
+2025-09-03 12:12:45 - TelegramBot - INFO - Telegram bot initialized
+2025-09-03 12:12:46 - TelegramBot - INFO - Notification sent to chat 6463294729: INFO
+2025-09-03 12:12:46 - TelegramBot - ERROR - Failed to send to chat 6895509181: Chat not found
+2025-09-03 12:12:46 - TelegramBot - INFO - Notification sent to 1/2 chats: INFO
+2025-09-03 12:13:06 - DataFeeder - INFO - Connected to TradingView without authentication
+2025-09-03 12:13:07 - TelegramBot - INFO - Database initialized successfully
+2025-09-03 12:13:07 - TelegramBot - INFO - Telegram bot initialized
+2025-09-03 12:13:07 - TestPipelineFlow - INFO - Fetching XAUUSD data from Aug 8 to Aug 11 (5-minute timeframe)
+2025-09-03 12:13:07 - DataFeeder - INFO - Fetching 5000 bars for XAUUSD (5min)
+2025-09-03 12:13:11 - DataFeeder - INFO - Successfully fetched 5000 bars for XAUUSD
+2025-09-03 12:13:11 - TestPipelineFlow - INFO - Raw data date range: 2025-08-08 07:05:00 to 2025-09-03 12:10:00
+2025-09-03 12:13:11 - TestPipelineFlow - INFO - Requested date range: 2025-08-08 00:00:00 to 2025-08-11 23:59:59
+2025-09-03 12:13:11 - TestPipelineFlow - INFO - After filtering: 479 bars from 2025-08-08 07:05:00 to 2025-08-11 23:55:00
+2025-09-03 12:13:11 - TestPipelineFlow - INFO - Data saved to test_data_xauusd_5min.csv
+2025-09-03 12:13:11 - TestPipelineFlow - INFO - Total candles: 479
+2025-09-03 12:13:11 - TestPipelineFlow - INFO - Date range: 2025-08-08 07:05:00 to 2025-08-11 23:55:00
+2025-09-03 12:13:11 - TestPipelineFlow - INFO - Loaded 479 candles from CSV
+2025-09-03 12:13:11 - TestPipelineFlow - INFO - Starting candle iteration and signal detection
+2025-09-03 12:13:14 - TelegramBot - INFO - Notification sent to chat 6463294729: INFO
+2025-09-03 12:13:14 - TelegramBot - ERROR - Failed to send to chat 6895509181: Chat not found
+2025-09-03 12:13:14 - TelegramBot - INFO - Notification sent to 1/2 chats: INFO
+2025-09-03 12:13:14 - TestPipelineFlow - INFO - Telegram notification sent for SELL position
+2025-09-03 12:13:38 - DataFeeder - INFO - Connected to TradingView without authentication
+2025-09-03 12:13:38 - TelegramBot - INFO - Database initialized successfully
+2025-09-03 12:13:38 - TelegramBot - INFO - Telegram bot initialized
+2025-09-03 12:13:38 - TestPipelineFlow - INFO - Fetching XAUUSD data from Aug 8 to Aug 11 (5-minute timeframe)
+2025-09-03 12:13:38 - DataFeeder - INFO - Fetching 5000 bars for XAUUSD (5min)
+2025-09-03 12:13:43 - DataFeeder - INFO - Successfully fetched 5000 bars for XAUUSD
+2025-09-03 12:13:43 - TestPipelineFlow - INFO - Raw data date range: 2025-08-08 07:05:00 to 2025-09-03 12:10:00
+2025-09-03 12:13:43 - TestPipelineFlow - INFO - Requested date range: 2025-08-08 00:00:00 to 2025-08-11 23:59:59
+2025-09-03 12:13:43 - TestPipelineFlow - INFO - After filtering: 479 bars from 2025-08-08 07:05:00 to 2025-08-11 23:55:00
+2025-09-03 12:13:43 - TestPipelineFlow - INFO - Data saved to test_data_xauusd_5min.csv
+2025-09-03 12:13:43 - TestPipelineFlow - INFO - Total candles: 479
+2025-09-03 12:13:43 - TestPipelineFlow - INFO - Date range: 2025-08-08 07:05:00 to 2025-08-11 23:55:00
+2025-09-03 12:13:43 - TestPipelineFlow - INFO - Loaded 479 candles from CSV
+2025-09-03 12:13:43 - TestPipelineFlow - INFO - Starting candle iteration and signal detection
+2025-09-03 12:13:46 - TelegramBot - INFO - Notification sent to chat 6463294729: INFO
+2025-09-03 12:13:46 - TelegramBot - INFO - Notification sent to chat 6895509181: INFO
+2025-09-03 12:13:46 - TelegramBot - INFO - Notification sent to 2/2 chats: INFO
+2025-09-03 12:13:46 - TestPipelineFlow - INFO - Telegram notification sent for SELL position

@@ -9,7 +9,7 @@ import os
 sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 
 from logger import get_logger
-from telegram_bot import TelegramMonitor
+from telegram_monitoring.telegram_bot import TelegramMonitor
 from config import BOT_TOKEN, CHAT_ID, ENABLE_NOTIFICATIONS
 
 class OrderTracker:

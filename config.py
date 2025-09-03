@@ -20,6 +20,7 @@ META_TRADER_BASE_URL = "http://trade-api.reza-developer.com"
 # Telegram Bot Configuration
 BOT_TOKEN = "7805936590:AAGAea8dSNxdR2YOUTw8FmthCIuRVLYK3Y8"  # Get from @BotFather
 CHAT_ID = "6463294729"      # Your Telegram chat ID
+CHAT_IDS = ["6463294729", "6895509181"]  # Multiple chat IDs for notifications
 
 # Database Configuration
 DATABASE_PATH = "telegram_monitoring/orders.db"

@@ -1,3 +1,4 @@
+
 """
 Integration example showing how to use Telegram monitoring with the trading pipeline
 """

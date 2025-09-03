@@ -10,7 +10,7 @@ import os
 sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 
 from logger import get_logger
-from config import BOT_TOKEN, CHAT_ID, DATABASE_PATH
+from config import BOT_TOKEN, CHAT_ID, CHAT_IDS, DATABASE_PATH
 
 try:
     from telegram import Bot, Update
@@ -27,10 +27,11 @@ except ImportError:
 
 class TelegramBot:
     
-    def __init__(self, bot_token: str = None, chat_id: str = None, db_path: str = None):
+    def __init__(self, bot_token: str = None, chat_id: str = None, chat_ids: list = None, db_path: str = None):
         self.logger = get_logger("TelegramBot")
         self.bot_token = bot_token or BOT_TOKEN
         self.chat_id = chat_id or CHAT_ID
+        self.chat_ids = chat_ids or CHAT_IDS
         self.db_path = db_path or DATABASE_PATH
         
         if not TELEGRAM_AVAILABLE:
@@ -254,10 +255,10 @@ class TelegramBot:
             self.logger.error(f"Failed to update order: {e}")
     
     async def send_notification(self, message: str, notification_type: str = "INFO"):
-        """Send notification to Telegram"""
+        """Send notification to all configured Telegram chat IDs"""
         if not TELEGRAM_AVAILABLE:
             self.logger.warning("Telegram not available, notification not sent")
-            return
+            return False
         
         try:
             emoji_map = {
@@ -272,10 +273,24 @@ class TelegramBot:
             emoji = emoji_map.get(notification_type, "📢")
             formatted_message = f"{emoji} {message}"
             
-            await self.bot.send_message(chat_id=self.chat_id, text=formatted_message)
+            success_count = 0
+            total_chats = len(self.chat_ids)
             
-            self.logger.info(f"Notification sent: {notification_type}")
-            return True
+            # Send to all chat IDs
+            for chat_id in self.chat_ids:
+                try:
+                    await self.bot.send_message(chat_id=chat_id, text=formatted_message)
+                    success_count += 1
+                    self.logger.info(f"Notification sent to chat {chat_id}: {notification_type}")
+                except Exception as chat_error:
+                    self.logger.error(f"Failed to send to chat {chat_id}: {chat_error}")
+            
+            if success_count > 0:
+                self.logger.info(f"Notification sent to {success_count}/{total_chats} chats: {notification_type}")
+                return True
+            else:
+                self.logger.error(f"Failed to send notification to any chat")
+                return False
             
         except Exception as e:
             self.logger.error(f"Failed to send notification: {e}")
