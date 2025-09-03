@@ -1,6 +1,6 @@
+
 import asyncio
 import json
-import sqlite3
 from datetime import datetime
 from typing import Dict, List, Optional
 import sys
@@ -10,7 +10,8 @@ import os
 sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 
 from logger import get_logger
-from config import BOT_TOKEN, CHAT_ID, CHAT_IDS, DATABASE_PATH
+from config import BOT_TOKEN, CHAT_ID, CHAT_IDS
+from mongo_handler.mongo_client import MongoHandler
 
 try:
     from telegram import Bot, Update
@@ -27,12 +28,11 @@ except ImportError:
 
 class TelegramBot:
     
-    def __init__(self, bot_token: str = None, chat_id: str = None, chat_ids: list = None, db_path: str = None):
+    def __init__(self, bot_token: str = None, chat_id: str = None, chat_ids: list = None):
         self.logger = get_logger("TelegramBot")
         self.bot_token = bot_token or BOT_TOKEN
         self.chat_id = chat_id or CHAT_ID
         self.chat_ids = chat_ids or CHAT_IDS
-        self.db_path = db_path or DATABASE_PATH
         
         if not TELEGRAM_AVAILABLE:
             self.logger.error("python-telegram-bot not installed. Install with: pip install python-telegram-bot")
@@ -40,53 +40,11 @@ class TelegramBot:
         
         self.bot = Bot(token=self.bot_token)
         self.application = None
-        self._init_database()
+        self.mongo_handler = MongoHandler()
         
         self.logger.info("Telegram bot initialized")
     
-    def _init_database(self):
-        """Initialize SQLite database for order tracking"""
-        try:
-            os.makedirs(os.path.dirname(self.db_path), exist_ok=True)
-            
-            conn = sqlite3.connect(self.db_path)
-            cursor = conn.cursor()
-            
-            cursor.execute('''
-                CREATE TABLE IF NOT EXISTS orders (
-                    id INTEGER PRIMARY KEY AUTOINCREMENT,
-                    order_id TEXT UNIQUE,
-                    symbol TEXT,
-                    order_type TEXT,
-                    volume REAL,
-                    price REAL,
-                    sl REAL,
-                    tp REAL,
-                    status TEXT,
-                    created_at TIMESTAMP,
-                    updated_at TIMESTAMP,
-                    telegram_sent BOOLEAN DEFAULT FALSE
-                )
-            ''')
-            
-            cursor.execute('''
-                CREATE TABLE IF NOT EXISTS notifications (
-                    id INTEGER PRIMARY KEY AUTOINCREMENT,
-                    order_id TEXT,
-                    notification_type TEXT,
-                    message TEXT,
-                    sent_at TIMESTAMP,
-                    FOREIGN KEY (order_id) REFERENCES orders (order_id)
-                )
-            ''')
-            
-            conn.commit()
-            conn.close()
-            
-            self.logger.info("Database initialized successfully")
-            
-        except Exception as e:
-            self.logger.error(f"Database initialization failed: {e}")
+
     
     async def start_bot(self):
         """Start the Telegram bot"""
@@ -117,6 +75,10 @@ class TelegramBot:
             await self.application.stop()
             await self.application.shutdown()
             self.logger.info("Telegram bot stopped")
+        
+        # Close MongoDB connection
+        if hasattr(self, 'mongo_handler'):
+            self.mongo_handler.close_connection()
     
     async def _start_command(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
         """Handle /start command"""
@@ -135,27 +97,30 @@ class TelegramBot:
     async def _status_command(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
         """Handle /status command"""
         try:
-            conn = sqlite3.connect(self.db_path)
-            cursor = conn.cursor()
+            if not self.mongo_handler.check_connection():
+                await update.message.reply_text("❌ Database connection failed")
+                return
             
-            cursor.execute("SELECT COUNT(*) FROM orders")
-            total_orders = cursor.fetchone()[0]
+            # Get 24-hour report
+            report = self.mongo_handler.get_last_24h_orders_report()
             
-            cursor.execute("SELECT COUNT(*) FROM orders WHERE status = 'ACTIVE'")
-            active_orders = cursor.fetchone()[0]
-            
-            cursor.execute("SELECT COUNT(*) FROM notifications WHERE sent_at >= datetime('now', '-24 hours')")
-            recent_notifications = cursor.fetchone()[0]
-            
-            conn.close()
-            
-            status_message = (
-                f"📊 Bot Status\n\n"
-                f"Total Orders: {total_orders}\n"
-                f"Active Orders: {active_orders}\n"
-                f"Notifications (24h): {recent_notifications}\n\n"
-                f"Status: ✅ Online"
-            )
+            if report and report['total_orders'] > 0:
+                status_message = (
+                    f"📊 Bot Status\n\n"
+                    f"Total Orders (24h): {report['total_orders']}\n"
+                    f"Active Orders: {report['order_status']['active']}\n"
+                    f"Closed Orders: {report['order_status']['closed']}\n"
+                    f"Cancelled Orders: {report['order_status']['cancelled']}\n"
+                    f"Total Profit: {report['total_profit']}\n\n"
+                    f"Status: ✅ Online"
+                )
+            else:
+                status_message = (
+                    f"📊 Bot Status\n\n"
+                    f"Total Orders (24h): 0\n"
+                    f"Active Orders: 0\n"
+                    f"Status: ✅ Online"
+                )
             
             await update.message.reply_text(status_message)
             
@@ -166,32 +131,25 @@ class TelegramBot:
     async def _orders_command(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
         """Handle /orders command"""
         try:
-            conn = sqlite3.connect(self.db_path)
-            cursor = conn.cursor()
-            
-            cursor.execute('''
-                SELECT order_id, symbol, order_type, volume, price, status, created_at
-                FROM orders 
-                ORDER BY created_at DESC 
-                LIMIT 10
-            ''')
-            
-            orders = cursor.fetchall()
-            conn.close()
-            
-            if not orders:
-                await update.message.reply_text("📋 No orders found")
+            if not self.mongo_handler.check_connection():
+                await update.message.reply_text("❌ Database connection failed")
                 return
             
-            message = "📋 Recent Orders\n\n"
-            for order in orders:
-                order_id, symbol, order_type, volume, price, status, created_at = order
+            # Get active orders
+            active_orders = self.mongo_handler.get_active_orders()
+            
+            if not active_orders:
+                await update.message.reply_text("📋 No active orders found")
+                return
+            
+            message = "📋 Active Orders\n\n"
+            for order in active_orders[:10]:  # Limit to 10 orders
                 message += (
-                    f"🆔 {order_id}\n"
-                    f"📈 {symbol} {order_type}\n"
-                    f"📊 {volume} @ {price}\n"
-                    f"📊 Status: {status}\n"
-                    f"🕐 {created_at}\n\n"
+                    f"🆔 {order.get('order_id', 'N/A')}\n"
+                    f"📈 {order.get('symbol', 'N/A')} {order.get('order_type', 'N/A')}\n"
+                    f"📊 {order.get('volume', 0)} @ {order.get('price', 0)}\n"
+                    f"📊 Status: {order.get('status', 'N/A')}\n"
+                    f"🕐 {order.get('timestamp', 'N/A')}\n\n"
                 )
             
             await update.message.reply_text(message)
@@ -203,56 +161,30 @@ class TelegramBot:
     def add_order(self, order_data: Dict):
         """Add new order to database"""
         try:
-            conn = sqlite3.connect(self.db_path)
-            cursor = conn.cursor()
-            
-            cursor.execute('''
-                INSERT OR REPLACE INTO orders 
-                (order_id, symbol, order_type, volume, price, sl, tp, status, created_at, updated_at)
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-            ''', (
-                order_data.get('order_id'),
-                order_data.get('symbol'),
-                order_data.get('order_type'),
-                order_data.get('volume'),
-                order_data.get('price'),
-                order_data.get('sl'),
-                order_data.get('tp'),
-                order_data.get('status', 'ACTIVE'),
-                datetime.now().isoformat(),
-                datetime.now().isoformat()
-            ))
-            
-            conn.commit()
-            conn.close()
-            
-            self.logger.info(f"Order added to database: {order_data.get('order_id')}")
-            
+            doc_id = self.mongo_handler.add_order(order_data)
+            if doc_id:
+                self.logger.info(f"Order added to database: {order_data.get('order_id')}")
+                return doc_id
+            else:
+                self.logger.error(f"Failed to add order: {order_data.get('order_id')}")
+                return None
         except Exception as e:
             self.logger.error(f"Failed to add order: {e}")
+            return None
     
     def update_order(self, order_id: str, updates: Dict):
         """Update existing order"""
         try:
-            conn = sqlite3.connect(self.db_path)
-            cursor = conn.cursor()
-            
-            set_clause = ", ".join([f"{key} = ?" for key in updates.keys()])
-            values = list(updates.values()) + [order_id]
-            
-            cursor.execute(f'''
-                UPDATE orders 
-                SET {set_clause}, updated_at = ?
-                WHERE order_id = ?
-            ''', values + [datetime.now().isoformat()])
-            
-            conn.commit()
-            conn.close()
-            
-            self.logger.info(f"Order updated: {order_id}")
-            
+            success = self.mongo_handler.update_order_status(order_id, updates.get('status', 'ACTIVE'), updates)
+            if success:
+                self.logger.info(f"Order updated: {order_id}")
+                return True
+            else:
+                self.logger.error(f"Failed to update order: {order_id}")
+                return False
         except Exception as e:
             self.logger.error(f"Failed to update order: {e}")
+            return False
     
     async def send_notification(self, message: str, notification_type: str = "INFO"):
         """Send notification to all configured Telegram chat IDs"""
@@ -346,32 +278,7 @@ class TelegramBot:
     def get_active_orders(self) -> List[Dict]:
         """Get all active orders"""
         try:
-            conn = sqlite3.connect(self.db_path)
-            cursor = conn.cursor()
-            
-            cursor.execute('''
-                SELECT order_id, symbol, order_type, volume, price, sl, tp, created_at
-                FROM orders 
-                WHERE status = 'ACTIVE'
-                ORDER BY created_at DESC
-            ''')
-            
-            orders = []
-            for row in cursor.fetchall():
-                orders.append({
-                    'order_id': row[0],
-                    'symbol': row[1],
-                    'order_type': row[2],
-                    'volume': row[3],
-                    'price': row[4],
-                    'sl': row[5],
-                    'tp': row[6],
-                    'created_at': row[7]
-                })
-            
-            conn.close()
-            return orders
-            
+            return self.mongo_handler.get_active_orders()
         except Exception as e:
             self.logger.error(f"Failed to get active orders: {e}")
             return []
@@ -400,17 +307,17 @@ class TelegramMonitor:
     
     def track_order_cancelled(self, order_id: str, reason: str = ""):
         """Track order cancellation"""
-        self.bot.update_order(order_id, {'status': 'CANCELLED'})
+        self.bot.mongo_handler.cancel_order(order_id, reason)
         asyncio.create_task(self.bot.notify_order_cancelled(order_id, reason))
     
     def track_take_profit(self, order_id: str, symbol: str, price: float, profit: float):
         """Track take profit hit"""
-        self.bot.update_order(order_id, {'status': 'CLOSED_TP'})
+        self.bot.mongo_handler.close_order(order_id, price, profit)
         asyncio.create_task(self.bot.notify_take_profit(order_id, symbol, price, profit))
     
     def track_stop_loss(self, order_id: str, symbol: str, price: float, loss: float):
         """Track stop loss hit"""
-        self.bot.update_order(order_id, {'status': 'CLOSED_SL'})
+        self.bot.mongo_handler.close_order(order_id, price, loss)
         asyncio.create_task(self.bot.notify_stop_loss(order_id, symbol, price, loss))
 
 # Example usage
