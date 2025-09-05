@@ -59,6 +59,7 @@ class TelegramBot:
             self.application.add_handler(CommandHandler("start", self._start_command))
             self.application.add_handler(CommandHandler("status", self._status_command))
             self.application.add_handler(CommandHandler("orders", self._orders_command))
+            self.application.add_handler(CommandHandler(["trade_report", "tradereport"], self._trade_report_command))
             
             self.logger.info("Starting Telegram bot...")
             await self.application.initialize()
@@ -86,7 +87,8 @@ class TelegramBot:
             "🤖 PipEngine Trading Bot\n\n"
             "Available commands:\n"
             "/status - Check bot status\n"
-            "/orders - View recent orders\n\n"
+            "/orders - View recent orders\n"
+            "/trade_report - 24h trade performance\n\n"
             "I will notify you about:\n"
             "• New orders created\n"
             "• Orders cancelled\n"
@@ -157,6 +159,78 @@ class TelegramBot:
         except Exception as e:
             self.logger.error(f"Orders command failed: {e}")
             await update.message.reply_text("❌ Error retrieving orders")
+
+    async def _trade_report_command(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
+        """Handle /trade_report command - 24h trade summary"""
+        try:
+            conn = sqlite3.connect(self.db_path)
+            cursor = conn.cursor()
+
+            # Time window: last 24 hours
+            last_24h = "datetime('now', '-24 hours')"
+
+            # Total orders created in last 24h
+            cursor.execute(f"""
+                SELECT COUNT(*)
+                FROM orders
+                WHERE created_at >= {last_24h}
+            """)
+            total_created_24h = cursor.fetchone()[0] or 0
+
+            # Orders closed TP/SL in last 24h (by updated_at)
+            cursor.execute(f"""
+                SELECT COUNT(*)
+                FROM orders
+                WHERE status = 'CLOSED_TP' AND updated_at >= {last_24h}
+            """)
+            tp_24h = cursor.fetchone()[0] or 0
+
+            cursor.execute(f"""
+                SELECT COUNT(*)
+                FROM orders
+                WHERE status = 'CLOSED_SL' AND updated_at >= {last_24h}
+            """)
+            sl_24h = cursor.fetchone()[0] or 0
+
+            # Fetch closed orders in last 24h to compute realized PnL
+            cursor.execute(f"""
+                SELECT order_type, price, sl, tp, volume, status
+                FROM orders
+                WHERE (status = 'CLOSED_TP' OR status = 'CLOSED_SL')
+                  AND updated_at >= {last_24h}
+            """)
+            closed_rows = cursor.fetchall()
+
+            realized_pnl = 0.0
+            for row in closed_rows:
+                order_type, price, sl, tp, volume, status = row
+                # Calculate PnL based on closure type and side
+                if status == 'CLOSED_TP':
+                    if order_type == 'BUY':
+                        realized_pnl += (float(tp) - float(price)) * float(volume)
+                    else:  # SELL
+                        realized_pnl += (float(price) - float(tp)) * float(volume)
+                elif status == 'CLOSED_SL':
+                    if order_type == 'BUY':
+                        realized_pnl += (float(sl) - float(price)) * float(volume)
+                    else:  # SELL
+                        realized_pnl += (float(price) - float(sl)) * float(volume)
+
+            conn.close()
+
+            report = (
+                "📈 24h Trade Report\n\n"
+                f"Orders Created: {total_created_24h}\n"
+                f"TPs: {tp_24h}\n"
+                f"SLs: {sl_24h}\n"
+                f"Realized PnL: {realized_pnl:.2f}\n"
+            )
+
+            await update.message.reply_text(report)
+
+        except Exception as e:
+            self.logger.error(f"Trade report failed: {e}")
+            await update.message.reply_text("❌ Error generating trade report")
     
     def add_order(self, order_data: Dict):
         """Add new order to database"""
